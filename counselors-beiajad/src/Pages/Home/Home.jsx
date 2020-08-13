@@ -1,16 +1,15 @@
 import React from 'react';
-import Header from './Layout/Header'
-import {
-  
-} from 'reactstrap';
-import  AuthContextProvider  from '../../contexts/AuthContext'
+import Fondo from './Fondo.jpg'
+
 function Home(props) {
   return (
-    <AuthContextProvider>
-      <Header />
-      <h1>Bienvenido</h1>
+    <>
+  
+      <h1>Home</h1>
+      <img src={Fondo}></img>
+      
     
-    </AuthContextProvider>
+    </>
   );
 }
 
