@@ -1,12 +1,13 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React,{useContext} from "react";
+import { Redirect } from "react-router-dom";
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Logout = () => {
-  
-  alert('Successful logout');
-  return (
-    <Redirect to="/login" />
-  )
-}
+  const { logoutUser } = useContext(AuthContext)
+  alert("Successful logout");
+  logoutUser()
+
+  return <Redirect to="/login" />;
+};
 
 export default Logout;

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import Header from './Layout/Header'
+import React, { useState, useContext } from 'react';
+import axios from 'axios'
+import Header from '../Layout/Header/Header'
 import {
   Button,  
   Form,  
@@ -7,15 +8,34 @@ import {
   Label,  
   Input,
 } from 'reactstrap';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { loginUser } = useContext(AuthContext)
+
+  const handleSubmit = async (event)=>{
+    event.preventDefault();
+    const jsonSend ={
+      email,
+      password
+    };
+    const LOGIN_URL= `http://localhost:8000/api/v1/login/`
+
+    try {
+      const res = await axios.post(LOGIN_URL, jsonSend)
+      loginUser(res.data.token)
+      alert('Succesful Login')
+    } catch(error){
+      alert('Error in Login')
+    }
+  }
   return (
     <>
     <Header />
       <h1 className="mb-4">Login en mi App</h1>
-      <Form className="container" onSubmit={console.log('submit')}>
+      <Form className="container" onSubmit={handleSubmit}>
         <FormGroup>
           <Label>Email</Label>
           <Input
