@@ -10,7 +10,7 @@ import Faq from './Pages/Faq/Faq'
 import WeAre from './Pages/WeAre/WeAre'
 import Login from "./Components/Users/Login.jsx";
 import Logout from "./Components/Users/Logout.jsx";
-//import Register from "./Components/Users/Registrer.jsx";
+import Register from "./Components/Users/Signup.jsx";
 import UsersList from "./Components/Users/UsersList.jsx"; 
 function Routes() {
   return (
@@ -20,7 +20,7 @@ function Routes() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
-       {/* <Route exact path="/register" component={Register} />*/}
+       <Route exact path="/register" component={Register} />
         <Route exact path="/users" component={UsersList} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/events" component={Events} />

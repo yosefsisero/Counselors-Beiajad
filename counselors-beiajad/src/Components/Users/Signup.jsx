@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "./Layout/Header";
+import Header from "../Layout/Header/Header";
 
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
@@ -13,12 +13,42 @@ const Register = () => {
   const [comunity, setComunity] = useState("");
   const [country, setCountry] = useState(""); 
   const [tel, setTel] = useState("");
+  const handleForm = async (event) =>{
+  event.preventDefault();
+
+  const jsonSend = {
+    first_name: firstName,
+    last_name: lastName,
+    email,
+    password,
+    age,
+    comunity,
+    country,
+    tel
+  };
+
+  const SIGNUP_URL = `http://localhost:8000/api/v1/signup/`
+    try {
+      await axios.post(SIGNUP_URL, jsonSend)
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPassword('')
+      setAge('')
+      setComunity('')
+      setCountry('')
+      setTel('')
+      alert('Succesfully created acccount')
+    }catch (error){
+      alert('Error on signup')
+    }
+  };
 
   return (
     <>
     <Header />
       <h1 className="mb-4">Signup</h1>
-      <Form className="container" onSubmit={console.log("Login")}>
+      <Form className="container" onSubmit={handleForm}>
       <FormGroup>
        <Label>First Name</Label>
        <Input
@@ -82,7 +112,7 @@ const Register = () => {
             type="number"
             name="tel"
             id="inputTel"
-            placeholder="type your last name"
+            placeholder="type your telephone"
           />
         </FormGroup>
         <FormGroup>
