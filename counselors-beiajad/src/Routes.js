@@ -11,7 +11,9 @@ import WeAre from './Pages/WeAre/WeAre'
 import Login from "./Components/Users/Login.jsx";
 import Logout from "./Components/Users/Logout.jsx";
 import Register from "./Components/Users/Signup.jsx";
-import UsersList from "./Components/Users/UsersList.jsx"; 
+import UsersList from "./Components/Users/UsersList.jsx";
+import ScheduleList from "./Components/Users/ScheduleList.jsx"; 
+
 function Routes() {
   return (
     <BrowserRouter>
@@ -22,6 +24,7 @@ function Routes() {
         <Route exact path="/logout" component={Logout} />
        <Route exact path="/register" component={Register} />
         <Route exact path="/users" component={UsersList} />
+        <Route exact path="/schedule" component={ScheduleList} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/events" component={Events} />
         <Route exact path="/experiences" component={Experiences} />
