@@ -13,6 +13,7 @@ import Logout from "./Components/Users/Logout.jsx";
 import Register from "./Components/Users/Signup.jsx";
 import UsersList from "./Components/Users/UsersList.jsx";
 import ScheduleList from "./Components/Users/ScheduleList.jsx"; 
+import ScheduleUser from "./Components/Users/ScheduleUser.jsx";
 
 function Routes() {
   return (
@@ -25,6 +26,7 @@ function Routes() {
        <Route exact path="/register" component={Register} />
         <Route exact path="/users" component={UsersList} />
         <Route exact path="/schedule" component={ScheduleList} />
+        <Route exact path="/schedule/user" component={ScheduleUser} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/events" component={Events} />
         <Route exact path="/experiences" component={Experiences} />

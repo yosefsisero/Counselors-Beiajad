@@ -8,7 +8,8 @@ function ScheduleList() {
   const [schedule, setSchedule] = useState([]);
 
   const { isAuth } = useContext(AuthContext);
-  const URL_GET_SCHEDULE = "http://localhost:8000/api/v1/schedule";
+
+  const URL_GET_SCHEDULE = `http://localhost:8000/api/v1/schedule`;
   useEffect(() => {
     axios
       .get(URL_GET_SCHEDULE, {
@@ -61,3 +62,19 @@ function ScheduleList() {
 }
 
 export default ScheduleList;
+
+
+/*
+
+como pedir las citas de un solo usuario usando la ruta de schedule/id
+y como hacer para pdeir unicamente del dia o hora o paciente
+
+como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
+
+como hacer que el usuario logueado haga el post de la lista
+
+---pendientes--- 
+
+hacer un formulario de contacto y que mande el mail.
+
+*/
