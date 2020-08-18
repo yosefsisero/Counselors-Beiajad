@@ -1,0 +1,9 @@
+como pedir las citas de un solo usuario usando la ruta de schedule/id
+y como hacer para pdeir unicamente del dia o hora o paciente
+
+como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
+
+
+---pendientes--- 
+
+hacer un formulario de contacto y que mande el mail.
