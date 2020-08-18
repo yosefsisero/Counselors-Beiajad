@@ -13,6 +13,7 @@ const Register = () => {
   const [comunity, setComunity] = useState("");
   const [country, setCountry] = useState(""); 
   const [tel, setTel] = useState("");
+  
   const handleForm = async (event) =>{
   event.preventDefault();
 

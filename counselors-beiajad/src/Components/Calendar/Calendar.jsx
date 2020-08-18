@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
+
+import { AuthContext } from '../../contexts/AuthContext';
+
 
 
 function Calendar() {
-    const URL ="http://localhost:8000/api/v1/schedule/"
+    const { user1 } = useContext(AuthContext)
+
+    const URL = "http://localhost:8000/api/v1/schedule/"
 
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    const [note, setNote] = useState('')
-    const [user, setUser] = useState('5f346c0f712d15180848c4da')
+    const [note, setNote] = useState(' ')
+    const [user] = useState(user1.id)
 
     const clear = ()=>{  
         setDate ('')
         setTime ('')
         setNote ('')
-        setUser ('5f346c0f712d15180848c4da')
     }
 
     const saveDate = (event)=>{

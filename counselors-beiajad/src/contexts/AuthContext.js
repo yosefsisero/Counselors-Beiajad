@@ -6,12 +6,12 @@ export const AuthContext = createContext();
 const AuthContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [isAuth, setIsAuth] = useState(false);
-  const [user, setUser] = useState({})
+  const [user1, setUser1] = useState({})
 
   const loginUser = (token) => {
     localStorage.setItem('app_token', token)
     const decoded = decode(token)
-    setUser(decoded)
+    setUser1(decoded)
     setToken(token);
     setIsAuth(true);
   };
@@ -20,13 +20,14 @@ const AuthContextProvider = (props) => {
     localStorage.removeItem("app_token");
     setToken({})
     setIsAuth(false);
+    setUser1({})
   };
 
   useEffect(() => {
     const item = localStorage.getItem("app_token");
     if (item) {
       const decoded = decode(item)
-      setUser(decoded)
+      setUser1(decoded)
       setToken(item);
       setIsAuth(true);
     }
@@ -35,7 +36,7 @@ const AuthContextProvider = (props) => {
     <AuthContext.Provider value={{ 
       token, 
       isAuth,  
-      user, 
+      user1, 
       loginUser, 
       logoutUser
       }}>
