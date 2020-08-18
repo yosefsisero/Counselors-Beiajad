@@ -26,7 +26,9 @@ function Calendar() {
        console.log("Dieron click en crear")
        
        axios.post(URL, {
-
+        headers: {
+            Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+          },
             date,
             time,
             note,
