@@ -18,7 +18,6 @@ const scheduleSchema = new Schema({
     },
     note:{
         type: String,
-        required: true
     },
     user: [{
         type: mongoose.Schema.Types.ObjectId,

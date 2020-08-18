@@ -5,7 +5,7 @@ module.exports = {
         [Segments.BODY]:Joi.object().keys({
             date: Joi.date().required(),
             time: Joi.string().required(),
-            note: Joi.string().required(),
+            note: Joi.string(),
             user: Joi.string().required(),
         }),
     }),
