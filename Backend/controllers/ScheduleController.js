@@ -21,6 +21,7 @@ module.exports = {
         const { body } = req;
         const newSchedule = new Schedule(body);
         newSchedule.save()
+        
         .then((resDB) => res.status(201).json(resDB))
         .catch((Error)=> console.log(Error))      
     },
