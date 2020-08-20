@@ -1,13 +1,14 @@
 como pedir las citas de un solo usuario usando la ruta de schedule/id
 y como hacer para pdeir unicamente del dia o hora o paciente
 
-como hacer que en el get no se vea el password hasheado
 
 como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
 
 
-1 dia despues sigue el login, pero con el token vencido, como hacer que se reinicie cuando el token vence?? o que se salga de la sesión
+1 dia despues sigue el login, pero con el token vencido, como hacer que se reinicie cuando el token vence??
+ o que se salga de la sesión
+
 ---pendientes--- 
 
-hacer un formulario de contacto y que mande el mail.
+
 

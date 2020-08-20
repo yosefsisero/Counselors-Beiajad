@@ -1,0 +1,8 @@
+.logo{
+    height: 90px;
+    width: auto;
+    border-radius: 30%;
+}
+.menu{
+    display: flex; 
+}

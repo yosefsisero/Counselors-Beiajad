@@ -8,6 +8,7 @@ module.exports = {
     findAll:(req, res)=>{
         User.find()
             .populate("schedule")
+
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
@@ -17,19 +18,13 @@ module.exports = {
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
-    // findSchedule: (req, res) => {
-    //     Schedule.findById(req.params.id)
-    //           .populate("user")
-    //           .then((resDB) => {
-                  
-                
-              
-              
-              
-              
-    //           res.status(200).json(resDB))
-    //           .catch((Error)=> console.log(Error)) 
-    // },
+     /*findSchedule: (req, res) => {
+         User.findById(req.params.id)
+               .populate("user")
+               .then((resDB) => {
+               res.status(200).json(resDB))
+               .catch((Error)=> console.log(Error)) 
+     },*/
     signup: async (req, res)=>{
         const { body } = req;
         try {
