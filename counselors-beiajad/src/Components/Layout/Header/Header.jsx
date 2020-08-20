@@ -24,65 +24,44 @@ const Header = (props) => {
     <Navbar color="light" light expand="md">
       <NavbarBrand href="/"></NavbarBrand>
       <NavbarToggler onClick={toggle} />       
-      <Collapse isOpen={isOpen} navbar>
+      <Collapse className="nav" isOpen={isOpen} navbar>
               <div>
                <img className="logo" src={Logo} /> 
               </div>
-        <Nav className="mr-auto" navbar>
+       
           {isAuth ? (
             <>
-              <NavItem>
-                <NavLink>
+              <div className="links">
+              <NavLink>
                   <Link to="/">Inicio</Link>
                 </NavLink>
-              </NavItem>
-              <NavItem>
+              
                 <NavLink>
                 <Link to="/faq">Preguntas Frecuentes</Link>
                 </NavLink>
-              </NavItem>
-              <NavItem>
+              
               <NavLink>
                   <Link to="/logout">Cerrar Sesión</Link>
                 </NavLink>
-              </NavItem>
-              <NavItem> 
+               
                 <NavLink>
                   <Contact/>
                 </NavLink>
-              </NavItem>
+              </div>
+               
             </>
           ) : (
-            <>
-              <NavItem>
+     
+           <>
+              <div className="links">
                 <NavLink>
                   <Link to="/">Inicio</Link>
                 </NavLink>
-              </NavItem>
-              <NavItem>
+
                 <NavLink>
                 <Link to="/faq">Preguntas Frecuentes</Link>
                 </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  <Link to="/register">Registrate</Link>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  <Link to="/login">Iniciar Sesión</Link>
-                </NavLink>
-              </NavItem>
-              <NavbarText> 
-                <NavLink>
-                  <Contact/>
-                </NavLink>
-              </NavbarText>
-            </>
-          )}
-        </Nav>
-        
+
                 <NavLink>
                   <Link to="/register">Registrate</Link>
                 </NavLink>
@@ -91,7 +70,15 @@ const Header = (props) => {
                 <NavLink>
                   <Link to="/login">Iniciar Sesión</Link>
                 </NavLink>
-             
+
+               
+                <NavLink>
+                  <Contact/>
+                </NavLink>
+              </div>
+               
+                </>
+         )}                
       </Collapse>
     </Navbar>
   );

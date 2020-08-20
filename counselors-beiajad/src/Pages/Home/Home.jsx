@@ -22,9 +22,11 @@ function Home(props) {
       ) : (
         <>
         <div className="seccion1">
-        <h1>Estabilidad emocional para tu vida diaria</h1>
-        <h4>Habla de forma segura y privada con una consultora psicólogica de confianza cuando lo necesites.</h4>
-        <Button href="/register" color="info">Empieza</Button>{' '}
+         
+           <h1 className="texto1">Estabilidad emocional para tu vida diaria</h1>
+           <h4 className="texto2">Habla de forma segura y privada con una consultora psicólogica de confianza cuando lo necesites.</h4>
+           <Button  href="/register" color="info">Empieza</Button>{' '}
+          
         </div>
         </>
       )}

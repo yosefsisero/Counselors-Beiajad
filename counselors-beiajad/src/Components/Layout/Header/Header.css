@@ -6,3 +6,9 @@
 .menu{
     display: flex; 
 }
+.links{
+    display: flex;
+}
+.nav{
+    justify-content: space-between;
+}
