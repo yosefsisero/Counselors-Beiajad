@@ -4,6 +4,7 @@ import Header from '../../Components/Layout/Header/Header'
 import { AuthContext } from '../../contexts/AuthContext';
 import './Home.css'
 import { Button } from 'reactstrap';
+import Seccion2 from '../../Components/Seccion2/Seccion2'
 
 function Home(props) {
   const { user1, isAuth } = React.useContext(AuthContext)
@@ -31,6 +32,8 @@ function Home(props) {
         </>
       )}
       </div>
+
+      <Seccion2 />
       
     </>
   );
