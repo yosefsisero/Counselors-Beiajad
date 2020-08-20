@@ -9,6 +9,12 @@ como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
  o que se salga de la sesión
 
 ---pendientes--- 
+Hacer el login en un modal 
+alinear el boton de contactanos
+cambiar el color de los links 
+cambiar fuente
+hacer la pagina de faq
+
 
 
 

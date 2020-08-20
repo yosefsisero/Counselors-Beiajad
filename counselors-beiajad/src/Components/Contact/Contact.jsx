@@ -13,7 +13,7 @@ function Contact(props) {
       const toggle = () => setModal(!modal);
     return (
     <div>
-      <Button color="info" onClick={toggle}>Contactanos</Button>
+      <Button color="info" onClick={toggle}>Contáctanos</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Contactanos!</ModalHeader>
         <ModalFooter>

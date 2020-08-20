@@ -1,6 +1,7 @@
 import React from 'react';
 import Calendar from '../../Components/Calendar/Calendar'
 import Header from '../../Components/Layout/Header/Header'
+import Seccion3 from '../../Components/Seccion3/Seccion3'
 import { AuthContext } from '../../contexts/AuthContext';
 import './Home.css'
 import { Button } from 'reactstrap';
@@ -25,13 +26,13 @@ function Home(props) {
          
            <h1 className="texto1">Estabilidad emocional para tu vida diaria</h1>
            <h4 className="texto2">Habla de forma segura y privada con una consultora psicólogica de confianza cuando lo necesites.</h4>
-           <Button  href="/register" color="info">Empieza</Button>{' '}
+           <Button  href="/register" color="info">Comienza ahora</Button>{' '}
           
         </div>
         </>
       )}
       </div>
-      
+      <Seccion3 />
     </>
   );
 }
