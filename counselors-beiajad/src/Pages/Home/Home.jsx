@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import './Home.css'
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
+import Logi from '../../Components/Modal/Logi'
 
 function Home(props) {
   const { user1, isAuth } = React.useContext(AuthContext)
@@ -35,7 +36,7 @@ function Home(props) {
       </div>
 
       <Seccion2 />
-      <Seccion3/>
+      <Seccion3 />
     </>
   );
 }

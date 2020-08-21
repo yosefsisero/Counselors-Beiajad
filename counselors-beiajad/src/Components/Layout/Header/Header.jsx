@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import Contact from "../../Contact/Contact";
 import './Header.css'
+import Logi from '../../Modal/Logi'
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +69,7 @@ const Header = (props) => {
               
             
                 <NavLink>
-                  <Link to="/login">Iniciar Sesión</Link>
+                  <Logi />
                 </NavLink>
 
                
