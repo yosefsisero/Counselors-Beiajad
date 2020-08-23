@@ -86,8 +86,10 @@ function Pre() {
             </div>
           </Col>
 
-          <Col className="faq" md="12" lg={{ size: 6}}>
-           <Faq  data={data2} styles={styles} config={config} />
+          <Col md="12" lg={{ size: 6}}>
+            <div  className="faq">
+             <Faq  data={data2} styles={styles} config={config} />
+            </div>
           </Col>
          </Row>
 

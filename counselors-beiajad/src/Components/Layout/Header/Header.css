@@ -13,8 +13,11 @@
     justify-content: space-between;
 }
 .alineacion{
-    margin-top: 8px;
+    margin-top: 4px;
+    font-size: 20px;
 }
 .alineacion:hover{
     color:#00194f;
+    font-size: 22px;
+    font-weight: bold;
 }

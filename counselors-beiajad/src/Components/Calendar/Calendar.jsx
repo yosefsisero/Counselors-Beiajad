@@ -60,7 +60,7 @@ function Calendar() {
     return (
      <>
         
-     <div className="container" >
+     <div className="container calendar" >
 
         <h3>Crear una cita</h3>   
 
