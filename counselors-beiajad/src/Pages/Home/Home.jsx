@@ -3,9 +3,10 @@ import Calendar from '../../Components/Calendar/Calendar'
 import Header from '../../Components/Layout/Header/Header'
 import Seccion3 from '../../Components/Seccion3/Seccion3'
 import { AuthContext } from '../../contexts/AuthContext';
-import './Home.css'
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
+import Footer from '../../Components/Layout/Footer/Footer';
+import './Home.css'
 
 function Home(props) {
   const { user1, isAuth } = React.useContext(AuthContext)
@@ -36,6 +37,7 @@ function Home(props) {
 
       <Seccion2 />
       <Seccion3/>
+      <Footer/>
     </>
   );
 }
