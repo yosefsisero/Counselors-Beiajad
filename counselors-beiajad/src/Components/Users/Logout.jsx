@@ -7,7 +7,7 @@ const Logout = () => {
   alert("Successful logout");
   logoutUser()
 
-  return <Redirect to="/login" />;
+  return <Redirect to="/" />;
 };
 
 export default Logout;

@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext} from 'react';
 import axios from 'axios'
-import Header from '../Layout/Header/Header'
+import { Redirect } from "react-router-dom";
+
+
 import {
   Button,  
   Form,  
@@ -10,6 +12,10 @@ import {
 } from 'reactstrap';
 
 import { AuthContext } from '../../contexts/AuthContext';
+
+
+
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -32,33 +38,32 @@ const Login = () => {
     } catch(error){
       alert('Error in Login')
     }
+
   }
   return (
     <>
-    <Header />
-      <h1 className="mb-4">Login en mi App</h1>
       <Form className="container" onSubmit={handleSubmit}>
         <FormGroup>
-          <Label>Email</Label>
+          <Label>Correo Electronico</Label>
           <Input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             name="email"
             id="exampleEmail"
-            placeholder="type your email" />
+            placeholder="Email" />
         </FormGroup>
         <FormGroup>
-          <Label>Password</Label>
+          <Label>Contraseña</Label>
           <Input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             name="password"
             id="examplePassword"
-            placeholder="type your password here" />
+            placeholder="Contraseña" />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color="info">Enviar</Button>
       </Form>
     </>
   );
