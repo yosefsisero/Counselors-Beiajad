@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
 import './Seccion3.css'
-import Foto1 from '../../Imagenes/foto1.jpg'
-import Manos from '../../Imagenes/mano.jpg'
+import Foto1 from '../../Imagenes/secretaria.jpg'
+import Manos from '../../Imagenes/libre.jpg'
 
 function Seccion3() {
     return (
