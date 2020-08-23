@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Container } from 'reactstrap';
 import Header from "../Layout/Header/Header";
-
+import Footer from "../Layout/Footer/Footer"
+import './Signup.css'
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
@@ -48,61 +50,62 @@ const Register = () => {
   return (
     <>
     <Header />
-      <h1 className="mb-4">Signup</h1>
-      <Form className="container" onSubmit={handleForm}>
+      <Container className="themed-container" fluid={true}>
+      <h1 className="mb-4 reg">Registrate</h1>
+      <Form className="container form-regis" onSubmit={handleForm}>
       <FormGroup>
-       <Label>First Name</Label>
+       <Label>Nombre</Label>
        <Input
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
         type="text"
         id="firstName"
         name="inputFirstName"
-        placeholder="type your first name"
+        placeholder="Escribe tu nombre"
       />
         </FormGroup>
         <FormGroup>
-          <Label>Last Name</Label>
+          <Label>Apellido</Label>
           <Input
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             type="text"
             name="lastName"
             id="inputLastname"
-            placeholder="type your last name"
+            placeholder="Escribe tu apellido"
           />
         </FormGroup>
         <FormGroup>
-          <Label>Age</Label>
+          <Label>Edad</Label>
           <Input
             value={age}
             onChange={(e) => setAge(e.target.value)}
             type="number"
             name="age"
             id="exampleage"
-            placeholder="type your age"
+            placeholder="Escribe tu edad"
           />
         </FormGroup>
         <FormGroup>
-          <Label>Comunity</Label>
+          <Label>Comunidad</Label>
           <Input
             value={comunity}
             onChange={(e) => setComunity(e.target.value)}
             type="comunity"
             name="comunity"
             id="examplecomunity"
-            placeholder="type your comunity here"
+            placeholder="Comunidad que asistes"
           />
         </FormGroup>
         <FormGroup>
-          <Label>Country</Label>
+          <Label>País</Label>
           <Input
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             type="text"
             id="country"
             name="inputcountry"
-            placeholder="type your country"
+            placeholder="País de residencia"
           />
         </FormGroup>
         <FormGroup>
@@ -113,7 +116,7 @@ const Register = () => {
             type="number"
             name="tel"
             id="inputTel"
-            placeholder="type your telephone"
+            placeholder="Teléfono"
           />
         </FormGroup>
         <FormGroup>
@@ -124,22 +127,24 @@ const Register = () => {
             type="email"
             name="email"
             id="exampleEmail"
-            placeholder="type your email"
+            placeholder="Correo electronico"
           />
         </FormGroup>
         <FormGroup>
-          <Label>Password</Label>
+          <Label>Contraseña</Label>
           <Input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             name="password"
             id="examplePassword"
-            placeholder="type your password here"
+            placeholder="Escribe tu contraseña"
           />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color='info'>Enviar</Button>
       </Form>
+      </Container>
+      <Footer/>
     </>
   );
 };

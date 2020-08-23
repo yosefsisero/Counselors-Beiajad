@@ -12,3 +12,9 @@
 .nav{
     justify-content: space-between;
 }
+.alineacion{
+    margin-top: 8px;
+}
+.alineacion:hover{
+    color:#00194f;
+}

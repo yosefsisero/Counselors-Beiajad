@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
 import './Seccion3.css'
 import Foto1 from '../../Imagenes/foto1.jpg'
-import Mano from '../../Imagenes/mano.jpg'
+import Manos from '../../Imagenes/mano.jpg'
 
 function Seccion3() {
     return (
@@ -20,7 +20,7 @@ function Seccion3() {
 
              <Row>
               <Col className="Col" md="12" lg={{ size: 6}}>
-                 <img className="Foto" src={Mano} alt=""/>
+                 <img className="Foto2" src={Manos} alt=""/>
               </Col>
               <Col className="Col" md="12" lg={{ size: 6}}>
                  <h3 className="pregunta">¿Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit ullam laborum?</h3>

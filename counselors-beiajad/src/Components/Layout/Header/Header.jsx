@@ -33,15 +33,15 @@ const Header = (props) => {
           {isAuth ? (
             <>
               <div className="links">
-              <NavLink>
+              <NavLink className="alineacion">
                   <Link to="/">Inicio</Link>
                 </NavLink>
               
-                <NavLink>
+                <NavLink className="alineacion">
                 <Link to="/faq">Preguntas Frecuentes</Link>
                 </NavLink>
               
-              <NavLink>
+              <NavLink className="alineacion">
                   <Link to="/logout">Cerrar Sesión</Link>
                 </NavLink>
                
@@ -55,20 +55,20 @@ const Header = (props) => {
      
            <>
               <div className="links">
-                <NavLink>
+                <NavLink className="alineacion">
                   <Link to="/">Inicio</Link>
                 </NavLink>
 
-                <NavLink>
+                <NavLink className="alineacion">
                 <Link to="/faq">Preguntas Frecuentes</Link>
                 </NavLink>
 
-                <NavLink>
+                <NavLink className="alineacion">
                   <Link to="/register">Registrate</Link>
                 </NavLink>
               
             
-                <NavLink>
+                <NavLink className="alineacion">
                   <Logi />
                 </NavLink>
 
