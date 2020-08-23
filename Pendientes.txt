@@ -9,17 +9,17 @@ como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
  o que se salga de la sesión
 
 ---pendientes--- 
-alinear el boton de contactanos
-cambiar el color de los links 
-hacer la pagina de faq
+alinear el boton de contactanos (Hecho)
+cambiar el color de los links (Hecho, solo ver el tema color)
+hacer la pagina de faq (Faltan hacer retoques)
 footer
 poner chat
-mejorar fotos y diseños
-arreglar la pagina de schedule que pasa si no estas loqueado
+mejorar fotos y diseños (Busque algunas)
+arreglar la pagina de schedule que pasa si no estas logueado
 limpiar la fecha del Schedule
 arreglar el calendario por algo bonito
 en la pagina del inicio del usuario salgan sus citas pendientes
-poner css en registrate
+poner css en registrate (Adelante un poco)
 
 
 
