@@ -5,7 +5,6 @@ import Seccion3 from '../../Components/Seccion3/Seccion3'
 import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
-import Logi from '../../Components/Modal/Logi'
 import Footer from '../../Components/Layout/Footer/Footer';
 import './Home.css'
 

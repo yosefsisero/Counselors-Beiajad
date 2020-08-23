@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import './Calendar.css'
 
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -71,7 +72,7 @@ function Calendar() {
 
             <label>¿Cuando quieres la cita?</label>   
             <input 
-            className="form-control" 
+            className="form-control date" 
             type="date"  
             required 
             value={date}
@@ -82,8 +83,9 @@ function Calendar() {
 
             <label>¿A que hora?</label>
             <input 
-            className="form-control"  
+            className="form-control time"  
             type="time" 
+            required
             value={time}
             onChange={(e)=>{setTime(e.target.value)}}
            />
@@ -92,14 +94,14 @@ function Calendar() {
 
              <label>Nota</label>
              <input
-             className="form-control"
+             className="form-control note"
              value={note}
              onChange={(e)=>{setNote(e.target.value)}}
              />
              
             <br></br> 
 
-            <button type="submit" className="btn btn-success"> Enviar</button> 
+            <button type="submit" className="btn btn-info"> Enviar</button> 
             </div>   
 
         </form>

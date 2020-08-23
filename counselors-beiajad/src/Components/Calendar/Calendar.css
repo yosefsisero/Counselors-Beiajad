@@ -1,0 +1,21 @@
+.date{
+    background-color: #e9e5f3;
+    border-radius: 20px;
+    outline: none;
+    width: 185px;
+    border: 1px solid #25a1b7;
+}
+.time{
+    background-color: #e9e5f3;
+    border-radius: 20px;
+    outline: none;
+    width: 100px;
+    border: 1px solid #25a1b7;
+}
+.note{
+    background-color: #e9e5f3;
+    border-radius: 20px;
+    outline: none;
+    width: 370px;
+    border: 1px solid #25a1b7;
+}
