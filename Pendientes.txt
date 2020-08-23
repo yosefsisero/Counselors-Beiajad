@@ -17,7 +17,7 @@ poner chat
 mejorar fotos y diseños (Busque algunas)
 arreglar la pagina de schedule que pasa si no estas logueado
 limpiar la fecha del Schedule
-arreglar el calendario por algo bonito
+arreglar el calendario por algo bonito (se cambio un poco los colores y tamaños)
 en la pagina del inicio del usuario salgan sus citas pendientes
 poner css en registrate (Adelante un poco)
 

@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
 import Footer from '../../Components/Layout/Footer/Footer';
+import Cal from '../../Components/Calendar/Cal'
 import './Home.css'
 
 function Home(props) {
@@ -38,6 +39,7 @@ function Home(props) {
       <Seccion2 />
       <Seccion3 />
       <Footer/>
+      <Cal />
     </>
   );
 }
