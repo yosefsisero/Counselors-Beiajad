@@ -6,8 +6,10 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
 import Footer from '../../Components/Layout/Footer/Footer';
-import Cal from '../../Components/Calendar/Cal'
+import Dates from '../../Components/Calendar/Dates'
 import './Home.css'
+import { Container, Row, Col } from 'reactstrap';
+
 
 function Home(props) {
   const { user1, isAuth } = React.useContext(AuthContext)
@@ -20,8 +22,23 @@ function Home(props) {
         
         {isAuth ? (
         <>
-        <h1 className="bienvenido">Hola, {user1.first_name}</h1>
-        <Calendar />
+        
+
+          <Container className="themed-container" fluid={true}>
+          <h1 className="bienvenido">Hola, {user1.first_name}</h1>
+
+         <Row>
+          <Col  md="12" lg={{ size: 5, offset: 1}}>
+            <Calendar />
+          </Col>
+
+          <Col md="12" lg={{ size: 6}}>
+            <Dates />           
+          </Col>
+         </Row>
+
+        </Container>        
+       
         </>
       ) : (
         <>
@@ -40,7 +57,7 @@ function Home(props) {
       <br/><br/>
       <Seccion3 />
       <Footer/>
-      <Cal />
+      
     </>
   );
 }

@@ -4,23 +4,24 @@ import {
     CardSubtitle, CardBody
   } from 'reactstrap';
   import './Seccion2.css'
-  import tel from '../../Imagenes/tel.png'
-  import confia from '../../Imagenes/confia.png'
-  import diploma from '../../Imagenes/diploma.png'
-  import happi from '../../Imagenes/happi.png'
+  import tel from '../../Imagenes/tel1.png'
+  import confia1 from '../../Imagenes/confia1.png'
+  import diploma from '../../Imagenes/diploma1.png'
+  import happi from '../../Imagenes/happi1.png'
+
 
 function Seccion2(props) {
     return (
         <CardGroup className="seccion2">
           <Card className="card">
-            <CardImg top width="100%" className="imagen" src={tel} alt="Card image cap" />
+          <CardImg top width="100%" className="imagen" src={tel} alt="Card image cap" />
             <CardBody>
               <CardTitle className="texto">Llamadas Anonimas</CardTitle>
               <CardText className="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt molestiae, harum sint voluptate nihil cupiditate expedita.</CardText>
             </CardBody>
           </Card>
           <Card className="card">
-            <CardImg top width="100%" className="imagen" src={confia} alt="Card image cap" />
+            <CardImg top width="100%" className="imagen" src={confia1} alt="Card image cap" />
             <CardBody>
               <CardTitle className="texto">Confianza y Discrecion</CardTitle>
               <CardText className="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt molestiae, harum sint voluptate nihil cupiditate expedita.</CardText>            </CardBody>

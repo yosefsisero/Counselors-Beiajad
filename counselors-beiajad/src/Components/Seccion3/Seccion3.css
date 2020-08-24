@@ -6,14 +6,12 @@
   width: 100%;
   height: auto;
 } 
-.Col{
-    padding: 5px 0;
-}
+
 .pregunta{
     text-align: center;
-    padding: 55px 10px 15px 15px;
+    padding: 35px 10px 15px 15px;
 }
 .respuesta{
     text-align: justify;
-    padding: 25px 55px 15px 55px;
+    padding: 5px 55px 15px 55px;
 }

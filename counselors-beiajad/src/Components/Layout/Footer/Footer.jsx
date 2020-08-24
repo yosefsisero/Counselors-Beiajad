@@ -17,8 +17,8 @@ function Footer() {
              <h6>© 2020 Counselors Beyajad. Todos los derechos reservados</h6>
          </div>
          <div>
-         <FontAwesomeIcon icon={faFacebook} size="md"/>
-         <FontAwesomeIcon icon={faInstagram} />
+         {/* <FontAwesomeIcon icon={faFacebook} size="md"/>
+         <FontAwesomeIcon icon={faInstagram} /> */}
          </div>
 
         </>

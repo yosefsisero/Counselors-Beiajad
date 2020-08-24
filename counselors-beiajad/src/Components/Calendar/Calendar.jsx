@@ -25,16 +25,7 @@ function Calendar() {
         setNote ('')
     }
     
-    /*useEffect(() => {
-        axios
-          .get(UrlUsers, {
-            headers: {
-              Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-            },
-          })
-          .then((data) => setUsers(data.data))
-          .catch((err) => console.log(err));
-      }, [saveDate]);*/
+   
 
     const saveDate = (event)=>{
        event.preventDefault();
