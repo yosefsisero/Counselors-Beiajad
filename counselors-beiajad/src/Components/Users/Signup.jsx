@@ -41,9 +41,9 @@ const Register = () => {
       setComunity('')
       setCountry('')
       setTel('')
-      alert('Succesfully created acccount')
+      //alert('Succesfully created acccount')
     }catch (error){
-      alert('Error on signup')
+      //alert('Error on signup')
     }
   };
 
@@ -62,7 +62,6 @@ const Register = () => {
         id="firstName"
         name="inputFirstName"
         placeholder="Escribe tu nombre"
-        valid
       />
       </FormGroup>
         <FormGroup>

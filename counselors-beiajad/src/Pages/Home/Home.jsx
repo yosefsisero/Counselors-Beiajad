@@ -20,7 +20,7 @@ function Home(props) {
         
         {isAuth ? (
         <>
-        <h1 className="bienvenido">Bienvenido, {user1.first_name}</h1>
+        <h1 className="bienvenido">Hola, {user1.first_name}</h1>
         <Calendar />
         </>
       ) : (

@@ -34,9 +34,9 @@ const Login = () => {
     try {
       const res = await axios.post(LOGIN_URL, jsonSend)
       loginUser(res.data.token)
-      alert('Succesful Login')
+      //alert('Succesful Login')
     } catch(error){
-      alert('Error in Login')
+     // alert('Error in Login')
     }
 
   }

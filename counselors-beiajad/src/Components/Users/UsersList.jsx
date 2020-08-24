@@ -7,6 +7,7 @@ function UsersList() {
   const [users, setUsers] = useState([]);
 
   const { isAuth } = useContext(AuthContext);
+  
   const URL_GET_USERS = "http://localhost:8000/api/v1/users";
   useEffect(() => {
     axios

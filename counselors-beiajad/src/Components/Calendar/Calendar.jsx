@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import './Calendar.css'
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -7,20 +8,33 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 
 function Calendar() {
-    const { user1 } = useContext(AuthContext)
-
+    const { user1, isAuth } = useContext(AuthContext)
+    
     const URL = "http://localhost:8000/api/v1/schedule/"
+    const UrlUsers = "http://localhost:8000/api/v1/users/5f39596088e54006028fdb3e"
 
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [note, setNote] = useState(' ')
     const [user] = useState(user1.id)
+    const [users, setUsers] = useState('');
 
     const clear = ()=>{  
         setDate ('')
         setTime ('')
         setNote ('')
     }
+    
+    /*useEffect(() => {
+        axios
+          .get(UrlUsers, {
+            headers: {
+              Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+            },
+          })
+          .then((data) => setUsers(data.data))
+          .catch((err) => console.log(err));
+      }, [saveDate]);*/
 
     const saveDate = (event)=>{
        event.preventDefault();
@@ -31,8 +45,7 @@ function Calendar() {
         //axios.post es el que ya esta hecho que pone la cita en la base de datos del schedule (aumenatndo una nueva cita)
         //axios.patch que es lo que toma las 2 citas anteriores + la nueva cita y los mete en un arreglo y hace el patch de las 3 citas juntas haciendo el post del usuario con las citas completas
 
-       
-       axios.post(URL, {
+        axios.post(URL, {
         
             date,
             time,
@@ -46,13 +59,14 @@ function Calendar() {
             },
           }
            ).then(()=>{
-               alert('Creado con exito')
+               //alert('Creado con exito')
                clear()
     
            }).catch((error)=>{
-               alert('Hubo un error, revisa que paso')
+               //alert('Hubo un error, revisa que paso')
                console.log(error)
            })
+           
        }
       
     
@@ -106,7 +120,6 @@ function Calendar() {
 
         </form>
     </div>
-       
     </>
     )
 }

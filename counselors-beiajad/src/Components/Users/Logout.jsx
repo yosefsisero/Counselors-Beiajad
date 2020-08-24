@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const Logout = () => {
   const { logoutUser } = useContext(AuthContext)
-  alert("Successful logout");
+  //alert("Successful logout");
   logoutUser()
 
   return <Redirect to="/" />;
