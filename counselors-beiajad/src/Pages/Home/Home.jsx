@@ -35,8 +35,9 @@ function Home(props) {
         </>
       )}
       </div>
-
+      <br/><br/>
       <Seccion2 />
+      <br/><br/>
       <Seccion3 />
       <Footer/>
       <Cal />

@@ -12,11 +12,11 @@ function Seccion3() {
               <Col className="Col" md="12" lg={{ size: 6}}>
                  <h3 className="pregunta">¿Que es el Counseling?</h3>
                  <h5 className="respuesta">
-                    El counseling es una profesión de ayuda que promueve el autoconocimiento, descubriendo y explorando un nuevo modo de ser y estar en el mundo para una mejor calidad de vida.
-                    Es una profesión en sí misma, que facilita por medio de un proceso, de manera individual, en pareja, familias y/o grupos
-                    Actua en el área de la prevención y promoción del desarrollo humano.
-                    El counseling es una profesión en si misma que facilita al consultante vivir de una manera más satisfactoria y plena.
-                    su tarea de ayuda estará dirigida a personas que necesitan, un momento de escucha y acompañamiento para comprender mejor sus problemas, tomar decisiones, o realizar cambios en algunos aspectos de sus vidas.</h5>           
+                 El Conseling, traducida como Consultoría Psicológica, es una profesión de ayuda que promueve el desarrollo personal. Ofrece una relación y espacio cálido para facilitar el autoconocimiento, invitando al consultante a descubrirse y explorar un nuevo modo de ser y estar en el mundo para una mejor calidad de vida.
+                 <br/><br/>
+                 Así también, actúa en el área de la prevención y promueve el despliegue de las potencialidades. 
+                 Se acompaña y preserva el bienestar psiquíco-emocional para una óptima relación intra e interpersonal; es decir, consigo mismo y con los demás.   
+                 </h5>          
               </Col>
               <Col className="Col" md="12" lg={{ size: 6}}>
                  <img className="Foto" src={Foto1} alt=""/>
@@ -29,7 +29,16 @@ function Seccion3() {
               </Col>
               <Col className="Col" md="12" lg={{ size: 6}}>
                  <h3 className="pregunta">¿Cuándo debo considerar el Counseling como una opción?</h3>
-                 <h5 className="respuesta">Si estás atravesando cambios, conflictos, toma de decisiones, duelos, crisis vitales,dificultades, probá el counseling!!!</h5>           
+                 <h5 className="respuesta">
+                    Si estás atravesando cambios, conflictos, toma de decisiones, duelos, crisis vitales, dificultades... 
+                    <br/>
+                    Probá el counseling!!!
+                    <br/>
+                    Si estás confundido, bloqueado, algo desanimado... podemos orientarte, acompañarte  a que te conectes y encuentres la opción más efectiva para ti. 
+                    <br/>
+                    Nuestra ayuda esta dirigida a personas que necesitan un momento de escucha activa y contención emocional para lograr la mejor versión de sí mismos en cada momento de la vida y situación que se les presente.
+                    <br/>
+                    Si necesitas vivir de una manera más satisfactoria y plena, contáctanos!!!</h5>           
               </Col>
              </Row>
              
