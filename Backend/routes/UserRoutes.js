@@ -8,7 +8,7 @@ const { verifyToken } = require('../middlewares')
 router.get('/users', verifyToken, UserController.findAll)
 router.get('/users/:id', verifyToken, UserController.findOne)
 
-router.patch('/users/:id', verifyToken, UserValidator.change, UserController.change)
+router.patch('/users/:id', verifyToken, UserController.change)
 
 router.delete('/users/:id', verifyToken, UserController.delete)
 

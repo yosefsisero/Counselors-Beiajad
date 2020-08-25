@@ -6,7 +6,7 @@ import './Pre.css'
 function Pre() {
 
     const data = {
-        title: "¿Qué es y cómo funciona Counselors Beyajad?",
+        title: "¿Qué es y cómo funciona Counselors Beiajad?",
         rows: [
             {
                 title: "Lorem ipsum dolor sit amet,",

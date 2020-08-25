@@ -7,10 +7,10 @@ import './Dates.css'
 
 function Dates() {
   const [user, setUser] = useState([]);
-
-  const { isAuth } = useContext(AuthContext);
+  const { user1, isAuth } = useContext(AuthContext)
   
-  const URL_GET_USER = "http://localhost:8000/api/v1/users/5f39596088e54006028fdb3e";
+  
+  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
   useEffect(() => {
     axios
       .get(URL_GET_USER, {
@@ -18,7 +18,7 @@ function Dates() {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
         },
       })
-      .then((data) => setUser(data.data.schedule[0]))
+      .then((data) => setUser(data.data.schedule))
       .catch((err) => console.log(err));
   }, []);
 
@@ -37,13 +37,13 @@ function Dates() {
         </tr>
       </thead>
       <tbody>
-      {
+      {user.map((user) => (
         <tr>         
-          <td key={user.first_name}>{user.date}</td>
+          <td key={user.first_name}>{user.date.split("T")[0]}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
         </tr>
-        }
+        ))}
         
       </tbody>
     </Table>

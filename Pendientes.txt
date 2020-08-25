@@ -9,10 +9,9 @@ como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
  o que se salga de la sesión
 
 ---pendientes--- 
-hacer la pagina de faq (Faltan info)
+hacer la pagina de faq (cambiar info)
 footer
 poner chat
-mejorar fotos y diseños (Busque algunas)
 arreglar la pagina de schedule que pasa si no estas logueado
 limpiar la fecha del Schedule
 arreglar el calendario por algo bonito

@@ -1,23 +1,22 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import './Calendar.css'
-
 import { AuthContext } from '../../contexts/AuthContext';
 
 
 
 function Calendar() {
-    const { user1, isAuth } = useContext(AuthContext)
+    const { user1 } = useContext(AuthContext)
     
     const URL = "http://localhost:8000/api/v1/schedule/"
-    const UrlUsers = "http://localhost:8000/api/v1/users/5f39596088e54006028fdb3e"
+    const UrlUsers = `http://localhost:8000/api/v1/users/5f39596088e54006028fdb3e`
 
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [note, setNote] = useState(' ')
     const [user] = useState(user1.id)
-    const [users, setUsers] = useState('');
+
+    const envioCitas = []
 
     const clear = ()=>{  
         setDate ('')
@@ -25,8 +24,8 @@ function Calendar() {
         setNote ('')
     }
     
-   
-
+    
+    
     const saveDate = (event)=>{
        event.preventDefault();
        console.log("Dieron click en crear")
@@ -51,16 +50,59 @@ function Calendar() {
           }
            ).then(()=>{
                //alert('Creado con exito')
+               
                clear()
     
            }).catch((error)=>{
                //alert('Hubo un error, revisa que paso')
                console.log(error)
            })
-           
-       }
+ 
+    /*------------------------------------------------------------------------ */
+
+    axios.get(UrlUsers, {
+      headers: {
+        Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+      },
+    })
+    .then((data) => setUsers(data.data.schedule))
+    .catch((err) => console.log(err))
+
+    const citasViejas = users.map((cita) => {
+        return cita._id
+    })
+    console.log(citasViejas)
+    /*---------------------------------------------------------------------------- */
+
+     citasViejas.push(envioCitas)
+
+
+
+       /*---------------------------------------------------------------------*/ 
+
+           axios.patch(UrlUsers, {
+        
+            schedule: envioCtas
       
+           },
+           {
+            headers: {
+              Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+            },
+          }
+           ).then(()=>{
+               //alert('Creado con exito')
+               
+               clear()
     
+           }).catch((error)=>{
+               //alert('Hubo un error, revisa que paso')
+               console.log(error)
+           })
+       
+        }
+      
+    /*--------------------------------------------------------------------------------------*/ 
     
     return (
      <>
