@@ -63,7 +63,7 @@ const Login = () => {
             id="examplePassword"
             placeholder="Contraseña" />
         </FormGroup>
-        <Button color="info">Enviar</Button>
+        <Button color="info">Iniciar Sesion</Button>
       </Form>
     </>
   );

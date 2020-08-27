@@ -3,17 +3,16 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
-import './Dates.css'
+import './Citas.css'
 
-function Get() {
+function Citas() {
   const [schedule, setSchedule] = useState([]);
   const { user1, isAuth } = useContext(AuthContext)
   
   
   const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
   useEffect(() => {
-    axios
-      .get(URL_GET_USER, {
+    axios.get(URL_GET_USER, {
         headers: {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
         },
@@ -28,9 +27,6 @@ function Get() {
     }
   })
   
-
-
-  console.log(IdUser)
  
   return (
     <>
@@ -61,4 +57,4 @@ function Get() {
   );
 }
 
-export default Get;
+export default Citas;

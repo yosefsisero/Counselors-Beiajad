@@ -7,10 +7,7 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
   NavLink,
-  NavbarText,
 } from "reactstrap";
 import Contact from "../../Contact/Contact";
 import './Header.css'

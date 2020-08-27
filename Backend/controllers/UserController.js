@@ -1,4 +1,4 @@
-const { User, Schedule } = require('../models');
+const { User } = require('../models');
 const { UserService } = require('../services');
 const { comparePasswords, createToken } = require('../utils')
 
@@ -7,24 +7,15 @@ const { comparePasswords, createToken } = require('../utils')
 module.exports = {
     findAll:(req, res)=>{
         User.find()
-            .populate("schedule")
 
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
     findOne: (req, res) => {
       User.findById(req.params.id)
-            .populate("schedule")
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
-     /*findSchedule: (req, res) => {
-         User.findById(req.params.id)
-               .populate("user")
-               .then((resDB) => {
-               res.status(200).json(resDB))
-               .catch((Error)=> console.log(Error)) 
-     },*/
     signup: async (req, res)=>{
         const { body } = req;
         try {
@@ -64,17 +55,4 @@ module.exports = {
            .then((resDB)=> res.status(204).json(resDB))
            .catch((err)=> res.status(400).json(err))
     },
-}   
-
-/*
----OTRA FORMA DE HACERLO---
-
-const getAllUsers = (req, res)=>{
-    User.find()
-        .then((resDB) => res.status(200).json(resDB))
-        .catch((Error)=> console.log(Error)) 
 }
-
-module.exports = { getAllUsers }
-
-*/

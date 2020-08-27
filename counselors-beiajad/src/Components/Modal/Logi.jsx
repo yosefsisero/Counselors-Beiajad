@@ -20,9 +20,9 @@ function Logi(props) {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         
         <ModalFooter>
-         <Login />
-          
+         <Login />          
         </ModalFooter>
+        
       </Modal>
     </div>
     )

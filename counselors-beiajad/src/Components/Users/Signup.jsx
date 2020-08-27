@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import Header from "../Layout/Header/Header";
 import Footer from "../Layout/Footer/Footer"
 import './Signup.css'
-import { Button, Form, FormGroup, Label, Input, FormFeedback } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
 const Register = () => {

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Faq from "react-faq-component";
 import { Container, Row, Col } from 'reactstrap';
-import './Pre.css'
+import './Preguntas.css'
 
-function Pre() {
+function Preguntas() {
 
     const data = {
         title: "¿Qué es y cómo funciona Counselors Beiajad?",
@@ -98,4 +98,4 @@ function Pre() {
     )
 }
 
-export default Pre
+export default Preguntas

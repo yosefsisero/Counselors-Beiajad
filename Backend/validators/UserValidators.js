@@ -11,7 +11,6 @@ module.exports = {
             tel: Joi.number().required(),
             email: Joi.string().required(),
             password: Joi.string().required(),
-            schedule: Joi.string(),
         }),
     }),
     change: celebrate({
@@ -19,7 +18,8 @@ module.exports = {
             tel: Joi.number(),
             country: Joi.string(),
             email: Joi.string(),
-            schedule: Joi.string(),
+            edad: Joi.string(),
+            comunity: Joi.string(),
         }),
     }),
 };

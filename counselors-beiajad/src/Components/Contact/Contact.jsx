@@ -17,7 +17,7 @@ function Contact(props) {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Contactanos!</ModalHeader>
         <ModalFooter>
-          <Button color="primary" href="mailto:yosefsisero@gmail.com" onClick={toggle}>Correo electronico</Button>{' '}
+          <Button color="primary" href="mailto:couselorsbeiajad@gmail.com" onClick={toggle}>Correo electronico</Button>{' '}
           <Button id="Whatsapp" href="https://api.whatsapp.com/send?phone=5491152470444" onClick={toggle}>WhatsApp</Button>{' '}
           
         </ModalFooter>

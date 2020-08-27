@@ -6,24 +6,19 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 
 function Calendar() {
-    const { user1 } = useContext(AuthContext)
-    
+    const { user1 } = useContext(AuthContext)    
     const URL = "http://localhost:8000/api/v1/schedule/"
-    const UrlUsers = `http://localhost:8000/api/v1/users/5f39596088e54006028fdb3e`
-
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [note, setNote] = useState(' ')
     const [user] = useState(user1.id)
-
-    const envioCitas = []
-
+    
     const clear = ()=>{  
         setDate ('')
         setTime ('')
         setNote ('')
     }
-    
+
     const saveDate = (event)=>{
        event.preventDefault();
        console.log("Dieron click en crear")

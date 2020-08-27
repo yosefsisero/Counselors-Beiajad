@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-    Card, Button, CardImg, CardTitle, CardText, CardGroup,
-    CardSubtitle, CardBody
-  } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardText, CardGroup, CardBody } from 'reactstrap';
   import './Seccion2.css'
   import tel from '../../Imagenes/tel1.png'
   import confia1 from '../../Imagenes/confia1.png'
@@ -10,7 +7,7 @@ import {
   import happi from '../../Imagenes/happi1.png'
 
 
-function Seccion2(props) {
+function Seccion2() {
     return (
         <CardGroup className="seccion2">
           <Card className="card">
