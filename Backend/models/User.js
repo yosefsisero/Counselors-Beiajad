@@ -42,11 +42,11 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    /*schedule: [{
+    schedule: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Schedule',
-      }]*/
-    schedule: {type: String}
+      }]
+    /*schedule: {type: String}*/
 },
    {
     timestamps: true,

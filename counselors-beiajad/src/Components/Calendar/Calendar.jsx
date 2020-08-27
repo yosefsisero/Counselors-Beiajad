@@ -24,17 +24,10 @@ function Calendar() {
         setNote ('')
     }
     
-    
-    
     const saveDate = (event)=>{
        event.preventDefault();
        console.log("Dieron click en crear")
        
-  
-        //axios.get para trae que citas tiene el ususario en la base de datos users (suponiendo que tiviera 2 citas anteriores)
-        //axios.post es el que ya esta hecho que pone la cita en la base de datos del schedule (aumenatndo una nueva cita)
-        //axios.patch que es lo que toma las 2 citas anteriores + la nueva cita y los mete en un arreglo y hace el patch de las 3 citas juntas haciendo el post del usuario con las citas completas
-
         axios.post(URL, {
         
             date,
@@ -58,52 +51,9 @@ function Calendar() {
                console.log(error)
            })
  
-    /*------------------------------------------------------------------------ */
-
-    axios.get(UrlUsers, {
-      headers: {
-        Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-      },
-    })
-    .then((data) => setUsers(data.data.schedule))
-    .catch((err) => console.log(err))
-
-    const citasViejas = users.map((cita) => {
-        return cita._id
-    })
-    console.log(citasViejas)
-    /*---------------------------------------------------------------------------- */
-
-    
-     citasViejas.push(envioCitas)
-     citasViejas.push()
-
-
-       /*---------------------------------------------------------------------*/ 
-
-           axios.patch(UrlUsers, {
-        
-            schedule: envioCtas
-      
-           },
-           {
-            headers: {
-              Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-            },
-          }
-           ).then(()=>{
-               //alert('Creado con exito')
-               
-               clear()
-    
-           }).catch((error)=>{
-               //alert('Hubo un error, revisa que paso')
-               console.log(error)
-           })
-       
+  
         }
-      
-    /*--------------------------------------------------------------------------------------*/ 
+    
     
     return (
      <>

@@ -34,7 +34,8 @@ function Home(props) {
           </Col>
 
           <Col md="12" lg={{ size: 6}}>
-            <Dates />           
+            <Dates />    
+            <Get/>       
           </Col>
          </Row>
 
@@ -58,7 +59,6 @@ function Home(props) {
       <br/><br/>
       <Seccion3 />
       <Footer/>
-      <Get/>
     </>
   );
 }
