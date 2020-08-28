@@ -24,8 +24,32 @@ function Citas() {
   const IdUser = schedule.filter((a) => {
     if(a.user[0]._id === user1.id){
       return a
+            
     }
+    
   })
+console.log(IdUser)
+  //-----------------------------------------------
+  const URLDELETE = `http://localhost:8000/api/v1/schedule/???????`;
+     
+     const useDelete = () => {
+       
+    
+        axios.delete(URLDELETE, {
+          headers: {
+            Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+          },
+        })
+        .then((response)=> {
+            alert(`Cita Borrada`)
+            window.location.reload()
+    
+     })  .catch((error) => {
+            alert(error)
+    
+        })
+    }    
+  //-----------------------------------------------
   
  
   return (
@@ -45,7 +69,9 @@ function Citas() {
           <td key={user.date}>{user.date.split("T")[0]}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
+          <button onClick={useDelete} className="btn btn-dark">Borrar</button>
         </tr>
+        
         ))}
         
       </tbody>
