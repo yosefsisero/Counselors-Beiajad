@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import './Citas.css'
+import Editar from '../../Components/Calendar/Editar';
+
 
 function Citas() {
   const [schedule, setSchedule] = useState([]);
@@ -74,7 +76,8 @@ function Citas() {
           <td key={user.date}>{user.date.split("T")[0]}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
-          <td><button onClick={() => Delete(user._id)} className="btn btn-dark">Borrar</button></td> 
+          <td><button onClick={() => Delete(user._id)} className="btn btn-dark">Borrar</button></td>
+          <td><Editar/></td> 
         </tr>
         
         ))}
