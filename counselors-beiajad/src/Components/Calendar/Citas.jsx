@@ -7,6 +7,7 @@ import './Citas.css'
 
 function Citas() {
   const [schedule, setSchedule] = useState([]);
+ 
   const { user1, isAuth } = useContext(AuthContext)
   
   
@@ -23,17 +24,17 @@ function Citas() {
 
   const IdUser = schedule.filter((a) => {
     if(a.user[0]._id === user1.id){
-      return a
-            
+      return a    
     }
-    
-  })
-console.log(IdUser)
+  });
+
+
   //-----------------------------------------------
-  const URLDELETE = `http://localhost:8000/api/v1/schedule/???????`;
-     
-     const useDelete = () => {
-       
+    
+  
+  const Delete = (id) => {
+
+      const URLDELETE = `http://localhost:8000/api/v1/schedule/${id}`;
     
         axios.delete(URLDELETE, {
           headers: {
@@ -42,16 +43,20 @@ console.log(IdUser)
         })
         .then((response)=> {
             alert(`Cita Borrada`)
+            console.log(response.data)
             window.location.reload()
     
      })  .catch((error) => {
             alert(error)
     
-        })
-    }    
+     })
+
+    } 
+       
   //-----------------------------------------------
   
  
+  
   return (
     <>
     {isAuth ? (
@@ -69,7 +74,7 @@ console.log(IdUser)
           <td key={user.date}>{user.date.split("T")[0]}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
-          <button onClick={useDelete} className="btn btn-dark">Borrar</button>
+          <td><button onClick={() => Delete(user._id)} className="btn btn-dark">Borrar</button></td> 
         </tr>
         
         ))}
@@ -80,7 +85,7 @@ console.log(IdUser)
       <Link to="/login"> Ir a inicio </Link>  
     )} 
     </>     
-  );
+  ); 
 }
 
 export default Citas;

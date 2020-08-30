@@ -14,7 +14,7 @@ function Footer() {
     return (
         <>
          <div className="footerIzq">
-             <h6>© 2020 Counselors Beyajad. Todos los derechos reservados</h6>
+             <h6>© 2020 Counselors Beiajad. Todos los derechos reservados</h6>
          </div>
          <div>
          {/* <FontAwesomeIcon icon={faFacebook} size="md"/>
