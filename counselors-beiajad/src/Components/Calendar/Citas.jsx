@@ -22,6 +22,7 @@ function Citas(props) {
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
   const [note, setNote] = useState('')
+  const [id1, setId1] = useState('')
 
   const clear = ()=>{  
         setDate ('')
@@ -29,9 +30,6 @@ function Citas(props) {
         setNote ('')
     }
  
-  
-  
-  
   const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
   useEffect(() => {
     axios.get(URL_GET_USER, {
@@ -124,25 +122,28 @@ function Citas(props) {
       </thead>
       <tbody>
       {IdUser.map((user) => (
-        <tr>         
+        <tr>   
+             
           <td key={user.date}>{user.date.split("T")[0]}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
           <td><button onClick={() => Delete(user._id)} className="btn btn-dark">Borrar</button></td>
-
+          
+         
         <td>
-          <Button color="info" onClick={toggle}>Editar</Button>
-           <Modal isOpen={modal} toggle={toggle} className={className}>
         
-        <ModalFooter>
-
+       {/* <Button color="info" onClick={() => setId1(user._id), toggle}>Editar</Button>
+          <Modal isOpen={modal} toggle={toggle} className={className}>
+        
+      <ModalFooter>*/}
+      
         <div className="container calendar" >
 
         <h3>Editar una cita</h3>   
 
         <br></br> 
         
-        <form onSubmit={editDate}>
+        <form onSubmit={() => editDate(user._id)}>
 
             <div className="form-group">
 
@@ -177,27 +178,25 @@ function Citas(props) {
              
             <br></br> 
             
-            <button onClick={() => editDate(user._id)} className="btn btn-info">Editar</button> 
+            <button type="submit" className="btn btn-info">Editar</button> 
             
             </div>   
 
         </form>
     </div>
 
-        </ModalFooter>
+     { /*  </ModalFooter>
         
       </Modal>
-
+     */}
       </td>
 
+          </tr>
+          ))}
 
-          {/* <td><button onClick={() => editDate(user._id)} className="btn btn-dark">Borrar</button></td>  */}
-
-
-
-        </tr>
         
-        ))}
+        
+ 
         
       </tbody>
     </Table>
