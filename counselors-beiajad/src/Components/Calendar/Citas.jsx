@@ -1,36 +1,22 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
+import { Table } from 'reactstrap';
 import axios from "axios";
-import { Table, Modal, ModalFooter, Button } from 'reactstrap';
-import './Citas.css'
-// import Editar from '../../Components/Calendar/Editar';
+import Editar from '../Editar/Editar';
+
 import '../Modal/Logi.css'
+import './Citas.css'
+import DeleteSchedule from "../Delete/DeleteSchedule";
 
 
-function Citas(props) {
+function Citas() {
+
   const { user1, isAuth } = useContext(AuthContext)
-
-  const {
-    className
-  } = props;  
-
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
   const [schedule, setSchedule] = useState([]);
 
-  const [date, setDate] = useState('')
-  const [time, setTime] = useState('')
-  const [note, setNote] = useState('')
-  const [id1, setId1] = useState('')
-
-  const clear = ()=>{  
-        setDate ('')
-        setTime ('')
-        setNote ('')
-    }
- 
   const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
+
   useEffect(() => {
     axios.get(URL_GET_USER, {
         headers: {
@@ -48,67 +34,6 @@ function Citas(props) {
   });
 
 
-  //-----------------------------------------------
-    
-  
-  const Delete = (id) => {
-
-      const URLDELETE = `http://localhost:8000/api/v1/schedule/${id}`;
-    
-        axios.delete(URLDELETE, {
-          headers: {
-            Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-          },
-        })
-        .then((response)=> {
-            alert(`Cita Borrada`)
-            console.log(response.data)
-            window.location.reload()
-    
-     })  .catch((error) => {
-            alert(error)
-    
-     })
-
-    } 
-       
-  //-----------------------------------------------
-
-
-  const editDate = (id)=>{
-    //  id.preventDefault();
-      const URLEDIT = `http://localhost:8000/api/v1/schedule/${id}`
-     
-      axios.patch(URLEDIT, {
-      
-          date,
-          time,
-          note,
-          
-                        
-         },
-         {
-          headers: {
-            Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-          },
-        }
-         ).then(()=>{
-             alert('Editado con exito')
-            //  window.location.reload()
-             
-             clear()
-  
-         }).catch((error)=>{
-             alert('Hubo un error, revisa que paso')
-             console.log(error)
-         })
-
-
-      }
-  //-----------------------------------------------
-  
- 
-  
   return (
     <>
     {isAuth ? (
@@ -127,77 +52,12 @@ function Citas(props) {
           <td key={user.date}>{user.date.split("T")[0]}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
-          <td><button onClick={() => Delete(user._id)} className="btn btn-dark">Borrar</button></td>
-          
-         
-        <td>
-        
-       {/* <Button color="info" onClick={() => setId1(user._id), toggle}>Editar</Button>
-          <Modal isOpen={modal} toggle={toggle} className={className}>
-        
-      <ModalFooter>*/}
-      
-        <div className="container calendar" >
-
-        <h3>Editar una cita</h3>   
-
-        <br></br> 
-        
-        <form onSubmit={() => editDate(user._id)}>
-
-            <div className="form-group">
-
-            <label>¿Cuando quieres la cita?</label>   
-            <input 
-            className="form-control date" 
-            type="date"  
-            required 
-            value={date}
-            onChange={(e)=>{setDate(e.target.value)}}
-            />
-
-            <br></br> 
-
-            <label>¿A que hora?</label>
-            <input 
-            className="form-control time"  
-            type="time" 
-            required
-            value={time}
-            onChange={(e)=>{setTime(e.target.value)}}
-           />
-            
-             <br></br> 
-
-             <label>Nota</label>
-             <input
-             className="form-control note"
-             value={note}
-             onChange={(e)=>{setNote(e.target.value)}}
-             />
-             
-            <br></br> 
-            
-            <button type="submit" className="btn btn-info">Editar</button> 
-            
-            </div>   
-
-        </form>
-    </div>
-
-     { /*  </ModalFooter>
-        
-      </Modal>
-     */}
-      </td>
+         {/* <td><DeleteSchedule id={user._id}/></td>
+          <td><Editar id={user._id}/></td>*/}
 
           </tr>
           ))}
 
-        
-        
- 
-        
       </tbody>
     </Table>
     ) : (

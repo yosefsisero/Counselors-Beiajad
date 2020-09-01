@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
+import DeleteUser from "../Delete/DeleteUser";
 function UsersList() {
   const [users, setUsers] = useState([]);
 
@@ -49,6 +50,7 @@ function UsersList() {
           <td key={user.comunity}>{user.comunity}</td>
           <td key={user.country}>{user.country}</td>
           <td key={user.tel}>{user.tel}</td>
+          <td><DeleteUser id={user._id}/></td>
         </tr>
         ))}
         
