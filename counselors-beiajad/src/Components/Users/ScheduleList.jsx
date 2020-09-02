@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
+import Editar from '../Delete/DeleteSchedule'
 
 function ScheduleList() {
   const [schedule, setSchedule] = useState([]);
@@ -48,6 +49,8 @@ function ScheduleList() {
           <td key={user.date}>{user.date}</td>
           <td key={user.time}>{user.time}</td>
           <td key={user.note}>{user.note}</td>
+          <td><Editar id={user._id}/></td>
+
         </tr>
         ))}
         
