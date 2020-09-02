@@ -29,7 +29,7 @@ function Citas() {
 
   const IdUser = schedule.filter((a) => {
     if(a.user[0]._id === user1.id){
-      return a    
+      return a   
     }
   });
 

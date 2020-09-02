@@ -4,6 +4,7 @@ import axios from "axios";
 function DeleteSchedule(props) {
 
 const Borrar = () => {
+    
     const URLDELETE = `http://localhost:8000/api/v1/schedule/${props.id}`;
     axios.delete(URLDELETE, {
         headers: {
