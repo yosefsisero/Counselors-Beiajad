@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap';
 import axios from "axios";
 import Editar from '../Editar/Editar';
-
 import '../Modal/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
