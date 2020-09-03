@@ -1,20 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Link } from 'react-router-dom'
 
-function DeleteUser(props) {
+function DeleteUser (props) {
 
        
     const { user1 } = useContext(AuthContext)
     const [schedule, setSchedule] = useState([]);
-    const [a, setA] = useState([])
     
 
     const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
      
-    const info = () => {
-
+    const info = async () => {
+      console.log(1)
       axios.get(URL_GET_USER, {
         headers: {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
@@ -38,7 +36,7 @@ function DeleteUser(props) {
   
    const Borrar = () => {
     for (let i = 0; i < M.length; i++) {
-
+      console.log(2)
       const URLDELETECITAS = `http://localhost:8000/api/v1/schedule/${M[i]}`;
       axios.delete(URLDELETECITAS, {
         headers: {
@@ -46,6 +44,7 @@ function DeleteUser(props) {
         },
       })
       .then((response)=> {
+          alert(`Citas Borradas`)
           console.log(response.data)
           window.location.reload()
     
@@ -56,6 +55,7 @@ function DeleteUser(props) {
     }}
  
     const BorrarUser = () => {
+      console.log(3)
       const URLDELETE = `http://localhost:8000/api/v1/users/${props.id}`;
       axios.delete(URLDELETE, {
           headers: {
@@ -72,13 +72,6 @@ function DeleteUser(props) {
      
      })
     }
- 
-   
-    
-    
- //---------------------------------------------------
-
-
  
     return (
         <>
