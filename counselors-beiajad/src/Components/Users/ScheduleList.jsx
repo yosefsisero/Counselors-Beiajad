@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import Editar from '../Delete/DeleteSchedule'
+import Inicio from "./Inicio";
 
 function ScheduleList() {
   const [schedule, setSchedule] = useState([]);
@@ -57,7 +58,7 @@ function ScheduleList() {
       </tbody>
     </Table>
     ) : (
-      <Link to="/login"> Ir a inicio </Link>  
+      <Inicio/>  
     )} 
     </>     
   );

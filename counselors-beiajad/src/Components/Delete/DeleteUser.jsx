@@ -11,7 +11,7 @@ function DeleteUser (props) {
 
     const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
      
-    const info = async () => {
+    useEffect(() => {
       console.log(1)
       axios.get(URL_GET_USER, {
         headers: {
@@ -20,11 +20,11 @@ function DeleteUser (props) {
       })
       .then((data) => setSchedule(data.data))
       .catch((err) => console.log(err))
-    
-    }  
+    }, []);
+      
    //----------------------------------------------------
     const IdUser = schedule.filter((a) => {
-      if(a.user[0]._id === user1.id){
+      if(a.user[0]._id === props.id){
         return a    
       }
     });
@@ -44,20 +44,19 @@ function DeleteUser (props) {
         },
       })
       .then((response)=> {
-          alert(`Citas Borradas`)
-          console.log(response.data)
-          window.location.reload()
-    
-    })  .catch((error) => {
+          console.log(response.data)    
+    }) 
+    .catch((error) => {
           alert(error)
-    
     })
+
     }}
- 
-    const BorrarUser = () => {
+
+  
+    const BorrarUser =  () => {
       console.log(3)
       const URLDELETE = `http://localhost:8000/api/v1/users/${props.id}`;
-      axios.delete(URLDELETE, {
+       axios.delete(URLDELETE, {
           headers: {
             Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
           },
@@ -70,12 +69,12 @@ function DeleteUser (props) {
      })  .catch((error) => {
             alert(error)
      
-     })
-    }
- 
+     })}
+    
+
     return (
         <>
-           <button onClick={(event) => {info(); Borrar(); BorrarUser()}}className="btn btn-dark">Borrar</button> 
+           <button onClick={() => {Borrar(); BorrarUser()}}className="btn btn-dark">Borrar</button> 
         </>
     )
 }
