@@ -1,19 +1,17 @@
 -hacer un buscador en citas para pedir unicamente del dia o hora o paciente (giphy)
 -hacer un buscador en usuarios para pedir unicamente del dia o hora o paciente (giphy)
 -hacer un calendario que aparezcan todas las citas de los pacientes
--arreglar los alert por set alert
+-arreglar los alert por swet alert
 -como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
--1 dia despues sigue el login, pero con el token vencido, como hacer que se reinicie cuando el token vence??
- o que se salga de la sesión
 -hacer la pagina de faq (cambiar info)
 -footer
 -poner chat
 -arreglar la pagina de schedule que pasa si no estas logueado
 -arreglar el calendario por algo bonito
 -poner css en registrate (Adelante un poco)
--automatizar las citas al dar post que salga en vivo
 -hacer el redirect en login y en registrar
 -usar bien fontawesome
+-hacer pagina de perfil de usuario
 
 
 

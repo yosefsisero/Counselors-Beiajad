@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import Editar from '../Delete/DeleteSchedule'
+import Home from '../../Pages/Home/Home'
 import Inicio from "./Inicio";
 
 function ScheduleList() {
@@ -22,7 +23,9 @@ function ScheduleList() {
       .catch((err) => console.log(err));
   }, []);
 
-  
+  const salir = () => {
+    window.location.assign('http://localhost:3000/')
+  }
 
 
   return (
@@ -58,8 +61,8 @@ function ScheduleList() {
       </tbody>
     </Table>
     ) : (
-      <Inicio/>  
-    )} 
+       <Link to="/"> Ir a inicio </Link>
+     )} 
     </>     
   );
 }
