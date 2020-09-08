@@ -57,8 +57,7 @@ function UsersList() {
       </tbody>
     </Table>
     ) : (
-      <Link to="/login"> Ir a inicio </Link>
-       
+      <Link to="/login"> Ir a inicio </Link> 
     )} 
     </>     
   );

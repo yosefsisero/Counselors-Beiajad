@@ -26,9 +26,10 @@ const AuthContextProvider = (props) => {
 
   useEffect(() => {
     const item = localStorage.getItem("app_token");
-    let dateNow = new Date();
-    const time = item.exp < dateNow.getTime("app_token")
-    if (item && time) {
+    //const decoded = decode(item)
+    //let dateNow = new Date();
+    // const time = item.exp < dateNow.getTime()  && time
+    if (item) {
       const decoded = decode(item)
       setUser1(decoded)
       setToken(item);
