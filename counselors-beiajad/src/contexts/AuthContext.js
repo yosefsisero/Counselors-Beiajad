@@ -23,17 +23,32 @@ const AuthContextProvider = (props) => {
     setUser1({})
   };
  
+  //-------------
+  // useEffect(()=>{
+  //   const item1 = localStorage.getItem("app_token");
+  //   let dateNow = Math.floor(Date.now() / 1000)
+  //   let info = decode(item1)
+  //   let timexp = info.exp
+  //   if (dateNow >= timexp){
+  //     console.log('estas afuera')
+  //   }
 
+
+  // },[])
+
+  //--------------------
   useEffect(() => {
     const item = localStorage.getItem("app_token");
-    //const decoded = decode(item)
-    //let dateNow = new Date();
-    // const time = item.exp < dateNow.getTime()  && time
+    // let dateNow = Math.floor(Date.now() / 1000)
+    // let exp = decode(item)
+    // let time = exp.exp
     if (item) {
       const decoded = decode(item)
+      // let dateNow = Math.floor(Date.now() / 1000)
       setUser1(decoded)
       setToken(item);
       setIsAuth(true);
+             
     }
   }, []);
   return (
