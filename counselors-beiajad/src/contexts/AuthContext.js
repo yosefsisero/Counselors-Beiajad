@@ -23,32 +23,29 @@ const AuthContextProvider = (props) => {
     setUser1({})
   };
  
-  //-------------
-  // useEffect(()=>{
-  //   const item1 = localStorage.getItem("app_token");
-  //   let dateNow = Math.floor(Date.now() / 1000)
-  //   let info = decode(item1)
-  //   let timexp = info.exp
-  //   if (dateNow >= timexp){
-  //     console.log('estas afuera')
-  //   }
-
-
-  // },[])
-
-  //--------------------
+  const salir = () => {
+    const token = localStorage.getItem("app_token");
+    let dateNow = Math.floor(Date.now() / 1000);
+    const decoded = decode(token)
+    let timexp = decoded.exp
+    if (dateNow >= timexp){
+      localStorage.removeItem("app_token");
+      setToken({})
+      setIsAuth(false);
+      setUser1({})
+      alert('Estas ponchado') 
+    }
+  }
+  
+  
   useEffect(() => {
     const item = localStorage.getItem("app_token");
-    // let dateNow = Math.floor(Date.now() / 1000)
-    // let exp = decode(item)
-    // let time = exp.exp
     if (item) {
       const decoded = decode(item)
-      // let dateNow = Math.floor(Date.now() / 1000)
       setUser1(decoded)
       setToken(item);
       setIsAuth(true);
-             
+      salir()    
     }
   }, []);
   return (

@@ -23,10 +23,7 @@ function ScheduleList() {
       .catch((err) => console.log(err));
   }, []);
 
-  const salir = () => {
-    window.location.assign('http://localhost:3000/')
-  }
-
+  
 
   return (
     <>
