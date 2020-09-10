@@ -44,12 +44,12 @@ function ScheduleList() {
       <tbody>
       {schedule.map((user) => (
         <tr>         
-          <td key={user.user.first_name}>{user.user[0].first_name}</td>
-          <td key={user.user.last_name}>{user.user[0].last_name}</td>
-          <td key={user.user.tel}>{user.user[0].tel}</td>
-          <td key={user.date}>{user.date}</td>
-          <td key={user.time}>{user.time}</td>
-          <td key={user.note}>{user.note}</td>
+          <td >{user.user[0].first_name}</td>
+          <td >{user.user[0].last_name}</td>
+          <td >{user.user[0].tel}</td>
+          <td >{user.date}</td>
+          <td >{user.time}</td>
+          <td >{user.note}</td>
           <td><Editar id={user._id}/></td>
 
         </tr>

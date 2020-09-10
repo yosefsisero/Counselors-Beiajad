@@ -48,9 +48,9 @@ function Citas() {
       {IdUser.map((user) => (
         <tr>   
              
-          <td key={user.date}>{user.date.split("T")[0]}</td>
-          <td key={user.time}>{user.time}</td>
-          <td key={user.note}>{user.note}</td>
+          <td >{user.date.split("T")[0]}</td>
+          <td >{user.time}</td>
+          <td >{user.note}</td>
           <td><Editar id={user._id}/></td>
           <td><DeleteSchedule id={user._id}/></td>
 

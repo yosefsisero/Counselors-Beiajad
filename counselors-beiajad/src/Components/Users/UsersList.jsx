@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import DeleteUser from "../Delete/DeleteUser";
+import './UserList.css'
+
 function UsersList() {
   const [users, setUsers] = useState([]);
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [filteredUsers, setFilteredUsers] = useState([]);
 
   const { isAuth } = useContext(AuthContext);
   
@@ -21,12 +26,40 @@ function UsersList() {
       .catch((err) => console.log(err));
   }, []);
 
-  
+  useEffect(() => {
+    setFilteredUsers(
+      users.filter((user) => 
+         user.first_name.toLowerCase().includes(name.toLowerCase())
+     ));
+  }, [name, users]);
 
+  useEffect(() => {
+    setFilteredUsers(
+      users.filter((user) => 
+         user.last_name.toLowerCase().includes(lastName.toLowerCase())
+     ));
+  }, [lastName, users]);
 
+ 
   return (
     <>
     {isAuth ? (
+      <>
+          <div>
+             <label>Nombre</label>
+             <input
+             className="form-control buscador"
+             onChange={(e)=>{setName(e.target.value)}}
+             />
+
+             <label>Apellido</label>
+             <input
+             className="form-control buscador"           
+             onChange={(e)=>{setLastName(e.target.value)}}
+             />
+          </div>
+            
+
     <Table striped>
       <thead>
         <tr>
@@ -41,21 +74,22 @@ function UsersList() {
         </tr>
       </thead>
       <tbody>
-      {users.map((user) => (
+      {filteredUsers.map((user) => (
         <tr>         
-          <td key={user.first_name}>{user.first_name}</td>
-          <td key={user.last_name}>{user.last_name}</td>
-          <td key={user.email}>{user.email}</td>
-          <td key={user.age}>{user.age}</td>
-          <td key={user.comunity}>{user.comunity}</td>
-          <td key={user.country}>{user.country}</td>
-          <td key={user.tel}>{user.tel}</td>
+          <td >{user.first_name}</td>
+          <td >{user.last_name}</td>
+          <td >{user.email}</td>
+          <td >{user.age}</td>
+          <td >{user.comunity}</td>
+          <td >{user.country}</td>
+          <td >{user.tel}</td>
           <td><DeleteUser id={user._id}/></td>
         </tr>
         ))}
         
       </tbody>
     </Table>
+    </>
     ) : (
       <Link to="/login"> Ir a inicio </Link> 
     )} 

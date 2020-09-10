@@ -1,6 +1,6 @@
 -hacer un buscador en citas para pedir unicamente del dia o hora o paciente (giphy)
 -hacer un buscador en usuarios para pedir unicamente del dia o hora o paciente (giphy)
--hacer un calendario que aparezcan todas las citas de los pacientes
+-hacer un agenda que aparezcan todas las citas de los pacientes
 -arreglar los alert por swet alert
 -como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
 -hacer la pagina de faq (cambiar info)
