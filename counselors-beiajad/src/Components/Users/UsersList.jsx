@@ -8,13 +8,13 @@ import './UserList.css'
 
 function UsersList() {
   const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [filteredUsers, setFilteredUsers] = useState([]);
-
   const { isAuth } = useContext(AuthContext);
-  
+  const [searchText, setSearchText] = useState("");
+  const [data, setData] = useState(users);
+  const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
+
   const URL_GET_USERS = "http://localhost:8000/api/v1/users";
+
   useEffect(() => {
     axios
       .get(URL_GET_USERS, {
@@ -25,57 +25,68 @@ function UsersList() {
       .then((data) => setUsers(data.data))
       .catch((err) => console.log(err));
   }, []);
+  
+  console.log(users)
 
-  useEffect(() => {
-    setFilteredUsers(
-      users.filter((user) => 
-         user.first_name.toLowerCase().includes(name.toLowerCase())
-     ));
-  }, [name, users]);
+  // ESTE CODIGO BUSCA EN EL ARREGLO UN SOLO DATO EN ESTE CASO EL APELLIDO.
+  // useEffect(() => {
+  //   setFilteredUsers(
+  //     users.filter((user) => 
+  //        user.last_name.toLowerCase().includes(lastName.toLowerCase())
+  //    ));
+  // }, [lastName, users]);
 
-  useEffect(() => {
-    setFilteredUsers(
-      users.filter((user) => 
-         user.last_name.toLowerCase().includes(lastName.toLowerCase())
-     ));
-  }, [lastName, users]);
 
- 
+  // handle change event of search input
+  const handleChange = value => {
+    setSearchText(value);
+    filterData(value);
+  };
+
+  // filter records by search text
+  const filterData = (value) => {
+    const lowercasedValue = value.toLowerCase().trim();
+    if (lowercasedValue === "") setData(users);
+    else {
+      const filteredData = users.filter(item => {
+        return Object.keys(item).some(key =>
+          excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(lowercasedValue)
+        );
+      });
+      setData(filteredData);
+    }
+  }
+   
   return (
     <>
     {isAuth ? (
       <>
-          <div>
-             <label>Nombre</label>
-             <input
-             className="form-control buscador"
-             onChange={(e)=>{setName(e.target.value)}}
-             />
-
-             <label>Apellido</label>
-             <input
-             className="form-control buscador"           
-             onChange={(e)=>{setLastName(e.target.value)}}
-             />
-          </div>
-            
-
-    <Table striped>
+        
+      <div>
+        <label>Busqueda</label>
+        <input className="form-control buscador"
+        style={{ marginLeft: 5 }}
+        type="text"
+        value={searchText}
+        onChange={e => handleChange(e.target.value)}
+      />
+      </div>
+      <Table striped>
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
           <th>Email</th>
-          <th>Age</th>
-          <th>Comunity</th>
-          <th>Country</th>
-          <th>Tel</th>
-
+          <th>Edad</th>
+          <th>Comunidad</th>
+          <th>Pais</th>
+          <th>Telefofo</th>
+          <th>Borrar</th>
         </tr>
       </thead>
       <tbody>
-      {filteredUsers.map((user) => (
-        <tr>         
+      {data.map((user, i) => (
+        <tr key={i}>         
           <td >{user.first_name}</td>
           <td >{user.last_name}</td>
           <td >{user.email}</td>
@@ -86,9 +97,14 @@ function UsersList() {
           <td><DeleteUser id={user._id}/></td>
         </tr>
         ))}
+      
         
       </tbody>
-    </Table>
+    </Table>      
+        
+        <div className="clearboth"></div>
+        {data.length === 0 && <span>No hay resultados!</span>}   
+    
     </>
     ) : (
       <Link to="/login"> Ir a inicio </Link> 
