@@ -7,8 +7,8 @@ import DeleteUser from "../Delete/DeleteUser";
 import './UserList.css'
 
 function UsersList() {
-  const [users, setUsers] = useState([]);
   const { isAuth } = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
@@ -104,8 +104,10 @@ function UsersList() {
       </tbody>
     </Table>      
         
-        <div className="clearboth"></div>
-        {data.length === 0 && <span>No hay resultados!</span>}   
+        <div className="clearboth">
+        {data.length === 0 && <span>No hay resultados!</span>}
+        </div>
+           
     
     </>
     ) : (

@@ -27,12 +27,14 @@ function Citas() {
   }, []);
 
   const IdUser = schedule.filter((a) => {
-    if(a.user[0]._id === user1.id){
+    const fecha = new Date(a.date).valueOf()
+    const now = Date.now()
+    if(a.user[0]._id === user1.id && fecha < now){
       return a   
     }
   });
   
-
+ 
   return (
     <>
     {isAuth ? (
@@ -45,15 +47,15 @@ function Citas() {
         </tr>
       </thead>
       <tbody>
-      {IdUser.map((user) => (
-        <tr>   
+      {IdUser.map((user, i) => (
+        <tr key={i}>   
              
           <td >{user.date.split("T")[0]}</td>
           <td >{user.time}</td>
           <td >{user.note}</td>
           <td><Editar id={user._id}/></td>
           <td><DeleteSchedule id={user._id}/></td>
-
+  
           </tr>
           ))}
 
