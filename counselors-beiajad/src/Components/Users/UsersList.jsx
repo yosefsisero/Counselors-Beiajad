@@ -10,7 +10,7 @@ function UsersList() {
   const [users, setUsers] = useState([]);
   const { isAuth } = useContext(AuthContext);
   const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState(users);
+  const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
 
   const URL_GET_USERS = "http://localhost:8000/api/v1/users";
@@ -22,7 +22,7 @@ function UsersList() {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
         },
       })
-      .then((data) => setUsers(data.data))
+      .then((data) => (setUsers(data.data), setData(data.data)))
       .catch((err) => console.log(err));
   }, []);
   
@@ -42,6 +42,8 @@ function UsersList() {
     setSearchText(value);
     filterData(value);
   };
+
+ 
 
   // filter records by search text
   const filterData = (value) => {

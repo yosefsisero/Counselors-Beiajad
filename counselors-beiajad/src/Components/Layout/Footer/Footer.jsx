@@ -2,7 +2,7 @@ import React from 'react'
 import './Footer.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import the library
-
+import { FaInstagram } from "react-icons/fa";
 
 // import your icons
 
@@ -19,6 +19,7 @@ function Footer() {
          <div>
          {/* <FontAwesomeIcon icon={faFacebook} size="md"/>
          <FontAwesomeIcon icon={faInstagram} /> */}
+         <FaInstagram className="instagram"/>
          </div>
 
         </>

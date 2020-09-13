@@ -6,7 +6,7 @@
 -hacer la pagina de faq (cambiar info)
 -footer
 -poner chat
--arreglar la pagina de schedule que pasa si no estas logueado
+-arreglar la pagina de schedule que pasa si no estas logueado (jacobo sabe lo de history)
 -arreglar el calendario por algo bonito
 -poner css en registrate (Adelante un poco)
 -hacer el redirect en login y en registrar
