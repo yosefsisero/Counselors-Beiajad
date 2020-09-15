@@ -62,7 +62,7 @@ function ScheduleList() {
           );
       });
       setData(filteredData, filteredUser);
-      console.log(data)
+      console.log(data) 
     }
   }
 
