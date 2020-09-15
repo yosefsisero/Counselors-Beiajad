@@ -12,6 +12,6 @@
 -hacer el redirect en login y en registrar
 -usar bien fontawesome
 -hacer pagina de perfil de usuario
-
+-hacer pagina y base de datos de doctores
 
 
