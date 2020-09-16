@@ -1,5 +1,3 @@
--hacer un buscador en citas para pedir unicamente del dia o hora o paciente (giphy)
--hacer un buscador en usuarios para pedir unicamente del dia o hora o paciente (giphy)
 -hacer un agenda que aparezcan todas las citas de los pacientes
 -arreglar los alert por swet alert
 -como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
@@ -13,5 +11,11 @@
 -usar bien fontawesome
 -hacer pagina de perfil de usuario
 -hacer pagina y base de datos de doctores
+-Como cambiar contraseñas 
 
+
+Preguntas para David
+Como buscar por dos parametros en l apagina de users
+Preguntar sobre el tema de subir archivos e imagenes a la api
+Como hacer para que te saque de la sesion y saber si es buena practica lo del authcontext
 

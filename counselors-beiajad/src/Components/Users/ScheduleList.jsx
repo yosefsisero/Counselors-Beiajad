@@ -8,11 +8,12 @@ import Home from '../../Pages/Home/Home'
 import Inicio from "./Inicio";
 
 function ScheduleList() {
+  
   const { isAuth } = useContext(AuthContext);
   const [schedule, setSchedule] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([])
+  
 
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
   
@@ -29,17 +30,6 @@ function ScheduleList() {
       .then((data) => (setSchedule(data.data), setData(data.data)))
       .catch((err) => console.log(err));
   }, []);
-  
- 
-  
-
-  useEffect(() => {
-       setFilteredUsers(
-         schedule.map((a) => 
-          a.user[0]
-       ));
-     }, [schedule]);
-
      
      
   const handleChange = value => {
@@ -56,13 +46,7 @@ function ScheduleList() {
           excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(lowercasedValue) 
         )
       });
-        const filteredUser = filteredUsers.filter(item => {
-          return Object.keys(item).some(key =>
-            excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(lowercasedValue) 
-          );
-      });
-      setData(filteredData, filteredUser);
-      console.log(data) 
+      setData(filteredData);
     }
   }
 

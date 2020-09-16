@@ -33,7 +33,7 @@ const AuthContextProvider = (props) => {
       setToken({})
       setIsAuth(false);
       setUser1({})
-      alert('Estas ponchado') 
+      alert('Estas ponchado')
     }
   }
   

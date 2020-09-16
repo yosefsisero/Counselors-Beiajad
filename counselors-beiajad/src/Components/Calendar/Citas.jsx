@@ -29,7 +29,7 @@ function Citas() {
   const IdUser = schedule.filter((a) => {
     const fecha = new Date(a.date).valueOf()
     const now = Date.now()
-    if(a.user[0]._id === user1.id && fecha < now){
+    if(a.user[0]._id === user1.id && fecha > now){
       return a   
     }
   });
