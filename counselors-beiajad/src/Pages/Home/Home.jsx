@@ -9,8 +9,7 @@ import Footer from '../../Components/Layout/Footer/Footer';
 import Citas from '../../Components/Calendar/Citas'
 import './Home.css'
 import { Container, Row, Col } from 'reactstrap';
-import MyCalendar from '../../Components/MyCalendar/MyCalendar';
-
+import MyCalendar from '../../Components/MyCalendar/MyCalendar'
 
 
 function Home(props) {
@@ -56,8 +55,9 @@ function Home(props) {
       <Seccion2 />
       <br/><br/>
       <Seccion3 />
-      {/*<MyCalendar/>*/}
+    
       <Footer/>
+      <MyCalendar/>
     </>
   );
 }

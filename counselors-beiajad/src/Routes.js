@@ -10,6 +10,7 @@ import UsersList from "./Components/Users/UsersList.jsx";
 import ScheduleList from "./Components/Users/ScheduleList.jsx"; 
 import Faq from './Pages/Faq/Faq';
 
+
 function Routes() {
   return (
     <BrowserRouter>
@@ -22,7 +23,6 @@ function Routes() {
         <Route exact path="/users" component={UsersList} />
         <Route exact path="/schedule" component={ScheduleList} />
         <Route exact path="/faq" component={Faq} />
- 
       </Switch>
       </AuthContextProvider>
     </BrowserRouter>
