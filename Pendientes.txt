@@ -1,4 +1,4 @@
--hacer un agenda que aparezcan todas las citas de los pacientes
+
 -arreglar los alert por swet alert
 -como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
 -hacer la pagina de faq (cambiar info)

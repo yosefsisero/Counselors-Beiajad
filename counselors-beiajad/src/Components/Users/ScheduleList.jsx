@@ -4,16 +4,17 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import Editar from '../Delete/DeleteSchedule'
-import Home from '../../Pages/Home/Home'
-import Inicio from "./Inicio";
 
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar } from "react-modern-calendar-datepicker";
+import './ScheduleList.css'
 function ScheduleList() {
   
   const { isAuth } = useContext(AuthContext);
   const [schedule, setSchedule] = useState([]);
-  const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
-  
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [searchText, setSearchText] = useState()
 
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
   
@@ -31,12 +32,23 @@ function ScheduleList() {
       .catch((err) => console.log(err));
   }, []);
      
-     
-  const handleChange = value => {
-    setSearchText(value);
-    filterData(value);
-  };
-  
+ 
+ 
+
+  const toFind = (selectedDay) => {
+    let dia = selectedDay.day
+    let month = selectedDay.month
+    let year = selectedDay.year
+    if(month < 10){
+      filterData(`${year}-0${month}-${dia}`);
+      setSearchText(`${year}-0${month}-${dia}`);
+    }else{
+      filterData(`${year}-${month}-${dia}`);
+      setSearchText(`${year}-${month}-${dia}`);
+    }
+    
+  }
+
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
     if (lowercasedValue === "") setData(schedule);
@@ -50,20 +62,23 @@ function ScheduleList() {
     }
   }
 
+  const Todas = () => {
+    setData(schedule)
+    }
+
+
   return (
     <>
     {isAuth ? (
       <>
-      <div>
-       <label>Busqueda</label>
-       <input className="form-control buscador"
-       style={{ marginLeft: 5 }}
-       type="text"
-       value={searchText}
-       onChange={e => handleChange(e.target.value)}
-      />
-      </div>
-    
+   
+      <Calendar
+      value={selectedDay}
+      onChange={setSelectedDay, (e) => {toFind(e)}}
+      shouldHighlightWeekends
+    />
+    <button onClick={Todas}>todas</button>
+    <h1>{searchText}</h1>
     <Table striped>
       <thead>
         <tr>

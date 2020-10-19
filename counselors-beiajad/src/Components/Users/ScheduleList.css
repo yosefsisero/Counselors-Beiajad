@@ -1,0 +1,7 @@
+.Calendar__day.-selected, .Calendar__day.-selectedStart, .Calendar__day.-selectedEnd {
+    background: var(--cl-color-primary);
+    color: #fff;
+}
+.Calendar__day.-selected {
+    border-radius: 50%;
+}
