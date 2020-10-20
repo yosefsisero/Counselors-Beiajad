@@ -2,24 +2,46 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import Editar from '../Delete/DeleteSchedule'
+import Home from '../../Pages/Home/Home'
+
 
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import './ScheduleList.css'
+
+import { utils } from 'react-modern-calendar-datepicker';
+
 function ScheduleList() {
+
+
+  let d = new Date();
+  let year = d.getFullYear();
+  let month = d.getMonth()+1;
+  let day = d.getDate();
+
+  const defaultValue = {
+    year: year,
+    month: month,
+    day: day,
+  };
   
+  const gregorianToday = utils().getToday(); // { year: 2020, month: 10, day: 20 }
+  console.log(gregorianToday)
+
   const { isAuth } = useContext(AuthContext);
   const [schedule, setSchedule] = useState([]);
   const [data, setData] = useState([]);
-  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(defaultValue);
   const [searchText, setSearchText] = useState()
 
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
   
 
   const URL_GET_SCHEDULE = "http://localhost:8000/api/v1/schedule";
+
+  
 
   useEffect(() => {
     axios
@@ -32,8 +54,7 @@ function ScheduleList() {
       .catch((err) => console.log(err));
   }, []);
      
- 
- 
+  
 
   const toFind = (selectedDay) => {
     let dia = selectedDay.day
@@ -70,14 +91,14 @@ function ScheduleList() {
   return (
     <>
     {isAuth ? (
-      <>
-   
+      <>   
       <Calendar
       value={selectedDay}
       onChange={setSelectedDay, (e) => {toFind(e)}}
       shouldHighlightWeekends
-    />
-    <button onClick={Todas}>todas</button>
+      calendarTodayClassName="custom-today-day"
+      />
+    <button className="btn btn-info" onClick={Todas}>Todas</button>
     <h1>{searchText}</h1>
     <Table striped>
       <thead>
@@ -116,7 +137,7 @@ function ScheduleList() {
         
     </>
     ) : (
-       <Link to="/"> Ir a inicio </Link>
+       <Home />
      )} 
     </>     
   );

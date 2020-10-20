@@ -1,7 +1,5 @@
-.Calendar__day.-selected, .Calendar__day.-selectedStart, .Calendar__day.-selectedEnd {
-    background: var(--cl-color-primary);
-    color: #fff;
-}
-.Calendar__day.-selected {
-    border-radius: 50%;
+.custom-today-day {
+    background: #24c83a;
+   color: #fff !important;
+   border: 1px solid#24c83a !important;
 }
