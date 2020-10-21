@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
-import { Table, Button } from 'reactstrap';
+import { Table, Button, Container, Row, Col } from 'reactstrap';
 import Editar from '../Delete/DeleteSchedule'
 import Home from '../../Pages/Home/Home'
 
@@ -11,7 +11,8 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import './ScheduleList.css'
 
-import { utils } from 'react-modern-calendar-datepicker';
+import Header from "../Layout/Header/Header";
+import Footer from "../Layout/Footer/Footer";
 
 function ScheduleList() {
 
@@ -27,8 +28,6 @@ function ScheduleList() {
     day: day,
   };
   
-  const gregorianToday = utils().getToday(); // { year: 2020, month: 10, day: 20 }
-  console.log(gregorianToday)
 
   const { isAuth } = useContext(AuthContext);
   const [schedule, setSchedule] = useState([]);
@@ -62,12 +61,13 @@ function ScheduleList() {
     let year = selectedDay.year
     if(month < 10){
       filterData(`${year}-0${month}-${dia}`);
-      setSearchText(`${year}-0${month}-${dia}`);
+      setSearchText(`${dia}-0${month}-${year}`);
     }else{
       filterData(`${year}-${month}-${dia}`);
-      setSearchText(`${year}-${month}-${dia}`);
+      setSearchText(`${dia} / ${month} / ${year}`);
     }
-    
+    var element = document.getElementById("todas");
+      element.classList.remove("off");
   }
 
   const filterData = (value) => {
@@ -85,21 +85,39 @@ function ScheduleList() {
 
   const Todas = () => {
     setData(schedule)
+    setSearchText(null);
+    var element = document.getElementById("todas");
+    element.classList.add("off");
     }
 
-
+   
   return (
     <>
     {isAuth ? (
-      <>   
+      <> 
+     <Header/>
+    <Container className="themed-container" fluid={true}>
+
+     <Row>
+      <Col  md="12" lg={{ size: 4, offset: 1}}>
       <Calendar
       value={selectedDay}
       onChange={setSelectedDay, (e) => {toFind(e)}}
       shouldHighlightWeekends
       calendarTodayClassName="custom-today-day"
       />
-    <button className="btn btn-info" onClick={Todas}>Todas</button>
-    <h1>{searchText}</h1>
+
+      
+
+      </Col>
+
+     <Col md="12" lg={{ size: 6, offset: 1}}>
+
+     <div className="fechaActual">
+     <h1 id="searchText">{searchText}</h1>
+     <Button id="todas" className="btn btn-info off" onClick={Todas}>Ver todas las citas</Button >
+     </div> 
+     
     <Table striped>
       <thead>
         <tr>
@@ -134,7 +152,13 @@ function ScheduleList() {
     <div className="clearboth">
     {data.length === 0 && <span>No hay resultados!</span>}
     </div>
-        
+      </Col>
+    </Row>
+   </Container>   
+   
+     
+  
+    <Footer/>
     </>
     ) : (
        <Home />

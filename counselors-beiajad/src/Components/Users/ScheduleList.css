@@ -1,5 +1,37 @@
-.custom-today-day {
-    background: #24c83a;
-   color: #fff !important;
-   border: 1px solid#24c83a !important;
+.Calendar__day.-selected, .Calendar__day.-selectedStart, .Calendar__day.-selectedEnd {
+    background-color: #25a1b7 ;
+    color: #fff;
+}
+.Calendar__monthSelectorItem.-active .Calendar__monthSelectorItemText, .Calendar__yearSelectorItem.-active .Calendar__yearSelectorText {
+    background-color: #25a1b7;
+    color: #fff;    
+}
+.Calendar{
+    font-size: 15px;
+    box-shadow: none;
+    border-style: solid;
+    border-color: #25a1b7;
+}
+.Calendar__weekDay {
+    color: black;
+}
+abbr[data-original-title], abbr[title] {
+    text-decoration: underline;
+}
+.off{
+display: none;
+}
+#todas{
+    margin-top: 2%;
+    height: 35px;
+    width: 250px;
+}
+.fechaActual{
+    display: flex;
+    justify-content: space-around;
+}
+#searchText{
+    border-style: solid;
+    border-color: #25a1b7;
+    padding: 6px; 
 }
