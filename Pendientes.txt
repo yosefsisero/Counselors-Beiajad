@@ -1,4 +1,4 @@
-
+-Ordenar la pagina de Schedule (poniendo header footer, y acomodar calendario y citas de un lado, meter css, poner botón de bootstart, hacer scroll)
 -arreglar los alert por swet alert
 -como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
 -hacer la pagina de faq (cambiar info)
