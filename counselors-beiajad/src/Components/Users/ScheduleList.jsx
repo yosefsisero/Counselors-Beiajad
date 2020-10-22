@@ -10,12 +10,11 @@ import Home from '../../Pages/Home/Home'
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import './ScheduleList.css'
-
+import { MDBContainer } from "mdbreact";
 import Header from "../Layout/Header/Header";
 import Footer from "../Layout/Footer/Footer";
 
 function ScheduleList() {
-
 
   let d = new Date();
   let year = d.getFullYear();
@@ -27,7 +26,7 @@ function ScheduleList() {
     month: month,
     day: day,
   };
-  
+
 
   const { isAuth } = useContext(AuthContext);
   const [schedule, setSchedule] = useState([]);
@@ -37,10 +36,10 @@ function ScheduleList() {
 
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
   
-
-  const URL_GET_SCHEDULE = "http://localhost:8000/api/v1/schedule";
-
+  const scrollContainerStyle = { width: "100%", maxHeight: "500px" };
   
+  
+  const URL_GET_SCHEDULE = "http://localhost:8000/api/v1/schedule";
 
   useEffect(() => {
     axios
@@ -68,6 +67,9 @@ function ScheduleList() {
     }
     var element = document.getElementById("todas");
       element.classList.remove("off");
+
+    var element1 = document.getElementById("searchText");
+      element1.classList.remove("off");
   }
 
   const filterData = (value) => {
@@ -88,6 +90,9 @@ function ScheduleList() {
     setSearchText(null);
     var element = document.getElementById("todas");
     element.classList.add("off");
+
+    var element1 = document.getElementById("searchText");
+    element1.classList.add("off");
     }
 
    
@@ -95,11 +100,15 @@ function ScheduleList() {
     <>
     {isAuth ? (
       <> 
-     <Header/>
+      <div className="headerSchedule">
+      <Header/>
+      </div>
+     
     <Container className="themed-container" fluid={true}>
 
      <Row>
-      <Col  md="12" lg={{ size: 4, offset: 1}}>
+      <Col className="padCal" lg="12" xl={{ size: 4}}>
+
       <Calendar
       value={selectedDay}
       onChange={setSelectedDay, (e) => {toFind(e)}}
@@ -107,24 +116,24 @@ function ScheduleList() {
       calendarTodayClassName="custom-today-day"
       />
 
-      
-
       </Col>
 
-     <Col md="12" lg={{ size: 6, offset: 1}}>
+     <Col lg="12" xl={{ size: 8}}>
 
      <div className="fechaActual">
-     <h1 id="searchText">{searchText}</h1>
-     <Button id="todas" className="btn btn-info off" onClick={Todas}>Ver todas las citas</Button >
-     </div> 
-     
-    <Table striped>
+       <h1 id="searchText" className="off">{searchText}</h1>
+       <Button id="todas" className="btn btn-info off" onClick={Todas}>Ver todas las citas</Button >
+     </div>
+
+     <MDBContainer>
+      <div className="scrollbar scrollbar-info  mt-5 mx-auto" style={scrollContainerStyle}>
+      <Table striped>
       <thead>
         <tr>
           
           <th>Fecha</th>
           <th>Hora</th>
-          <th>Note</th>
+          <th>Nota</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Tel</th>
@@ -149,9 +158,14 @@ function ScheduleList() {
         
       </tbody>
     </Table>
+
     <div className="clearboth">
     {data.length === 0 && <span>No hay resultados!</span>}
     </div>
+
+      </div>
+    </MDBContainer>
+   
       </Col>
     </Row>
    </Container>   
