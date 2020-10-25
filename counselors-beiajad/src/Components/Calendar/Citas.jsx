@@ -7,12 +7,16 @@ import Editar from '../Editar/Editar';
 import '../Modal/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
+import { MDBContainer, MDBScrollbar } from "mdbreact";
 
 
 function Citas() {
 
   const { user1, isAuth } = useContext(AuthContext)
   const [schedule, setSchedule] = useState([]);
+
+  const scrollContainerStyle = { width: "100%", maxHeight: "300px" };
+  const outerContainerStyle = { width: "100%", height: "300px" };
 
   const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
 
@@ -29,7 +33,7 @@ function Citas() {
   const IdUser = schedule.filter((a) => {
     const fecha = new Date(a.date).valueOf()
     const now = Date.now()
-    if(a.user[0]._id === user1.id && fecha > now){
+    if(a.user[0]._id === user1.id && fecha >= now){
       return a   
     }
   });
@@ -38,6 +42,10 @@ function Citas() {
   return (
     <>
     {isAuth ? (
+  
+    <MDBContainer>
+      
+      <div className="scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}>   
     <Table className="citas" striped>
       <thead>
         <tr>
@@ -61,6 +69,12 @@ function Citas() {
 
       </tbody>
     </Table>
+    </div>
+    </MDBContainer>
+
+    
+    
+   
     ) : (
       <Link to="/login"> Ir a inicio </Link>  
     )} 

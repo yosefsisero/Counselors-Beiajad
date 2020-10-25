@@ -36,7 +36,7 @@ function ScheduleList() {
 
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
   
-  const scrollContainerStyle = { width: "100%", maxHeight: "500px" };
+  const scrollContainerStyle = { width: "100%", maxHeight: "400px" };
   
   
   const URL_GET_SCHEDULE = "http://localhost:8000/api/v1/schedule";
@@ -105,9 +105,9 @@ function ScheduleList() {
       </div>
      
     <Container className="themed-container" fluid={true}>
-
+      <h1 className="titulo">Agenda</h1>
      <Row>
-      <Col className="padCal" lg="12" xl={{ size: 4}}>
+      <Col className="padCal"  xl={{ size: 4}}>
 
       <Calendar
       value={selectedDay}
@@ -118,7 +118,7 @@ function ScheduleList() {
 
       </Col>
 
-     <Col lg="12" xl={{ size: 8}}>
+     <Col xl={{ size: 8}}>
 
      <div className="fechaActual">
        <h1 id="searchText" className="off">{searchText}</h1>
@@ -160,7 +160,7 @@ function ScheduleList() {
     </Table>
 
     <div className="clearboth">
-    {data.length === 0 && <span>No hay resultados!</span>}
+    {data.length === 0 && <span>Hoy no hay citas</span>}
     </div>
 
       </div>

@@ -10,7 +10,7 @@ function Calendar() {
     const URL = "http://localhost:8000/api/v1/schedule/"
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    const [note, setNote] = useState('')
+    const [note, setNote] = useState(' ')
     const [user] = useState(user1.id)
     
     const clear = ()=>{  
