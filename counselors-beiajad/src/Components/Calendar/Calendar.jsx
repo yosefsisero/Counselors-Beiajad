@@ -67,7 +67,7 @@ function Calendar() {
             <label>¿Cuando quieres la cita?</label>   
             <input 
             className="form-control date" 
-            type="date"  
+            type="datetime-local"  
             required 
             value={date}
             onChange={(e)=>{setDate(e.target.value)}}
