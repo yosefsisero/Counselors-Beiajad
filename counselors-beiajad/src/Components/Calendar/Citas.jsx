@@ -16,7 +16,6 @@ function Citas() {
   const [schedule, setSchedule] = useState([]);
 
   const scrollContainerStyle = { width: "100%", maxHeight: "300px" };
-  const outerContainerStyle = { width: "100%", height: "300px" };
 
   const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
 
