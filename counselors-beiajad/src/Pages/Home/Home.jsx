@@ -1,12 +1,12 @@
 import React from 'react';
-import Calendar from '../../Components/Calendar/Calendar'
+import Apointment from '../../Components/Apointment/Apointment'
 import Header from '../../Components/Layout/Header/Header'
 import Seccion3 from '../../Components/Seccion3/Seccion3'
 import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
 import Footer from '../../Components/Layout/Footer/Footer';
-import Citas from '../../Components/Calendar/Citas'
+import Citas from '../../Components/Apointment/Citas'
 import './Home.css'
 import { Container, Row, Col } from 'reactstrap';
 
@@ -27,7 +27,7 @@ function Home(props) {
 
          <Row>
           <Col  md="12" lg={{ size: 5, offset: 1}}>
-            <Calendar />
+            <Apointment />
           </Col>
 
           <Col md="12" lg={{ size: 6}}>

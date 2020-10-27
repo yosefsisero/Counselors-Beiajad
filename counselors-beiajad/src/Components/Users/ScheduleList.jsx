@@ -6,8 +6,6 @@ import { Table, Button, Container, Row, Col } from 'reactstrap';
 import Editar from '../Delete/DeleteSchedule'
 import Home from '../../Pages/Home/Home'
 
-
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import './ScheduleList.css'
 import { MDBContainer } from "mdbreact";

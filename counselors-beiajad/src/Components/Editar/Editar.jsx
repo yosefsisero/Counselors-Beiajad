@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, ModalFooter, Button } from 'reactstrap';
 import axios from 'axios'
-import '../Calendar/Calendar.css'
+import '../Apointment/Apointment.css'
 
 
 function Editar(props) {
