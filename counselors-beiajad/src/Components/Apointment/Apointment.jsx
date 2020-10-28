@@ -22,41 +22,29 @@ function Apointment() {
     const { user1 } = useContext(AuthContext)    
     const URL = "http://localhost:8000/api/v1/schedule/"
     const [date, setDate] = useState('')
-    const [time, setTime] = useState('10:00')
+    const [time, setTime] = useState('')
     const [note, setNote] = useState(' ')
     const [user] = useState(user1.id)
     const [selectedDay, setSelectedDay] = useState(defaultValue);
-    const [z, setZ] = useState("")
     
-    const x = 
+ 
 
-    
-    console.log(time)
-    console.log(z)
-    console.log(date)
-
-    const clear = ()=>{  
-        setDate ('')
-        setTime ('')
-        setNote ('')
-    }
-
-    const toFind = (selectedDay) => {
-        let dia = selectedDay.day
-        let month = selectedDay.month
-        let year = selectedDay.year
-        if(month < 10){
-            setZ(`${year}-0${month}-${dia}`);
+    const diaSeleccionado = (selectedDay) => {
+        if(selectedDay.month < 10){  
+            setDate(`${selectedDay.year}-0${selectedDay.month}-${selectedDay.day}T `); 
         }else{
-            setZ(`${year}-${month}-${dia}`);
+            setDate(`${selectedDay.year}-${selectedDay.month}-${selectedDay.day}T `);
         }
       }
-    const armado = () => {
-        setTime("12:00")
-        setDate(`${z}T${time}`)
+
+    const hora = (horario) => {
+      setTime(horario) 
+      setDate(date + horario)
     }
-    const saveDate = (event)=>{
-      // event.preventDefault();
+
+
+    const saveDate = ()=>{
+       
        console.log("Dieron click en crear")
        
         axios.post(URL, {
@@ -76,7 +64,6 @@ function Apointment() {
                //alert('Creado con exito')
                window.location.reload()
                
-               clear()
     
            }).catch((error)=>{
                //alert('Hubo un error, revisa que paso')
@@ -86,7 +73,7 @@ function Apointment() {
   
         }
     
-    
+
     return (
      <>
         
@@ -100,35 +87,13 @@ function Apointment() {
 
         <Calendar
           value={selectedDay}
-          onChange={setSelectedDay, (e)=>{toFind(e)}}
+          onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
           shouldHighlightWeekends
           calendarTodayClassName="custom-today-day"
         />
 
 
-            <div className="form-group">
-
-            <label>¿Cuando quieres la cita?</label>   
-            <input 
-            className="form-control date" 
-            type="datetime-local"  
-            required 
-            value={date}
-            onChange={(e)=>{setDate(e.target.value)}}
-            />
-
-            <br></br> 
-
-            <label>¿A que hora?</label>
-            <input 
-            className="form-control time"  
-            type="time" 
-            required
-            value={time}
-            onChange={(e)=>{setTime(e.target.value)}}
-            />
             
-             <br></br> 
 
              <label>Nota</label>
              <input
@@ -137,17 +102,14 @@ function Apointment() {
              onChange={(e)=>{setNote(e.target.value)}}
              />
              
-            <br></br> 
-
-           
-            
-           </div>   
+         
 
         
         
-        <button onClick={() => {setTime("11:00"); armado()}} className="btn btn-info">11:00</button>
-        <button onClick={armado} className="btn btn-info">12:00</button>  
-        <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Enviar</button> 
+        <button onClick={() => hora("11:00")} className="btn btn-info">11:00</button>
+        <button  onClick={() => hora("12:00")} className="btn btn-info">12:00</button> 
+          <h1>{date.split("T")}</h1>
+        <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 
              
     </div>
     </>
