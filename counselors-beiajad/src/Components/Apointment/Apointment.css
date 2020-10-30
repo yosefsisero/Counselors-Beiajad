@@ -25,3 +25,6 @@
 .CitaSeleccionada{
     color: black;
 }
+.off{
+    display: none;
+    }
