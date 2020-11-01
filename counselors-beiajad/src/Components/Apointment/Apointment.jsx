@@ -79,13 +79,33 @@ function Apointment() {
     
     const chequeo = () => {
         schedule.map((info) =>{
-        console.log(info.date)
-        console.log(schedule.date)
-        console.log(date2)
+        
+        let citaApi = new Date(info.date).valueOf()
+        let pick = new Date(date2).valueOf()
+
+        let horario = 1000 * 60 * 60 * 6; // aqui sumo 6 horas para México
+
+        let escogida = pick+horario // aqui suma las horas de mexico
+
         var element = document.getElementById("todas");
-        info.date == date2 ? (console.log("desaparece"), element.classList.add("off")) : (console.log("aparece"), element.classList.remove("off"))
+
+        console.log(citaApi + "cita de api");
+        console.log(escogida + "escogida")
+        console.log(pick+"cita escogida sin suma")
+        console.log(date2 +"cita escogida sin sumar horas y sin convertir")
+        console.log(citaApi+"cita del get de la api")
+        
+
+        citaApi == escogida ? 
+        (console.log("desaparece")
+        //element.classList.add("off")
+        ) : (
+        console.log("aparece")
+        //element.classList.remove("off")
+        )
       })
     }
+
 
     const saveDate = ()=>{
        
