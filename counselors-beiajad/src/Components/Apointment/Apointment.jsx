@@ -45,33 +45,48 @@ function Apointment() {
 
     const diaSeleccionado = (selectedDay) => {
         if(selectedDay.month < 10){  
-            setDate(`${selectedDay.year}-0${selectedDay.month}-${selectedDay.day}T`); 
+          if (selectedDay.day < 10){
+            setDate(`${selectedDay.year}-0${selectedDay.month}-0${selectedDay.day}T`); 
+            setDate2(`${selectedDay.year}-0${selectedDay.month}-0${selectedDay.day}T`);
+            setFecha(`0${selectedDay.day}/0${selectedDay.month}/${selectedDay.year}T     `);
+        }else{
+            setDate(`${selectedDay.year}-0${selectedDay.month}-${selectedDay.day}T`);
             setDate2(`${selectedDay.year}-0${selectedDay.month}-${selectedDay.day}T`);
             setFecha(`${selectedDay.day}/0${selectedDay.month}/${selectedDay.year}T     `);
+        }
+      }
+      else {
+          if (selectedDay.day < 10){
+            setDate(`${selectedDay.year}-${selectedDay.month}-0${selectedDay.day}T`); 
+            setDate2(`${selectedDay.year}-${selectedDay.month}-0${selectedDay.day}T`);
+            setFecha(`0${selectedDay.day}/${selectedDay.month}/${selectedDay.year}T     `);
         }else{
             setDate(`${selectedDay.year}-${selectedDay.month}-${selectedDay.day}T`);
             setDate2(`${selectedDay.year}-${selectedDay.month}-${selectedDay.day}T`);
             setFecha(`${selectedDay.day}/${selectedDay.month}/${selectedDay.year}T     `);
         }
       }
+    }
 
     const hora = (horario) => {
       setTime(horario) 
       let x = date.slice(0, 11)
       let y = fecha.slice(0, 11)
-      setDate(`${x}${horario}Z`)
+      setDate(`${x}${horario}`)
       setDate2(`${x}${horario}:00.000Z`)
       setFecha(`${y}  ${horario}`)
     }
     
     const chequeo = () => {
-      schedule.map((info) =>{
+        schedule.map((info) =>{
         console.log(info.date)
+        console.log(schedule.date)
         console.log(date2)
-        info.date == date2 ? console.log("desaparece") : console.log("aparece")
+        var element = document.getElementById("todas");
+        info.date == date2 ? (console.log("desaparece"), element.classList.add("off")) : (console.log("aparece"), element.classList.remove("off"))
       })
     }
-    
+
     const saveDate = ()=>{
        
        console.log("Dieron click en crear")
@@ -127,12 +142,12 @@ function Apointment() {
        onChange={(e)=>{setNote(e.target.value)}}
        />
      
-          <button onClick={() => hora("10:00")} className="btn btn-info">10:00</button>
-          <button onClick={() => hora("11:00")} className="btn btn-info">11:00</button>
-          <button onClick={() => hora("12:00")} className="btn btn-info">12:00</button> 
-          <button onClick={() => hora("13:00")} className="btn btn-info">13:00</button> 
-          <button onClick={() => hora("14:00")} className="btn btn-info">14:00</button>
-          <button onClick={() => chequeo()} className="btn btn-info">checar</button>
+          <button id="todas" onClick={() => hora("10:00")} className="btn btn-info">10:00</button>
+          <button id="todas" onClick={() => hora("11:00")} className="btn btn-info">11:00</button>
+          <button id="todas" onClick={() => hora("12:00")} className="btn btn-info">12:00</button> 
+          <button id="todas" onClick={() => hora("13:00")} className="btn btn-info">13:00</button> 
+          <button id="todas" onClick={() => hora("14:00")} className="btn btn-info">14:00</button>
+          <button id="todas" onClick={() => chequeo()} className="btn btn-info">checar</button>
       <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
       <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
       <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 
