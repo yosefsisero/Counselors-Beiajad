@@ -129,10 +129,10 @@ function Apointment() {
      
           <button onClick={() => hora("10:00")} className="btn btn-info">10:00</button>
           <button onClick={() => hora("11:00")} className="btn btn-info">11:00</button>
-          <button  onClick={() => hora("12:00")} className="btn btn-info">12:00</button> 
-          <button  onClick={() => hora("13:00")} className="btn btn-info">13:00</button> 
-          <button  onClick={() => hora("14:00")} className="btn btn-info">14:00</button>
-          <button  onClick={() => chequeo()} className="btn btn-info">checar</button>
+          <button onClick={() => hora("12:00")} className="btn btn-info">12:00</button> 
+          <button onClick={() => hora("13:00")} className="btn btn-info">13:00</button> 
+          <button onClick={() => hora("14:00")} className="btn btn-info">14:00</button>
+          <button onClick={() => chequeo()} className="btn btn-info">checar</button>
       <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
       <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
       <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 

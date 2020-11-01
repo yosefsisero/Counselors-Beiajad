@@ -7,7 +7,7 @@ import Editar from '../Editar/Editar';
 import '../Modal/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
-import { MDBContainer, MDBScrollbar } from "mdbreact";
+import { MDBContainer } from "mdbreact";
 
 
 function Citas() {
