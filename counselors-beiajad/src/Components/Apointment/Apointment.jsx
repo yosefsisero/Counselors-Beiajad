@@ -43,7 +43,7 @@ function Apointment() {
 
     const diaSeleccionado = (selectedDay) => {
         if(selectedDay.month < 10){  
-          if (selectedDay.day < 10){
+          if(selectedDay.day < 10){
             setDate(`${selectedDay.year}-0${selectedDay.month}-0${selectedDay.day}T`); 
             setDate2(`${selectedDay.year}-0${selectedDay.month}-0${selectedDay.day}T`);
             setFecha(`0${selectedDay.day}/0${selectedDay.month}/${selectedDay.year}T     `);
