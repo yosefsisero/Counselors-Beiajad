@@ -6,8 +6,8 @@ import Home from "./Pages/Home/Home";
 import Login from "./Components/Users/Login.jsx";
 import Logout from "./Components/Users/Logout.jsx";
 import Register from "./Components/Users/Signup.jsx";
-import UsersList from "./Components/Users/UsersList.jsx";
-import ScheduleList from "./Components/Users/ScheduleList.jsx"; 
+import UsersList from "./Components/UsersList/UsersList.jsx";
+import ScheduleList from "./Components/ScheduleList/ScheduleList.jsx"; 
 import Faq from './Pages/Faq/Faq';
 
 

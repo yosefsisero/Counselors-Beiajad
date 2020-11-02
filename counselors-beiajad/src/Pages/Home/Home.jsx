@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
 import Footer from '../../Components/Layout/Footer/Footer';
-import Citas from '../../Components/Apointment/Citas'
+import Citas from '../../Components/Citas/Citas'
 import './Home.css'
 import { Container, Row, Col } from 'reactstrap';
 

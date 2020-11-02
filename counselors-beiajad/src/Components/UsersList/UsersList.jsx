@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import DeleteUser from "../Delete/DeleteUser";
-import './UserList.css'
+import './UsersList.css'
 
 function UsersList() {
   const { isAuth } = useContext(AuthContext);

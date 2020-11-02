@@ -59,19 +59,19 @@ function ScheduleList() {
     if(month < 10){
       if(dia <10){
       filterData(`${year}-0${month}-0${dia}`);
-      setSearchText(`${dia}-0${month}-0${year}`);
+      setSearchText(`0${dia}/0${month}/${year}`);
     }else{
       filterData(`${year}-0${month}-${dia}`);
-      setSearchText(`${dia} / 0${month} / ${year}`);
+      setSearchText(`${dia}/0${month}/${year}`);
     }
   }
   else {
     if (dia < 10) {
       filterData(`${year}-${month}-0${dia}`);
-      setSearchText(`${dia}-${month}-0${year}`);
+      setSearchText(`0${dia}/${month}/${year}`);
     }else{
       filterData(`${year}-${month}-${dia}`);
-      setSearchText(`${dia} / ${month} / ${year}`);
+      setSearchText(`${dia}/${month}/${year}`);
 
       }
     }
