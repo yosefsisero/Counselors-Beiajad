@@ -41,8 +41,6 @@ function Apointment() {
         .catch((err) => console.log(err));
     }, []);
 
-   console.log(schedule)
-
     const diaSeleccionado = (selectedDay) => {
         if(selectedDay.month < 10){  
           if (selectedDay.day < 10){
@@ -81,19 +79,19 @@ function Apointment() {
         schedule.map((info) =>{
         
         let citaApi = new Date(info.date).valueOf()
+        
         let pick = new Date(date2).valueOf()
 
         let horario = 1000 * 60 * 60 * 6; // aqui sumo 6 horas para México
 
         let escogida = pick+horario // aqui suma las horas de mexico
 
-        var element = document.getElementById("todas");
+        //var element = document.getElementById("todas");
 
         console.log(citaApi + "cita de api");
-        console.log(escogida + "escogida")
+        console.log(escogida + "escogida para comparar")
         console.log(pick+"cita escogida sin suma")
         console.log(date2 +"cita escogida sin sumar horas y sin convertir")
-        console.log(citaApi+"cita del get de la api")
         
 
         citaApi == escogida ? 
@@ -103,7 +101,8 @@ function Apointment() {
         console.log("aparece")
         //element.classList.remove("off")
         )
-      })
+      }
+      )
     }
 
 
@@ -167,7 +166,7 @@ function Apointment() {
           <button id="todas" onClick={() => hora("12:00")} className="btn btn-info">12:00</button> 
           <button id="todas" onClick={() => hora("13:00")} className="btn btn-info">13:00</button> 
           <button id="todas" onClick={() => hora("14:00")} className="btn btn-info">14:00</button>
-          <button id="todas" onClick={() => chequeo()} className="btn btn-info">checar</button>
+          <button onClick={() => chequeo()} className="btn btn-info">checar</button>
       <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
       <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
       <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 
