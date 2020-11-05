@@ -22,12 +22,10 @@ function UsersList() {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
         },
       })
-      .then((data) => (setUsers(data.data), setData(data.data)))
+      .then((data) => (setUsers(data.data), setData(data.data), setSearchText("zz")))
       .catch((err) => console.log(err));
   }, []);
   
-  console.log(users)
-
   // ESTE CODIGO BUSCA EN EL ARREGLO UN SOLO DATO EN ESTE CASO EL APELLIDO.
   // useEffect(() => {
   //   setFilteredUsers(

@@ -9,6 +9,7 @@ import Footer from '../../Components/Layout/Footer/Footer';
 import Citas from '../../Components/Citas/Citas'
 import './Home.css'
 import { Container, Row, Col } from 'reactstrap';
+import Pruebas from '../../Components/Pruebas/Pruebas'
 
 
 function Home(props) {
@@ -40,7 +41,7 @@ function Home(props) {
         <br/><br/>
         <Seccion3 />
         <Footer/>
-
+        <Pruebas />
         </Container>
 
        </div>

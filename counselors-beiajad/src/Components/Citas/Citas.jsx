@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap';
 import axios from "axios";
 import Editar from '../Editar/Editar';
-import '../Modal/Logi.css'
+import '../Logi/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
 import { MDBContainer } from "mdbreact";
@@ -29,7 +29,7 @@ function Citas() {
       .catch((err) => console.log(err));
   }, []);
 
-  const IdUser = schedule.filter((a) => {
+    const IdUser = schedule.filter((a) => {
     const fecha = new Date(a.date).valueOf()
     const now = Date.now()
     if(a.user[0]._id === user1.id && fecha >= now){

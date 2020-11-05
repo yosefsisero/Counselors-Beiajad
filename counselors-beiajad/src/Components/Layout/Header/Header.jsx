@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import Contact from "../../Contact/Contact";
 import './Header.css'
-import Logi from '../../Modal/Logi'
+import Logi from '../../Logi/Logi'
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
