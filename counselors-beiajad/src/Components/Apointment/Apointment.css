@@ -25,6 +25,11 @@
 .CitaSeleccionada{
     color: black;
 }
-.off{
+.apagado{
     display: none;
-    }
+}
+#todas{
+    margin-top: 2%;
+    height: 35px;
+    width: 250px;
+}
