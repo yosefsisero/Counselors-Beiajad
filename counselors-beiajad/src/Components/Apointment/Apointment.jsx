@@ -4,6 +4,7 @@ import './Apointment.css'
 import { AuthContext } from '../../contexts/AuthContext';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
+import { Card, CardTitle, Row, Col } from 'reactstrap';
 
 
 function Apointment() {
@@ -35,7 +36,8 @@ function Apointment() {
     
     const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
 
-    
+    const [isActive, setActive] = useState("false");
+
     useEffect(() => {
       axios
         .get(URL, {
@@ -133,8 +135,12 @@ function Apointment() {
 
 
     useEffect(() => {
-      verify() 
+      verify()
     }, [data])
+
+    useEffect(() => {
+      handleToggle()
+    }, [botones])
 
     const verify = () => {
       data.map((user) => (     
@@ -142,6 +148,10 @@ function Apointment() {
       const a = botones.filter(item => !borbot.includes(item))
       setBotones(a)
      }
+
+     const handleToggle = () => {
+      setActive(!isActive);
+    };
 
     const saveDate = ()=>{
        
@@ -171,15 +181,50 @@ function Apointment() {
   
         }
 
-
-        
-
     return (
      <>
-        
-     <div className="container calendar" >
+      <div className="container calendar" >
+      <Row>
+            <Col sm="6">
+              <Card>
+                <CardTitle tag="h5">Escoge tu cita</CardTitle>
+                <Calendar
+                  value={selectedDay}
+                  onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
+                  shouldHighlightWeekends
+                  calendarTodayClassName="custom-today-day"
+                />
 
-        <h3>Escoge tu cita</h3>   
+              <label>Nota</label>
+
+              <input
+              className="form-control note"
+              value={note}
+              onChange={(e)=>{setNote(e.target.value)}}
+              />
+               <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
+
+                <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
+
+                <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 
+              </Card>
+            </Col>
+            <Col sm="6">
+              <Card body className="card">
+              <h1 className="CitaSeleccionada">Horas Disponibles</h1>
+                {botones.map((hora) => ( 
+                    <button id="todas" onClick={() => escogeHora(hora)} className={isActive ? "btn btn-info apagado" : "btn btn-info"}>{hora}</button>
+                ))}
+
+                
+                
+              </Card>
+            </Col>
+          </Row>
+        
+     
+
+        {/* <h3>Escoge tu cita</h3>   
         
         <Calendar
           value={selectedDay}
@@ -189,19 +234,23 @@ function Apointment() {
         />
 
        <label>Nota</label>
+
        <input
        className="form-control note"
        value={note}
        onChange={(e)=>{setNote(e.target.value)}}
        />
+
        {botones.map((hora) => ( 
-          <button id="todas" onClick={() => escogeHora(hora)} className="btn btn-info">{hora}</button>
+          <button id="todas" onClick={() => escogeHora(hora)} className={isActive ? "btn btn-info" : "btn btn-info apagado"}>{hora}</button>
        ))}
 
       <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
+
       <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
-      <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 
-             
+
+      <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button>   */}
+
     </div>
     </>
     )
