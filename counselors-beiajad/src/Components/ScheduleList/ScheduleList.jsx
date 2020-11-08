@@ -3,7 +3,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
 import { Table, Button, Container, Row, Col } from 'reactstrap';
-import Editar from '../Delete/DeleteSchedule'
+import DeleteShedule from '../Delete/DeleteSchedule'
+import Editar from '../Editar/Editar'
 import Home from '../../Pages/Home/Home'
 
 import { Calendar } from "react-modern-calendar-datepicker";
@@ -149,6 +150,7 @@ function ScheduleList() {
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Tel</th>
+          <th>Editar</th>
           <th>Borrar</th>
 
         </tr>
@@ -164,6 +166,7 @@ function ScheduleList() {
           <td >{user.user[0].last_name}</td>
           <td >{user.user[0].tel}</td>
           <td><Editar id={user._id}/></td>
+          <td><DeleteShedule id={user._id}/></td>
             
         </tr>
         ))}

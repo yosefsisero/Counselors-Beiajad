@@ -22,7 +22,7 @@ function UsersList() {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
         },
       })
-      .then((data) => (setUsers(data.data), setData(data.data), setSearchText("zz")))
+      .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
       .catch((err) => console.log(err));
   }, []);
   
@@ -81,7 +81,8 @@ function UsersList() {
           <th>Comunidad</th>
           <th>Pais</th>
           <th>Telefofo</th>
-          <th>Borrar</th>
+          <th>Editar</th>
+          <th>Borrar</th>          
         </tr>
       </thead>
       <tbody>
