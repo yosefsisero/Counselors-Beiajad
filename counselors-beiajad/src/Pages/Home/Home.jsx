@@ -6,7 +6,6 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from 'reactstrap';
 import Seccion2 from '../../Components/Seccion2/Seccion2'
 import Footer from '../../Components/Layout/Footer/Footer';
-import Citas from '../../Components/Citas/Citas'
 import './Home.css'
 import { Container, Row, Col } from 'reactstrap';
 
@@ -21,25 +20,22 @@ function Home(props) {
         
         {isAuth ? (
         <>       
-          <div id="start">
-          <Container className="themed-container" fluid={true}>
-          <h1 className="bienvenido">Hola, {user1.first_name}</h1>
+        <div id="start">
+        <Container className="themed-container" fluid={true}>
+        <h1 className="bienvenido">Hola, {user1.first_name}</h1>
 
-         <Row>
-          <Col  md="12" lg={{ size: 5, offset: 1}}>
-            <Apointment />
-          </Col>
-
-          <Col md="12" lg={{ size: 6}}>
-            <Citas />    
-          </Col>
-         </Row>
+        <Apointment />
 
         <br/><br/>
+
         <Seccion2 />
+
         <br/><br/>
+
         <Seccion3 />
+
         <Footer/>
+        
         </Container>
 
        </div>

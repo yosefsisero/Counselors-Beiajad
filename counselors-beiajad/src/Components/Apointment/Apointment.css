@@ -16,7 +16,8 @@
     background-color: #e9e5f3;
     border-radius: 20px;
     outline: none;
-    width: 370px;
+    width: 170px;
+    height: 150px;
     border: 1px solid #25a1b7;
 }
 .calendar{

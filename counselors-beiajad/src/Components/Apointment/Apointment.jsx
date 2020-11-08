@@ -4,7 +4,8 @@ import './Apointment.css'
 import { AuthContext } from '../../contexts/AuthContext';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
-import { Card, CardTitle, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
+import Citas from '../Citas/Citas'
 
 
 function Apointment() {
@@ -26,7 +27,7 @@ function Apointment() {
     const [schedule, setSchedule] = useState([]);
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    const [note, setNote] = useState(' ')
+    const [note, setNote] = useState('Escribe aqui algun comentario a tu cita')
     const [user] = useState(user1.id)
     const [selectedDay, setSelectedDay] = useState(defaultValue);
     const [fecha, setFecha] = useState('')
@@ -178,9 +179,8 @@ function Apointment() {
      <>
       <div className="container calendar" >
       <Row>
-            <Col sm="6">
-              <Card>
-                <CardTitle tag="h5">Escoge tu cita</CardTitle>
+            <Col sm="4">              
+                <h1>Escoge tu cita</h1>
                 <Calendar
                   value={selectedDay}
                   onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
@@ -190,28 +190,32 @@ function Apointment() {
 
               <label>Nota</label>
 
+              
+                
+            </Col>
+            <Col sm="2">
+
+              
+
+              <h3 className="CitaSeleccionada">Tu cita sera programada para el día:</h3>
+
+              <h4 className="CitaSeleccionada">{fecha.replace("T", " ")}</h4>
+
               <input
               className="form-control note"
               value={note}
               onChange={(e)=>{setNote(e.target.value)}}
               />
-               <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
 
-                <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
+              <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button>
 
-                <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button> 
-              </Card>
-            </Col>
-            <Col sm="6">
-              <Card body className="card">
-              <h1 className="CitaSeleccionada">Horas Disponibles</h1>
+              <h4 className="CitaSeleccionada">Horas Disponibles</h4>
                 {botones.map((hora) => ( 
-                    <button id="todas" onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
-                ))}
-
-                
-                
-              </Card>
+                    <button onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
+                ))} 
+            </Col>
+            <Col sm="6">              
+              <Citas />
             </Col>
           </Row>
         
