@@ -36,7 +36,7 @@ function Apointment() {
     
     const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
 
-    const [isActive, setActive] = useState("false");
+    const [apa, setApa] = useState("btn btn-info apagado")
 
     useEffect(() => {
       axios
@@ -52,7 +52,8 @@ function Apointment() {
     const diaSeleccionado = (selectedDay) => {
 
       setBotones(["10:00","11:00","12:00","13:00","14:00" ])
-      setBorbot([""]) 
+      setBorbot([""])
+      setApa("btn btn-info")
 
       if(selectedDay.month < 10){  
           if(selectedDay.day < 10){
@@ -137,21 +138,13 @@ function Apointment() {
     useEffect(() => {
       verify()
     }, [data])
-
-    useEffect(() => {
-      handleToggle()
-    }, [botones])
-
+      
     const verify = () => {
       data.map((user) => (     
       borbot.push(user.time)))
       const a = botones.filter(item => !borbot.includes(item))
       setBotones(a)
      }
-
-     const handleToggle = () => {
-      setActive(!isActive);
-    };
 
     const saveDate = ()=>{
        
@@ -213,7 +206,7 @@ function Apointment() {
               <Card body className="card">
               <h1 className="CitaSeleccionada">Horas Disponibles</h1>
                 {botones.map((hora) => ( 
-                    <button id="todas" onClick={() => escogeHora(hora)} className={isActive ? "btn btn-info apagado" : "btn btn-info"}>{hora}</button>
+                    <button id="todas" onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
                 ))}
 
                 
