@@ -21,7 +21,6 @@ function Apointment() {
     day: day,
   };
   
-
     const { user1 } = useContext(AuthContext)    
     const URL = "http://localhost:8000/api/v1/schedule/"
     const [schedule, setSchedule] = useState([]);
@@ -34,10 +33,8 @@ function Apointment() {
     const [data, setData] = useState([]);
     const [botones, setBotones] = useState (["10:00","11:00","12:00","13:00","14:00"])
     const [borbot, setBorbot] = useState ([])
-    
-    const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
-
     const [apa, setApa] = useState("btn btn-info apagado")
+    const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
 
     useEffect(() => {
       axios
@@ -201,9 +198,10 @@ function Apointment() {
 
               <h4 className="CitaSeleccionada">{fecha.replace("T", " ")}</h4>
 
-              <input
+              <textarea
               className="form-control note"
               value={note}
+              rows="3"
               onChange={(e)=>{setNote(e.target.value)}}
               />
 
