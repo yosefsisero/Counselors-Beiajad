@@ -177,22 +177,22 @@ function Apointment() {
       <div className="calendar">
         <Container fluid>
           <Row >
-            <Col s="4">              
-                <h1>Escoge tu cita</h1>
-                <Calendar
-                  value={selectedDay}
-                  onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
-                  shouldHighlightWeekends
-                  //calendarTodayClassName="custom-today-day"
-                />
+            <Col s="4">  
 
-              <label>Nota</label>
+              <h1>Escoge tu cita</h1>
+              <Calendar
+                value={selectedDay}
+                onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
+                shouldHighlightWeekends
+                //calendarTodayClassName="custom-today-day"
+              />
 
-              
+              <label>Nota</label>        
                 
             </Col>
             <Col s="2">
-            <h4 className="CitaSeleccionada">Horas Disponibles</h4>
+
+              <h4 className="CitaSeleccionada">Horas Disponibles</h4>
 
                {botones.map((hora) => ( 
                     <button onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
@@ -210,10 +210,9 @@ function Apointment() {
               />
 
               <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button>
-
                
-              </Col>
-              <Col lg="6">              
+            </Col>
+            <Col lg="6">              
               <Citas />
             </Col>
           </Row>

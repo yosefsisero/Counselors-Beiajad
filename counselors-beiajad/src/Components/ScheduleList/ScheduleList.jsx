@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from "axios";
 import { Table, Button, Container, Row, Col } from 'reactstrap';
 import DeleteShedule from '../Delete/DeleteSchedule'
-import Editar from '../Editar/Editar'
+import EditSchedule from '../Editar/EditSchedule'
 import Home from '../../Pages/Home/Home'
 
 import { Calendar } from "react-modern-calendar-datepicker";
@@ -165,7 +165,7 @@ function ScheduleList() {
           <td >{user.user[0].first_name}</td>
           <td >{user.user[0].last_name}</td>
           <td >{user.user[0].tel}</td>
-          <td><Editar id={user._id}/></td>
+          <td><EditSchedule id={user._id}/></td>
           <td><DeleteShedule id={user._id}/></td>
             
         </tr>

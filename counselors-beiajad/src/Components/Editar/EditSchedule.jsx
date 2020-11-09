@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Modal, ModalFooter, Button } from 'reactstrap';
 import axios from 'axios'
 import '../Apointment/Apointment.css'
+import Apointment from '../../Components/Apointment/Apointment'
 
 
-function Editar(props) {
+function EditSchedule(props) {
         
     const URL = `http://localhost:8000/api/v1/schedule/${props.id}`
 
@@ -112,4 +113,4 @@ function Editar(props) {
     )
 }
 
-export default Editar
+export default EditSchedule

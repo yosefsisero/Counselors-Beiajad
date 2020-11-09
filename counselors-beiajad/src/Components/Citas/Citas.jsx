@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap';
 import axios from "axios";
-import Editar from '../Editar/Editar';
+import EditSchedule from '../Editar/EditSchedule';
 import '../Logi/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
@@ -64,7 +64,7 @@ function Citas() {
           <td >{user.date.split("T")[0]}</td>
           <td >{user.time}</td>
           <td >{user.note}</td>
-          <td><Editar id={user._id}/></td>
+          <td><EditSchedule id={user._id}/></td>
           <td><DeleteSchedule id={user._id}/></td>
   
           </tr>
