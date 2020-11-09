@@ -4,7 +4,7 @@ import './Apointment.css'
 import { AuthContext } from '../../contexts/AuthContext';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
-import { Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Citas from '../Citas/Citas'
 
 
@@ -174,15 +174,16 @@ function Apointment() {
 
     return (
      <>
-      <div className="container calendar" >
-      <Row>
-            <Col sm="4">              
+      <div className="calendar">
+        <Container fluid>
+          <Row >
+            <Col s="4">              
                 <h1>Escoge tu cita</h1>
                 <Calendar
                   value={selectedDay}
                   onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
                   shouldHighlightWeekends
-                  calendarTodayClassName="custom-today-day"
+                  //calendarTodayClassName="custom-today-day"
                 />
 
               <label>Nota</label>
@@ -190,13 +191,16 @@ function Apointment() {
               
                 
             </Col>
-            <Col sm="2">
+            <Col s="2">
+            <h4 className="CitaSeleccionada">Horas Disponibles</h4>
 
-              
+               {botones.map((hora) => ( 
+                    <button onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
+                ))} 
 
-              <h3 className="CitaSeleccionada">Tu cita sera programada para el día:</h3>
+              <h6 className="CitaSeleccionada">Tu cita sera programada para el día:</h6>
 
-              <h4 className="CitaSeleccionada">{fecha.replace("T", " ")}</h4>
+              <h5 className="CitaSeleccionada">{fecha.replace("T", " ")}</h5>
 
               <textarea
               className="form-control note"
@@ -207,15 +211,15 @@ function Apointment() {
 
               <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button>
 
-              <h4 className="CitaSeleccionada">Horas Disponibles</h4>
-                {botones.map((hora) => ( 
-                    <button onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
-                ))} 
-            </Col>
-            <Col sm="6">              
+               
+              </Col>
+              <Col lg="6">              
               <Citas />
             </Col>
           </Row>
+
+        </Container>
+     
         
      
 
