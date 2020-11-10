@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap';
 import axios from "axios";
-import EditSchedule from '../Editar/EditSchedule';
+import EditSchedule1 from '../Editar/EditSchedule1';
 import '../Logi/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
@@ -61,10 +61,10 @@ function Citas() {
       {IdUser.map((user, i) => (
         <tr key={i}>   
              
-          <td width="80">{user.date.split("T")[0]}</td>
+          <td width="85">{user.date.split("T")[0]}</td>
           <td>{user.time}</td>
           <td>{user.note}</td>
-          <td><EditSchedule id={user._id}/></td>
+          <td><EditSchedule1 id={user._id}/></td>
           <td><DeleteSchedule id={user._id}/></td>
   
           </tr>

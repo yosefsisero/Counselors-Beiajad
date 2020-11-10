@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
-import './Apointment.css'
+import '../Apointment/Apointment.css'
 import { AuthContext } from '../../contexts/AuthContext';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
-import { Container, Row, Col } from 'reactstrap';
-import Citas from '../Citas/Citas'
+import { Container, Row, Col, Modal, ModalFooter, Button } from 'reactstrap';
 
 
-function Apointment() {
+function EditSchedule(props) {
   
   let d = new Date();
   let year = d.getFullYear();
@@ -27,6 +26,9 @@ function Apointment() {
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [note, setNote] = useState('Escribe aqui algun comentario a tu cita')
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+    const { className } = props;
     const [user] = useState(user1.id)
     const [selectedDay, setSelectedDay] = useState(defaultValue);
     const [fecha, setFecha] = useState('')
@@ -174,10 +176,13 @@ function Apointment() {
 
     return (
      <>
+    <Button color="info boton" onClick={toggle}>Editar</Button>
+        <Modal isOpen={modal} toggle={toggle} className={className}>
+            <ModalFooter>
       <div className="calendar">
         <Container fluid>
           <Row >
-            <Col s="4">  
+            <Col s="6">  
 
               <h1>Escoge tu cita</h1>
               <Calendar
@@ -188,7 +193,7 @@ function Apointment() {
               />                     
                 
             </Col>
-            <Col s="2">
+            <Col s="6">
 
               <div className="fondoCita">
                 <h4 className="CitaSeleccionada">Horas Disponibles</h4>
@@ -227,15 +232,14 @@ function Apointment() {
               </div>              
                
             </Col>
-            <Col lg="6">              
-              <Citas />
-            </Col>
           </Row>
         </Container>
 
     </div>
+    </ModalFooter>
+   </Modal>
     </>
     )
 }
 
-export default Apointment
+export default EditSchedule

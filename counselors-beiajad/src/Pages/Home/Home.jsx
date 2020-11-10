@@ -26,11 +26,7 @@ function Home(props) {
 
         <Apointment />
 
-        <br/><br/>
-
         <Seccion2 />
-
-        <br/><br/>
 
         <Seccion3 />
 
