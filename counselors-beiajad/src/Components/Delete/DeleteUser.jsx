@@ -74,7 +74,7 @@ function DeleteUser (props) {
 
     return (
         <>
-           <button onClick={() => {Borrar(); BorrarUser()}}className="btn btn-dark">Borrar</button> 
+           <button onClick={() => {Borrar(); BorrarUser()}}className="btn btn-dark boton">Borrar</button> 
         </>
     )
 }

@@ -2,6 +2,10 @@
     background-color: #e9e5f3;
     opacity:0.8;
 }
-.table{
+.table td{ 
     margin-bottom: 0;
+    padding: .15rem;
+}
+.lista{
+    font-size: 15px;
 }

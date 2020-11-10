@@ -11,6 +11,7 @@
     box-shadow: none;
     border-style: solid;
     border-color: #25a1b7;
+    background: rgba(233, 229, 243, 0.8);
 }
 .padCal{
     margin-top: 4%;

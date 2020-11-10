@@ -31,9 +31,9 @@ function Apointment() {
     const [selectedDay, setSelectedDay] = useState(defaultValue);
     const [fecha, setFecha] = useState('')
     const [data, setData] = useState([]);
-    const [botones, setBotones] = useState (["10:00","11:00","12:00","13:00","14:00"])
+    const [botones, setBotones] = useState (["10:00","11:00","12:00","13:00","14:00","15:00"])
     const [borbot, setBorbot] = useState ([])
-    const [apa, setApa] = useState("btn btn-info apagado")
+    const [apa, setApa] = useState("btn btn-info boton apagado")
     const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
 
     useEffect(() => {
@@ -49,9 +49,9 @@ function Apointment() {
 
     const diaSeleccionado = (selectedDay) => {
 
-      setBotones(["10:00","11:00","12:00","13:00","14:00" ])
+      setBotones(["10:00","11:00","12:00","13:00","14:00", "15:00"])
       setBorbot([""])
-      setApa("btn btn-info")
+      setApa("btn btn-info boton")
 
       if(selectedDay.month < 10){  
           if(selectedDay.day < 10){
@@ -84,41 +84,7 @@ function Apointment() {
       setDate(`${x}${horario}`)
       setFecha(`${y}  ${horario}`)
     }
-
-       
-   /*     
-        ESTE CODIGOS SIRVE PARA HACER COMPARACIONES DE HORARIOS DESDE MONOG DB CON CAMBIO DE HORARIO LOCAL
-
-        ----------------------------------
-        LO QUE ESTAMOS HACIENDO ACA ES UNA VEZ OBTENIDO LA FECHA LA CORTABAMOS Y AGRAGABAMOS LA HORA ELEGIDA 
-        POR EL USUARIO Y  LO SIGUIENE FUE AGREGAR COMO STRING LO RESTANTE PARA PODER IGUALARLO CON LA FECHA DE 
-        LA API
-
-        let x = date.slice(0, 11)
-        setDate2(`${x}${horario}:00.000Z`)
-       ------------------------------------
-
-        let citaApi = new Date(info.date).valueOf()
         
-        let pick = new Date(date2).valueOf()
-
-        let horario = 1000 * 60 * 60 * 6; // aqui sumo 6 horas para México
-
-        let escogida = pick+horario // aqui suma las horas de mexico
-
-        console.log(citaApi + "cita de api");
-        console.log(escogida + "escogida para comparar") 
-      
-  */    
-        
-    
- 
-        //setaparezca un arreglo donde estan las que aparecen array.push horas 
-        //element.classList.add("off")
-        
-        //set donde estan las que desaparecen
-        //element.classList.remove("off")
-    
     const filterData = (value) => {
       const lowercasedValue = value.toLowerCase().trim();
       if (lowercasedValue === "") setData(schedule);
@@ -132,16 +98,15 @@ function Apointment() {
       }
     }
 
-
     useEffect(() => {
       verify()
     }, [data])
       
     const verify = () => {
-      data.map((user) => (     
-      borbot.push(user.time)))
-      const a = botones.filter(item => !borbot.includes(item))
-      setBotones(a)
+      data.map((info) => (     
+      borbot.push(info.time)))
+      const disponibles = botones.filter(item => !borbot.includes(item))
+      setBotones(disponibles)
      }
 
     const saveDate = ()=>{
@@ -167,10 +132,34 @@ function Apointment() {
            }).catch((error)=>{
                //alert('Hubo un error, revisa que paso')
                console.log(error)
-           })
- 
+           }) 
   
         }
+       
+   /*     
+        ESTE CODIGOS SIRVE PARA HACER COMPARACIONES DE HORARIOS DESDE MONOG DB CON CAMBIO DE HORARIO LOCAL
+
+        ----------------------------------
+        LO QUE ESTAMOS HACIENDO ACA ES UNA VEZ OBTENIDO LA FECHA LA CORTABAMOS Y AGRAGABAMOS LA HORA ELEGIDA 
+        POR EL USUARIO Y  LO SIGUIENE FUE AGREGAR COMO STRING LO RESTANTE PARA PODER IGUALARLO CON LA FECHA DE 
+        LA API
+
+        let x = date.slice(0, 11)
+        setDate2(`${x}${horario}:00.000Z`)
+       ------------------------------------
+
+        let citaApi = new Date(info.date).valueOf()
+        
+        let pick = new Date(date2).valueOf()
+
+        let horario = 1000 * 60 * 60 * 6; // aqui sumo 6 horas para México
+
+        let escogida = pick+horario // aqui suma las horas de mexico
+
+        console.log(citaApi + "cita de api");
+        console.log(escogida + "escogida para comparar") 
+      
+  */
 
     return (
      <>
@@ -185,69 +174,44 @@ function Apointment() {
                 onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
                 shouldHighlightWeekends
                 //calendarTodayClassName="custom-today-day"
-              />
-
-              <label>Nota</label>        
+              />                     
                 
             </Col>
             <Col s="2">
 
-              <h4 className="CitaSeleccionada">Horas Disponibles</h4>
+              <div className="fondoCita">
+                <h4 className="CitaSeleccionada">Horas Disponibles</h4>
 
-               {botones.map((hora) => ( 
+                {botones.map((hora) => ( 
                     <button onClick={() => escogeHora(hora)} className={apa}>{hora}</button>
                 ))} 
+                <div className="absolute">
+                  
+                  <label className="CitaSeleccionada">Nota</label> 
+                  <textarea
+                  className="form-control note"
+                  value={note}
+                  rows="3"
+                  onChange={(e)=>{setNote(e.target.value)}}
+                  />
+                  <h6 className="CitaSeleccionada">Tu cita sera programada para el día:</h6>
 
-              <h6 className="CitaSeleccionada">Tu cita sera programada para el día:</h6>
+                  <h5 className="CitaSeleccionada">{fecha.replace("T", " ")}</h5>
 
-              <h5 className="CitaSeleccionada">{fecha.replace("T", " ")}</h5>
+                  <div className="absolute2">
+                    <button type="submit" onClick={() => {saveDate()}} className="btn btn-danger boton"> Confirmar cita</button>
+                  </div>
 
-              <textarea
-              className="form-control note"
-              value={note}
-              rows="3"
-              onChange={(e)=>{setNote(e.target.value)}}
-              />
+                </div>                
 
-              <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button>
+              </div>              
                
             </Col>
             <Col lg="6">              
               <Citas />
             </Col>
           </Row>
-
         </Container>
-     
-        
-     
-
-        {/* <h3>Escoge tu cita</h3>   
-        
-        <Calendar
-          value={selectedDay}
-          onChange={setSelectedDay, (e)=>{diaSeleccionado(e)}}
-          shouldHighlightWeekends
-          calendarTodayClassName="custom-today-day"
-        />
-
-       <label>Nota</label>
-
-       <input
-       className="form-control note"
-       value={note}
-       onChange={(e)=>{setNote(e.target.value)}}
-       />
-
-       {botones.map((hora) => ( 
-          <button id="todas" onClick={() => escogeHora(hora)} className={isActive ? "btn btn-info" : "btn btn-info apagado"}>{hora}</button>
-       ))}
-
-      <h1 className="CitaSeleccionada">Tu cita sera programada para el día:</h1>
-
-      <h1 className="CitaSeleccionada">{fecha.replace("T", " ")}</h1>
-
-      <button type="submit" onClick={() => {saveDate()}} className="btn btn-info"> Confirmar cita</button>   */}
 
     </div>
     </>

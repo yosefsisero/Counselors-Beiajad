@@ -26,7 +26,7 @@ const Borrar = () => {
 
     return (
         <>
-           <button onClick={Borrar} className="btn btn-dark">Borrar</button> 
+           <button onClick={Borrar} className="btn btn-dark boton">Borrar</button> 
         </>
     )
 }

@@ -15,7 +15,7 @@ function Citas() {
   const { user1, isAuth } = useContext(AuthContext)
   const [schedule, setSchedule] = useState([]);
 
-  const scrollContainerStyle = { width: "100%", maxHeight: "300px" };
+  const scrollContainerStyle = { width: "100%", maxHeight: "400px" };
 
   const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
 
@@ -61,9 +61,9 @@ function Citas() {
       {IdUser.map((user, i) => (
         <tr key={i}>   
              
-          <td >{user.date.split("T")[0]}</td>
-          <td >{user.time}</td>
-          <td >{user.note}</td>
+          <td width="80">{user.date.split("T")[0]}</td>
+          <td>{user.time}</td>
+          <td>{user.note}</td>
           <td><EditSchedule id={user._id}/></td>
           <td><DeleteSchedule id={user._id}/></td>
   

@@ -81,8 +81,8 @@ function UsersList() {
           <th>Comunidad</th>
           <th>Pais</th>
           <th>Telefofo</th>
-          <th>Editar</th>
-          <th>Borrar</th>          
+          <th>Borrar</th>
+          <th>Editar</th>          
         </tr>
       </thead>
       <tbody>

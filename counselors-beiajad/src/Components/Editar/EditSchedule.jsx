@@ -57,7 +57,7 @@ function EditSchedule(props) {
     return (
      <>
      
-      <Button color="info" onClick={toggle}>Editar</Button>
+      <Button color="info boton" onClick={toggle}>Editar</Button>
        <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalFooter>
           <div className="container calendar" >
@@ -101,7 +101,7 @@ function EditSchedule(props) {
              
             <br></br> 
 
-            <button type="submit" className="btn btn-info"> Guardar Cambios</button> 
+            <button type="submit" className="btn btn-info boton"> Guardar Cambios</button> 
             </div>   
 
           </form>
