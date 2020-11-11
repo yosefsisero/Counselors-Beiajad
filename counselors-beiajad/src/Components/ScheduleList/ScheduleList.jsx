@@ -144,14 +144,14 @@ function ScheduleList() {
       <thead>
         <tr>
           
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Nota</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Tel</th>
-          <th>Editar</th>
-          <th>Borrar</th>
+          <th className="absolute3">Fecha</th>
+          <th className="absolute3">Hora</th>
+          <th className="absolute3">Nota</th>
+          <th className="absolute3">Nombre</th>
+          <th className="absolute3">Apellido</th>
+          <th className="absolute3">Tel</th>
+          <th className="absolute3">Editar</th>
+          <th className="absolute3">Borrar</th>
 
         </tr>
       </thead>

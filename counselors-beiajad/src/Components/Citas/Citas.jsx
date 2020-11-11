@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap';
 import axios from "axios";
-import EditSchedule1 from '../Editar/EditSchedule1';
+import EditSchedule from '../Editar/EditSchedule';
 import '../Logi/Logi.css'
 import './Citas.css'
 import DeleteSchedule from "../Delete/DeleteSchedule";
@@ -50,21 +50,23 @@ function Citas() {
       
       <div className="scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}>   
     <Table className="citas" striped>
-      <thead>
+      <thead className="absolute3">
         <tr>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Nota</th>
+          <th className="absolute3">Fecha</th>
+          <th className="absolute3">Hora</th>
+          <th className="absolute3">Nota</th>
+          <th className="absolute3">Editar</th>
+          <th className="absolute3">Borrar</th>
         </tr>
       </thead>
       <tbody>
       {IdUser.map((user, i) => (
         <tr key={i}>   
              
-          <td width="85">{user.date.split("T")[0]}</td>
-          <td>{user.time}</td>
-          <td>{user.note}</td>
-          <td><EditSchedule1 id={user._id}/></td>
+          <td width="95">{user.date.split("T")[0]}</td>
+          <td width="75">{user.time}</td>
+          <td width="300">{user.note}</td>
+          <td><EditSchedule id={user._id}/></td>
           <td><DeleteSchedule id={user._id}/></td>
   
           </tr>

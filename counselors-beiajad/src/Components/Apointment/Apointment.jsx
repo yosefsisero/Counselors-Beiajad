@@ -35,7 +35,6 @@ function Apointment() {
     const [borbot, setBorbot] = useState ([])
     const [apa, setApa] = useState("btn btn-info boton apagado")
     const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
-
     const [sinHoras, setSinHoras] = useState (false) 
     
     useEffect(() => {
@@ -113,8 +112,7 @@ function Apointment() {
       if (disponibles.length === 0) { 
         setBotones(disponibles)
         setSinHoras(true)
-        console.log("Array is empty!")
-
+        
        }else{
          setBotones(disponibles)
        }      
@@ -219,7 +217,7 @@ function Apointment() {
                   <h5 className="CitaSeleccionada">{fecha.replace("T", " ")}</h5>
 
                   <div className="absolute2">
-                    <button type="submit" onClick={() => {saveDate()}} className="btn btn-danger boton"> Confirmar cita</button>
+                    <button type="submit" onClick={() => {saveDate()}} className="btn btn-danger boton"> Confirmar Cita</button>
                   </div>
 
                 </div>                

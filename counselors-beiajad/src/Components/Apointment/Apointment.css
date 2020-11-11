@@ -62,5 +62,5 @@
 }
 @keyframes blinkingText{
     0%{color: red;}    
-    50%{color: black;}    
+    50%{color: transparent;}    
 }

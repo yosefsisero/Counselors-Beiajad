@@ -74,15 +74,15 @@ function UsersList() {
       <Table striped>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Email</th>
-          <th>Edad</th>
-          <th>Comunidad</th>
-          <th>Pais</th>
-          <th>Telefofo</th>
-          <th>Borrar</th>
-          <th>Editar</th>          
+          <th className="absolute3">Nombre</th>
+          <th className="absolute3">Apellido</th>
+          <th className="absolute3">Email</th>
+          <th className="absolute3">Edad</th>
+          <th className="absolute3">Comunidad</th>
+          <th className="absolute3">Pais</th>
+          <th className="absolute3">Telefofo</th>
+          <th className="absolute3">Borrar</th>
+          <th className="absolute3">Editar</th>          
         </tr>
       </thead>
       <tbody>
