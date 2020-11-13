@@ -34,6 +34,7 @@ function EditSchedule(props) {
     const [user] = useState(user1.id)
     const [selectedDay, setSelectedDay] = useState(defaultValue);
     const [fecha, setFecha] = useState('')
+    const [fechaAlerta, setFechaAlerta] = useState('')
     const [data, setData] = useState([]);
     const [botones, setBotones] = useState (["10:00","11:00","12:00","13:00","14:00","15:00"])
     const [borbot, setBorbot] = useState ([])
@@ -90,6 +91,7 @@ function EditSchedule(props) {
       let y = fecha.slice(0, 11)
       setDate(`${x}${horario}`)
       setFecha(`${y}  ${horario}`)
+      setFechaAlerta(`El dia ${y} a las ${horario}`)
     }
         
     const filterData = (value) => {
@@ -125,8 +127,19 @@ function EditSchedule(props) {
      }
 
     const editDate = ()=>{
-       
-        axios.patch(URLP, {
+
+      Swal.fire({
+        title: `${fechaAlerta.replace("T", " ")}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          //------------
+          axios.patch(URLP, {
         
             date,
             time,
@@ -141,14 +154,31 @@ function EditSchedule(props) {
           }
            ).then(()=>{
                //alert('Editado con exito')
-               Swal.fire('Editado con exito')
-               //window.location.reload()
+               Swal.fire({
+                icon: 'success',
+                title: 'Se edito con exito',
+                confirmButtonText: `Ok`,
+                }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.reload()
+                }})
+             
+               
                
     
-           }).catch((error)=>{
+           })
+           .catch((error)=>{
                alert('Hubo un error, revisa que paso')
                console.log(error)
-           }) 
+           })
+          
+          //------------------
+          
+        }
+      })
+       
+         
   
         }
        
