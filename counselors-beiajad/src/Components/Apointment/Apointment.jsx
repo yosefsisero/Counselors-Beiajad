@@ -6,7 +6,7 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import { Container, Row, Col } from 'reactstrap';
 import Citas from '../Citas/Citas'
-
+import Swal from 'sweetalert2'
 
 function Apointment() {
   
@@ -34,8 +34,9 @@ function Apointment() {
     const [botones, setBotones] = useState (["10:00","11:00","12:00","13:00","14:00","15:00"])
     const [borbot, setBorbot] = useState ([])
     const [apa, setApa] = useState("btn btn-info boton apagado")
-    const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
     const [sinHoras, setSinHoras] = useState (false) 
+    const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
+    
     
     useEffect(() => {
       axios
@@ -119,8 +120,17 @@ function Apointment() {
      }
 
     const saveDate = ()=>{
-       
-        axios.post(URL, {
+      Swal.fire({
+        title: `Tu cita sera programada para el ${fecha.replace("T", " a las")} hrs.`,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar cita',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post(URL, {
         
             date,
             time,
@@ -134,14 +144,28 @@ function Apointment() {
             },
           }
            ).then(()=>{
-               //alert('Creado con exito')
-               window.location.reload()
-               
-    
-           }).catch((error)=>{
-               //alert('Hubo un error, revisa que paso')
+               Swal.fire({
+                icon: 'success',
+                title: 'Nos vemos pronto',
+                confirmButtonText: `Ok`,
+                timer: 3000,
+                timerProgressBar: true,
+                }).then(() => {
+                  window.location.reload()
+                })
+             
+           })
+           .catch((error)=>{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Lo sentimos esta acción no se pudo completar',
+            })
                console.log(error)
-           }) 
+           })
+          
+        }
+      })
   
         }
        
@@ -212,12 +236,12 @@ function Apointment() {
                   rows="3"
                   onChange={(e)=>{setNote(e.target.value)}}
                   />
-                  <h6 className="CitaSeleccionada">Tu cita sera programada para el día:</h6>
+                  <h6 className="CitaSeleccionada">Fecha escogida:</h6>
 
                   <h5 className="CitaSeleccionada">{fecha.replace("T", " ")}</h5>
 
                   <div className="absolute2">
-                    <button type="submit" onClick={() => {saveDate()}} className="btn btn-danger boton"> Confirmar Cita</button>
+                    <button type="submit" onClick={() => {saveDate()}} className="btn btn-danger boton">Siguiente</button>
                   </div>
 
                 </div>                

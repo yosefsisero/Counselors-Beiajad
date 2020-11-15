@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../Apointment/Apointment.css'
-import { AuthContext } from '../../contexts/AuthContext';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import { Container, Row, Col, Modal, ModalFooter, Button } from 'reactstrap';
@@ -20,8 +19,7 @@ function EditSchedule(props) {
     month: month,
     day: day,
   };
-  
-    const { user1 } = useContext(AuthContext)    
+      
     const URLG = "http://localhost:8000/api/v1/schedule/"
     const URLP = `http://localhost:8000/api/v1/schedule/${props.id}`
     const [schedule, setSchedule] = useState([]);
@@ -29,19 +27,16 @@ function EditSchedule(props) {
     const [time, setTime] = useState('')
     const [note, setNote] = useState('Escribe aqui algun comentario a tu cita')
     const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
-    const { className } = props;
-    const [user] = useState(user1.id)
     const [selectedDay, setSelectedDay] = useState(defaultValue);
     const [fecha, setFecha] = useState('')
-    const [fechaAlerta, setFechaAlerta] = useState('')
     const [data, setData] = useState([]);
     const [botones, setBotones] = useState (["10:00","11:00","12:00","13:00","14:00","15:00"])
     const [borbot, setBorbot] = useState ([])
     const [apa, setApa] = useState("btn btn-info boton apagado")
-    const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
-
     const [sinHoras, setSinHoras] = useState (false) 
+    const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
+    const toggle = () => setModal(!modal);
+    const { className } = props;
     
     useEffect(() => {
       axios
@@ -91,7 +86,6 @@ function EditSchedule(props) {
       let y = fecha.slice(0, 11)
       setDate(`${x}${horario}`)
       setFecha(`${y}  ${horario}`)
-      setFechaAlerta(`El dia ${y} a las ${horario}`)
     }
         
     const filterData = (value) => {
@@ -119,8 +113,7 @@ function EditSchedule(props) {
       if (disponibles.length === 0) { 
         setBotones(disponibles)
         setSinHoras(true)
-        console.log("Array is empty!")
-
+  
        }else{
          setBotones(disponibles)
        }      
@@ -129,7 +122,7 @@ function EditSchedule(props) {
     const editDate = ()=>{
 
       Swal.fire({
-        title: `${fechaAlerta.replace("T", " ")}`,
+        title: `La cita sera reprogramada para el ${fecha.replace("T", " a las")} hrs.`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -138,7 +131,6 @@ function EditSchedule(props) {
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          //------------
           axios.patch(URLP, {
         
             date,
@@ -153,33 +145,29 @@ function EditSchedule(props) {
             },
           }
            ).then(()=>{
-               //alert('Editado con exito')
                Swal.fire({
                 icon: 'success',
                 title: 'Se edito con exito',
                 confirmButtonText: `Ok`,
-                }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
+                timer: 3000,
+                timerProgressBar: true,
+                }).then(() => {
                   window.location.reload()
-                }})
+                })
              
-               
-               
-    
            })
            .catch((error)=>{
-               alert('Hubo un error, revisa que paso')
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Lo sentimos esta acción no se pudo completar',
+            })
                console.log(error)
            })
           
-          //------------------
-          
         }
       })
-       
-         
-  
+ 
         }
        
    /*     
@@ -252,12 +240,12 @@ function EditSchedule(props) {
                   rows="3"
                   onChange={(e)=>{setNote(e.target.value)}}
                   />
-                  <h6 className="CitaSeleccionada">Tu cita sera programada para el día:</h6>
+                  <h6 className="CitaSeleccionada">Fecha escogida</h6>
 
                   <h5 className="CitaSeleccionada">{fecha.replace("T", " ")}</h5>
 
                   <div className="absolute2">
-                    <button type="submit" onClick={() => {editDate()}} className="btn btn-danger boton"> Editar Cita</button>
+                    <button type="submit" onClick={() => {editDate()}} className="btn btn-danger boton">Siguiente</button>
                   </div>
 
                 </div>                
