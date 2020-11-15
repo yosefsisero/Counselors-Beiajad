@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
-import DeleteUser from "../Delete/DeleteUser";
+import DeleteUser1 from "../Delete/DeleteUser1";
 import './UsersList.css'
 
 function UsersList() {
@@ -95,7 +95,7 @@ function UsersList() {
           <td >{user.comunity}</td>
           <td >{user.country}</td>
           <td >{user.tel}</td>
-          <td><DeleteUser id={user._id}/></td>
+          <td><DeleteUser1 id={user._id}/></td>
         </tr>
         ))}
       
