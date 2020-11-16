@@ -1,21 +1,18 @@
--Ordenar la pagina de Schedule (poniendo header footer, y acomodar calendario y citas de un lado, meter css, poner botón de bootstart, hacer scroll)
--arreglar los alert por swet alert
+-hacer el redirect en login y en registrar
+-arreglar la pagina de schedule que pasa si no estas logueado (jacobo sabe lo de history)
 -como hacer para que las priemras citas sean gratis y dsps si tengan que pagar
 -hacer la pagina de faq (cambiar info)
 -footer
 -poner chat
--arreglar la pagina de schedule que pasa si no estas logueado (jacobo sabe lo de history)
--arreglar el calendario por algo bonito
 -poner css en registrate (Adelante un poco)
--hacer el redirect en login y en registrar
 -usar bien fontawesome
 -hacer pagina de perfil de usuario
--hacer pagina y base de datos de doctores
+-hacer pagina y base de datos de doctores y backend
 -Como cambiar contraseñas 
 
 
-Preguntas para David
-Como buscar por dos parametros en l apagina de users
+Preguntas para Google
+Como buscar por dos parametros en el pagina de users
 Preguntar sobre el tema de subir archivos e imagenes a la api
 Como hacer para que te saque de la sesion y saber si es buena practica lo del authcontext
 
