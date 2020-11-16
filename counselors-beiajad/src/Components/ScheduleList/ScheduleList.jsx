@@ -32,6 +32,9 @@ function ScheduleList() {
   const [data, setData] = useState([]);
   const [selectedDay, setSelectedDay] = useState(defaultValue);
   const [searchText, setSearchText] = useState()
+  const [apa, setApa] = useState("btn btn-info off")
+  const [apa1, setApa1] = useState("off")
+
 
   const excludeColumns = ["_id", "is_active", "createdAt", "updatedAt"];   // excluye datos del arreglo del filtro
   
@@ -77,12 +80,9 @@ function ScheduleList() {
       }
     }
   
+    setApa("btn btn-info")
+    setApa1("")
 
-    var element = document.getElementById("todas");
-      element.classList.remove("off");
-
-    var element1 = document.getElementById("searchText");
-      element1.classList.remove("off");
   }
 
   const filterData = (value) => {
@@ -101,11 +101,8 @@ function ScheduleList() {
   const Todas = () => {
     setData(schedule)
     setSearchText(null);
-    var element = document.getElementById("todas");
-    element.classList.add("off");
-
-    var element1 = document.getElementById("searchText");
-    element1.classList.add("off");
+    setApa("btn btn-info off")
+    setApa1("off")
     }
 
    
@@ -134,8 +131,8 @@ function ScheduleList() {
      <Col xl={{ size: 8}}>
 
      <div className="fechaActual">
-       <h1 id="searchText" className="off">{searchText}</h1>
-       <Button id="todas" className="btn btn-info off" onClick={Todas}>Ver todas las citas</Button >
+       <h1 id="searchText" className={apa1}>{searchText}</h1>
+       <Button id="todas" className={apa} onClick={Todas}>Ver todas las citas</Button >
      </div>
 
      <MDBContainer>

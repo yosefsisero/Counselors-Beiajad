@@ -43,10 +43,7 @@ const Borrar = () => {
            })
         }
       })
-   
-    
-
-}
+  }
     
 
     return (

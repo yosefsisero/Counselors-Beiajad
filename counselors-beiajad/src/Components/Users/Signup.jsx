@@ -5,6 +5,7 @@ import Footer from "../Layout/Footer/Footer"
 import './Signup.css'
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -41,9 +42,18 @@ const Register = () => {
       setComunity('')
       setCountry('')
       setTel('')
-      //alert('Succesfully created acccount')
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuario creado con exito',
+        timer: 1500,
+        timerProgressBar: true,
+      })
     }catch (error){
-      //alert('Error on signup')
+      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salio mal',
+      })
     }
   };
 

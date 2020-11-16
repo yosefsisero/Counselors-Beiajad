@@ -1,5 +1,6 @@
 import React, { useState, useContext} from 'react';
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import { Redirect } from "react-router-dom";
 
 
@@ -34,9 +35,17 @@ const Login = () => {
     try {
       const res = await axios.post(LOGIN_URL, jsonSend)
       loginUser(res.data.token)
-      //alert('Succesful Login')
+      Swal.fire({
+        icon: 'success',
+        title: 'Iniciando sesión',
+        timer: 1500,
+        timerProgressBar: true,
+      }).then(console.log('hola'))
     } catch(error){
-     // alert('Error in Login')
+     Swal.fire({
+      icon: 'error',
+      title: 'Error en iniciar sesion',
+    })
     }
 
   }
