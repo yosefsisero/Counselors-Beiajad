@@ -8,12 +8,19 @@ function DeleteUser (props) {
        
     const { user1 } = useContext(AuthContext)
     const [schedule, setSchedule] = useState([]);
-    
-
     const URL_GET_USER = `http://localhost:8000/api/v1/schedule/`;
+
+    const IdUser = schedule.filter((idUsuario) => {
+          if(idUsuario.user[0]._id === props.id){
+            return idUsuario  
+          }
+        });
+    const usuarioFiltrado = IdUser.map((user) => {
+      return user._id
+    })
+    const URLDELETE = `http://localhost:8000/api/v1/users/${props.id}`;
      
     useEffect(() => {
-      console.log(1)
       axios.get(URL_GET_USER, {
         headers: {
           Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
@@ -23,21 +30,13 @@ function DeleteUser (props) {
       .catch((err) => console.log(err))
     }, []);
       
-   //----------------------------------------------------
-    const IdUser = schedule.filter((idUsuario) => {
-      if(idUsuario.user[0]._id === props.id){
-        return idUsuario  
-      }
-    });
-    
-    const usuarioFiltrado = IdUser.map((user) => {
-      return user._id
-    })
 
+    
+    
   
    const Borrar = () => {
     for (let i = 0; i < usuarioFiltrado.length; i++) {
-      console.log(2)
+       console.log(2)
       const URLDELETECITAS = `http://localhost:8000/api/v1/schedule/${usuarioFiltrado[i]}`;
       axios.delete(URLDELETECITAS, {
         headers: {
@@ -51,31 +50,53 @@ function DeleteUser (props) {
           alert(error)
     })
 
-    }}
+    }
+  }
 
   
     const BorrarUser =  () => {
-      console.log(3)
-      const URLDELETE = `http://localhost:8000/api/v1/users/${props.id}`;
        axios.delete(URLDELETE, {
           headers: {
             Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
           },
         })
         .then((response)=> {
-            alert(`User Borrado`)
+            // alert(`User Borrado`)
             console.log(response.data)
             window.location.reload()
      
      })  .catch((error) => {
             alert(error)
      
-     })}
+     })
+  }
+
+     const eliminate =  () => {
+      Swal.fire({
+        title: '¿Estas seguro?',
+        text: "Esta acción no se puede revertir",
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: `Borrar`,
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Borrar()
+          BorrarUser()
+          Swal.fire('Se elimio con exito', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Lo sentimos esa accion no se pudo completar', '', 'error')
+        }
+      })
+      
+      }
     
 
     return (
         <>
-           <button onClick={() => {Borrar(); BorrarUser()}}className="btn btn-dark boton">Borrar</button> 
+           <button onClick={eliminate} className="btn btn-dark boton">Borrar</button> 
         </>
     )
 }
