@@ -1,8 +1,7 @@
 import React, { useState, useContext} from 'react';
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { Redirect } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 
 import {
   Button,  
@@ -14,16 +13,11 @@ import {
 
 import { AuthContext } from '../../contexts/AuthContext';
 
-
-
-
-
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+  const [password, setPassword] = useState('');  
   const { loginUser } = useContext(AuthContext)
-
+  let history = useHistory();
   const handleSubmit = async (event)=>{
     event.preventDefault();
     const jsonSend ={
@@ -38,9 +32,9 @@ const Login = () => {
       Swal.fire({
         icon: 'success',
         title: 'Iniciando sesión',
-        timer: 1500,
+        timer: 3000,
         timerProgressBar: true,
-      }).then(console.log('hola'))
+      }).then(history.push("/"))
     } catch(error){
      Swal.fire({
       icon: 'error',
