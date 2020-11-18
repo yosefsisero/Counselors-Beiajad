@@ -1,8 +1,6 @@
 import React, { useState, useContext} from 'react';
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { Redirect } from "react-router-dom";
-
 
 import {
   Button,  
@@ -12,9 +10,12 @@ import {
   Input,
 } from 'reactstrap';
 
+
+import { browserHistory } from 'react-router';
+//do something...
+
+
 import { AuthContext } from '../../contexts/AuthContext';
-
-
 
 
 
@@ -23,7 +24,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   
   const { loginUser } = useContext(AuthContext)
-
+  
   const handleSubmit = async (event)=>{
     event.preventDefault();
     const jsonSend ={
@@ -38,20 +39,20 @@ const Login = () => {
       Swal.fire({
         icon: 'success',
         title: 'Iniciando sesión',
-        timer: 1500,
+        timer: 3000,
         timerProgressBar: true,
-      }).then(console.log('hola'))
+      })
+      browserHistory.push("/");
     } catch(error){
      Swal.fire({
       icon: 'error',
       title: 'Error en iniciar sesion',
     })
     }
-
   }
   return (
     <>
-      <Form className="container" onSubmit={handleSubmit}>
+       <Form className="container" onSubmit={handleSubmit}>
         <FormGroup>
           <Label>Correo Electronico</Label>
           <Input

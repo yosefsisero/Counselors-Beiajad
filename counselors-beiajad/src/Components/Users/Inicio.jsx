@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 
 function Inicio() {
     
-    
     return <Redirect to="/" />;
 }
 

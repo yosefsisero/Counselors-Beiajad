@@ -45,7 +45,7 @@ const Register = () => {
       Swal.fire({
         icon: 'success',
         title: 'Usuario creado con exito',
-        timer: 1500,
+        timer: 3000,
         timerProgressBar: true,
       })
     }catch (error){

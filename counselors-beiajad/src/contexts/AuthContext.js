@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import decode from 'jwt-decode'
 import Swal from 'sweetalert2'
 
+
 export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
@@ -37,8 +38,6 @@ const AuthContextProvider = (props) => {
       Swal.fire({
         icon: 'warning',
         title: 'Tu sesión a caducado',
-        timer: 1500,
-        timerProgressBar: true,
       })
     }
   }
