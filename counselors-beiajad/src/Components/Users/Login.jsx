@@ -11,12 +11,14 @@ import {
   Input,
 } from 'reactstrap';
 
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');  
   const { loginUser } = useContext(AuthContext)
   let history = useHistory();
+  
   const handleSubmit = async (event)=>{
     event.preventDefault();
     const jsonSend ={
@@ -30,7 +32,7 @@ const Login = () => {
       loginUser(res.data.token)
       Swal.fire({
         icon: 'success',
-        title: 'Iniciando sesión',
+        title: 'Bienvenido',
         timer: 3000,
         timerProgressBar: true,
       }).then(history.push("/"))

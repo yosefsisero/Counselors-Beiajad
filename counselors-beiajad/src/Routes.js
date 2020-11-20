@@ -9,6 +9,7 @@ import Register from "./Components/Users/Signup.jsx";
 import UsersList from "./Components/UsersList/UsersList.jsx";
 import ScheduleList from "./Components/ScheduleList/ScheduleList.jsx"; 
 import Faq from './Pages/Faq/Faq';
+import SignupDoctor from "./Components/Users/SignupDoctor.jsx";
 
 
 function Routes() {
@@ -20,6 +21,7 @@ function Routes() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/signupdoctor" component={SignupDoctor} />
         <Route exact path="/users" component={UsersList} />
         <Route exact path="/schedule" component={ScheduleList} />
         <Route exact path="/faq" component={Faq} />

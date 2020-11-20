@@ -8,14 +8,13 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 import { useHistory } from "react-router-dom";
 
-const Register = () => {
+const SignupDoctor = () => {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
-  const [comunity, setComunity] = useState("");
+  const [specialty, setSpecialty] = useState("");
   const [country, setCountry] = useState(""); 
   const [tel, setTel] = useState("");
   const history = useHistory();
@@ -24,13 +23,12 @@ const Register = () => {
   event.preventDefault();
 
   const jsonSend = {
-    rank: "user",
+    rank: "doctor",
     first_name: firstName,
     last_name: lastName,
     email,
     password,
-    age,
-    comunity,
+    specialty,
     country,
     tel
   };
@@ -42,13 +40,12 @@ const Register = () => {
       setLastName('')
       setEmail('')
       setPassword('')
-      setAge('')
-      setComunity('')
+      setSpecialty('')
       setCountry('')
       setTel('')
       Swal.fire({
         icon: 'success',
-        title: 'Usuario creado con exito',
+        title: 'Doctor creado con exito',
         text: 'Inicia sesión',
         timer: 3000,
         timerProgressBar: true,
@@ -91,25 +88,14 @@ const Register = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Edad</Label>
+          <Label>Especialidad</Label>
           <Input
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            type="number"
-            name="age"
+            value={specialty}
+            onChange={(e) => setSpecialty(e.target.value)}
+            type="string"
+            name="specialty"
             id="exampleage"
-            placeholder="Escribe tu edad"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Comunidad</Label>
-          <Input
-            value={comunity}
-            onChange={(e) => setComunity(e.target.value)}
-            type="comunity"
-            name="comunity"
-            id="examplecomunity"
-            placeholder="Comunidad que asistes"
+            placeholder="Escribe tu especialidad"
           />
         </FormGroup>
         <FormGroup>
@@ -164,5 +150,5 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignupDoctor;
 

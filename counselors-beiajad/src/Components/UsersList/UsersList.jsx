@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Table } from 'reactstrap';
 import DeleteUser from "../Delete/DeleteUser";
+import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function UsersList() {
@@ -110,7 +110,7 @@ function UsersList() {
     
     </>
     ) : (
-      <Link to="/login"> Ir a inicio </Link> 
+      <Home/>
     )} 
     </>     
   );

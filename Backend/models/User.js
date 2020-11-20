@@ -10,6 +10,10 @@ const userSchema = new Schema({
         type: Boolean,
         default: true
     },
+    rank:{
+        type: String,
+        required: true
+    },
     first_name:{
         type: String,
         required: true
@@ -20,11 +24,9 @@ const userSchema = new Schema({
     },
     age:{
         type: Number,
-        required: true
     },
     comunity:{
         type: String,
-        required: true
     },
     country:{
         type: String,
@@ -34,6 +36,9 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
+    specialty:{
+        type: String,
+    },
     email:{
         type: String,
         required: true
@@ -42,6 +47,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+
 },
    {
     timestamps: true,

@@ -19,15 +19,15 @@ module.exports = {
     signup: async (req, res)=>{
         const { body } = req;
         try {
-            const userExist = await UserService.findOneByEmail(body.email)
-            if (userExist) res.status(400).json({message: 'Email taken'})
+            const emailExist = await UserService.findOneByEmail(body.email)
+            if (emailExist) res.status(400).json({message: 'Email taken'})
             else {const newUser = new User(body);
             const user = await newUser.save();
             user.password = undefined
             res.status(201).json(user);}
                  
         } catch (error) {
-            res.satus(400).json(error)
+            res.status(400).json(error)
         }
     },
     login: async (req, res)=>{

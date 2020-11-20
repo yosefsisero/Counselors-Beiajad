@@ -5,5 +5,5 @@ const ImageValidator = require('./ImageValidators')
 module.exports = {
     UserValidator,
     ScheduleValidator,
-    ImageValidator
+    ImageValidator,
 }

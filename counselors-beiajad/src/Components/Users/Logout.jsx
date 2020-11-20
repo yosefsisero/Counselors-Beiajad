@@ -7,7 +7,7 @@ const Logout = () => {
   const { logoutUser } = useContext(AuthContext)
   Swal.fire({
     icon: 'success',
-    title: 'Cerrando sesión',
+    title: 'Hasta pronto',
     timer: 3000,
     timerProgressBar: true,
   })
