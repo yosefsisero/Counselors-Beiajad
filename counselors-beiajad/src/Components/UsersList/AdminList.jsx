@@ -6,7 +6,7 @@ import DeleteUser from "../Delete/DeleteUser";
 import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
-function UsersList() {
+function AdminList() {
   const { isAuth } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -71,7 +71,43 @@ function UsersList() {
         onChange={e => handleChange(e.target.value)}
       />
       </div>
+      <h1>Administradores</h1>
       <Table striped>
+      <thead>
+        <tr>
+          <th className="absolute3">Nombre</th>
+          <th className="absolute3">Apellido</th>
+          <th className="absolute3">Especialidad</th>
+          <th className="absolute3">Email</th>
+          <th className="absolute3">Edad</th>
+          <th className="absolute3">Comunidad</th>
+          <th className="absolute3">País</th>
+          <th className="absolute3">Teléfofo</th>
+          <th className="absolute3">Borrar</th>
+          <th className="absolute3">Editar</th>          
+        </tr>
+      </thead>
+      <tbody>
+      {data.map((user, i) => {
+       return user.rank === "admin" ? 
+       <tr key={i}>         
+        <td >{user.first_name}</td>
+        <td >{user.last_name}</td>
+        <td >{user.specialty}</td>
+        <td >{user.email}</td>
+        <td >{user.age}</td>
+        <td >{user.comunity}</td>
+        <td >{user.country}</td>
+        <td >{user.tel}</td>
+        <td><DeleteUser id={user._id}/></td>
+       </tr>
+      : undefined;
+      })}
+      
+      </tbody>
+    </Table> 
+    <h1>Usuarios</h1>
+    <Table striped>
       <thead>
         <tr>
           <th className="absolute3">Nombre</th>
@@ -102,7 +138,40 @@ function UsersList() {
       })}
       
       </tbody>
-    </Table>      
+    </Table>
+    <h1>Doctores</h1>
+    <Table striped>
+      <thead>
+        <tr>
+          <th className="absolute3">Nombre</th>
+          <th className="absolute3">Apellido</th>
+          <th className="absolute3">Email</th>
+          <th className="absolute3">Especialidad</th>
+          <th className="absolute3">País</th>
+          <th className="absolute3">Teléfofo</th>
+          <th className="absolute3">Borrar</th>
+          <th className="absolute3">Editar</th>          
+        </tr>
+      </thead>
+      <tbody>
+      {data.map((user, i) => {
+
+        return user.rank === "doctor" ? 
+             
+        <tr key={i}>         
+        <td >{user.first_name}</td>
+        <td >{user.last_name}</td>
+        <td >{user.email}</td>
+        <td >{user.specialty}</td>
+        <td >{user.country}</td>
+        <td >{user.tel}</td>
+        <td><DeleteUser id={user._id}/></td>
+        </tr>
+              
+        : undefined;
+      })}
+      </tbody>
+    </Table>     
         
         <div className="clearboth">
         {data.length === 0 && <span>No hay resultados!</span>}
@@ -117,4 +186,4 @@ function UsersList() {
   );
 }
 
-export default UsersList;
+export default AdminList;
