@@ -15,6 +15,18 @@ function UsersList() {
 
   const URL_GET_USERS = "http://localhost:8000/api/v1/users";
 
+  //---
+  const { user1 } = useContext(AuthContext) 
+  const [user] = useState(user1.id)
+  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
+  const [logueado, setLogueado] = useState([]);
+  const [usuario, setUsuario] = useState(false);
+  const [doctor, setDoctor] = useState(false);
+  const [administrador, setAdministrador] = useState(false);
+  
+
+  //---
+
   useEffect(() => {
     axios
       .get(URL_GET_USERS, {
@@ -25,6 +37,43 @@ function UsersList() {
       .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
       .catch((err) => console.log(err));
   }, []);
+
+  //---
+  useEffect(() => {
+    axios
+      .get(URL_GET_USER, {
+        headers: {
+          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+        },
+      })
+      .then((data) => (setLogueado(data.data)))
+      .catch((err) => console.log(err));
+  }, [users]);
+
+  useEffect(() => {
+    filtro(logueado)
+  }, [logueado]);
+
+  const filtro = (a)=>{
+    const b = a.rank
+    if(b === "user") {
+      setUsuario(true)
+      console.log("Es usuario")
+    }
+    else if(b === "doctor") {
+      setDoctor(true)
+      console.log("Es doctor")
+    }
+    if(b === "admin") {
+      setAdministrador(true)
+      console.log("Es Administrador")
+    }
+  }  
+  // console.log(usuario+" usuario")
+  // console.log(doctor+" doctor")
+  // console.log(administrador+" administrador")
+
+  //---
   
   // ESTE CODIGO BUSCA EN EL ARREGLO UN SOLO DATO EN ESTE CASO EL APELLIDO.
   // useEffect(() => {

@@ -8,7 +8,6 @@ export const AuthContext = createContext();
 const AuthContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [isAuth, setIsAuth] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [user1, setUser1] = useState({})
 
   const loginUser = (token) => {
@@ -17,14 +16,12 @@ const AuthContextProvider = (props) => {
     setUser1(decoded)
     setToken(token);
     setIsAuth(true);
-    setIsAdmin(true)
   };
  
   const logoutUser = (token) => {
     localStorage.removeItem("app_token");
     setToken({})
     setIsAuth(false);
-    setIsAdmin(false)
     setUser1({})
   };
  
@@ -37,7 +34,6 @@ const AuthContextProvider = (props) => {
       localStorage.removeItem("app_token");
       setToken({})
       setIsAuth(false);
-      setIsAdmin(false)
       setUser1({})
       Swal.fire({
         icon: 'warning',
@@ -54,7 +50,6 @@ const AuthContextProvider = (props) => {
       setUser1(decoded)
       setToken(item);
       setIsAuth(true);
-      setIsAdmin(true);
       salir()    
     }
   }, []);
@@ -62,7 +57,6 @@ const AuthContextProvider = (props) => {
     <AuthContext.Provider value={{ 
       token, 
       isAuth,
-      isAdmin,  
       user1, 
       loginUser, 
       logoutUser
