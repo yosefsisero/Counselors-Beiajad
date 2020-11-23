@@ -58,29 +58,29 @@ export const AuthContext = createContext();
     }
   }, []);  
 
-  // useEffect(() => {
-  //   axios
-  //     .get(URL_GET_USER, {
-  //       headers: {
-  //         Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-  //       },
-  //     })
-  //     .then((data) => (filtro(data.data)))
-  //     .catch((err) => console.log(err));
-  // }, [user1]);
+  useEffect(() => {
+    axios
+      .get(URL_GET_USER, {
+        headers: {
+          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+        },
+      })
+      .then((data) => (filtro(data.data)))
+      .catch((err) => console.log(err));
+  }, [user1]);
 
-  //  const filtro = (log)=>{
-  //   const fil = log.rank
-  //   if(fil === "user") {
-  //     setIsUser(true)
-  //   }
-  //   if(fil === "doctor") {
-  //     setIsDoctor(true)
-  //   }
-  //   if(fil === "admin") {
-  //     setIsAdministrador(true)
-  //   }
-  // } 
+   const filtro = (log)=>{
+    const fil = log.rank
+    if(fil === "user") {
+      setIsUser(true)
+    }
+    if(fil === "doctor") {
+      setIsDoctor(true)
+    }
+    if(fil === "admin") {
+      setIsAdministrador(true)
+    }
+  } 
 
   return (
     <AuthContext.Provider value={{ 
