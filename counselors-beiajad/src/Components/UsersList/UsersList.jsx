@@ -7,7 +7,7 @@ import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function UsersList() {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, user1, isDoctor, isAdmin, isUser } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
@@ -16,15 +16,14 @@ function UsersList() {
   const URL_GET_USERS = "http://localhost:8000/api/v1/users";
 
   //---
-  const { user1 } = useContext(AuthContext) 
-  const [user] = useState(user1.id)
-  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
-  const [logueado, setLogueado] = useState([]);
-  const [usuario, setUsuario] = useState(false);
-  const [doctor, setDoctor] = useState(false);
-  const [administrador, setAdministrador] = useState(false);
-  
-
+  // const { user1 } = useContext(AuthContext) 
+  // const [user] = useState(user1.id)
+  // const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
+  // const [logueado, setLogueado] = useState([]);
+  // const [usuario, setUsuario] = useState(false);
+  // const [doctor, setDoctor] = useState(false);
+  // const [administrador, setAdministrador] = useState(false);
+ 
   //---
 
   useEffect(() => {
@@ -39,36 +38,36 @@ function UsersList() {
   }, []);
 
   //---
-  useEffect(() => {
-    axios
-      .get(URL_GET_USER, {
-        headers: {
-          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-        },
-      })
-      .then((data) => (setLogueado(data.data)))
-      .catch((err) => console.log(err));
-  }, [users]);
+  // useEffect(() => {
+  //   axios
+  //     .get(URL_GET_USER, {
+  //       headers: {
+  //         Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+  //       },
+  //     })
+  //     .then((data) => (setLogueado(data.data)))
+  //     .catch((err) => console.log(err));
+  // }, [users]);
 
-  useEffect(() => {
-    filtro(logueado)
-  }, [logueado]);
+  // useEffect(() => {
+  //   filtro(logueado)
+  // }, [logueado]);
 
-  const filtro = (a)=>{
-    const b = a.rank
-    if(b === "user") {
-      setUsuario(true)
-      console.log("Es usuario")
-    }
-    else if(b === "doctor") {
-      setDoctor(true)
-      console.log("Es doctor")
-    }
-    if(b === "admin") {
-      setAdministrador(true)
-      console.log("Es Administrador")
-    }
-  }  
+  // const filtro = (log)=>{
+  //   const fil = log.rank
+  //   if(fil === "user") {
+  //     setUsuario(true)
+  //     console.log("Es usuario")
+  //   }
+  //   else if(fil === "doctor") {
+  //     setDoctor(true)
+  //     console.log("Es doctor")
+  //   }
+  //   if(fil === "admin") {
+  //     setAdministrador(true)
+  //     console.log("Es Administrador")
+  //   }
+  // }  
   // console.log(usuario+" usuario")
   // console.log(doctor+" doctor")
   // console.log(administrador+" administrador")
@@ -108,7 +107,7 @@ function UsersList() {
    
   return (
     <>
-    {isAuth ? (
+    {isAuth && isAdmin ? (
       <>
         
       <div>

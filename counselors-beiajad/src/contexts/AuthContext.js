@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import decode from 'jwt-decode'
 import Swal from 'sweetalert2'
+import axios from "axios";
 
 
 export const AuthContext = createContext();
@@ -17,7 +18,7 @@ const AuthContextProvider = (props) => {
     setToken(token);
     setIsAuth(true);
   };
- 
+
   const logoutUser = (token) => {
     localStorage.removeItem("app_token");
     setToken({})
@@ -42,7 +43,6 @@ const AuthContextProvider = (props) => {
     }
   }
   
-  
   useEffect(() => {
     const item = localStorage.getItem("app_token");
     if (item) {
@@ -53,10 +53,54 @@ const AuthContextProvider = (props) => {
       salir()    
     }
   }, []);
+
+  //-------------------------------
+   
+  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
+  const [logueado, setLogueado] = useState([]);
+  const [isUser, setIsUser] = useState(false);
+  const [isDoctor, setIsDoctor] = useState(false);
+  const [isAdmin, setIsAdministrador] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(URL_GET_USER, {
+        headers: {
+          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+        },
+      })
+      .then((data) => (setLogueado(data.data)))
+      .catch((err) => console.log(err));
+  }, [user1]);
+
+  useEffect(() => {
+    filtro(logueado)
+  }, [logueado]);
+
+  const filtro = (log)=>{
+    const fil = log.rank
+    if(fil === "user") {
+      setIsUser(true)
+      //console.log("Es usuario")
+    }
+    if(fil === "doctor") {
+      setIsDoctor(true)
+      //console.log("Es doctor")
+    }
+    if(fil === "admin") {
+      setIsAdministrador(true)
+      //console.log("Es Administrador")
+    }
+  } 
+
+  //-------------------------------
   return (
     <AuthContext.Provider value={{ 
       token, 
       isAuth,
+      isUser,
+      isDoctor,
+      isAdmin,
       user1, 
       loginUser, 
       logoutUser
