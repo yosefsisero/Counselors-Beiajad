@@ -6,10 +6,14 @@ import axios from "axios";
 
 export const AuthContext = createContext();
 
-const AuthContextProvider = (props) => {
+  const AuthContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [isAuth, setIsAuth] = useState(false);
   const [user1, setUser1] = useState({})
+  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
+  const [isUser, setIsUser] = useState(false);
+  const [isDoctor, setIsDoctor] = useState(false);
+  const [isAdmin, setIsAdministrador] = useState(false);
 
   const loginUser = (token) => {
     localStorage.setItem('app_token', token)
@@ -52,48 +56,32 @@ const AuthContextProvider = (props) => {
       setIsAuth(true);
       salir()    
     }
-  }, []);
+  }, []);  
 
-  //-------------------------------
-   
-  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
-  const [logueado, setLogueado] = useState([]);
-  const [isUser, setIsUser] = useState(false);
-  const [isDoctor, setIsDoctor] = useState(false);
-  const [isAdmin, setIsAdministrador] = useState(false);
+  // useEffect(() => {
+  //   axios
+  //     .get(URL_GET_USER, {
+  //       headers: {
+  //         Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+  //       },
+  //     })
+  //     .then((data) => (filtro(data.data)))
+  //     .catch((err) => console.log(err));
+  // }, [user1]);
 
-  useEffect(() => {
-    axios
-      .get(URL_GET_USER, {
-        headers: {
-          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-        },
-      })
-      .then((data) => (setLogueado(data.data)))
-      .catch((err) => console.log(err));
-  }, [user1]);
+  //  const filtro = (log)=>{
+  //   const fil = log.rank
+  //   if(fil === "user") {
+  //     setIsUser(true)
+  //   }
+  //   if(fil === "doctor") {
+  //     setIsDoctor(true)
+  //   }
+  //   if(fil === "admin") {
+  //     setIsAdministrador(true)
+  //   }
+  // } 
 
-  useEffect(() => {
-    filtro(logueado)
-  }, [logueado]);
-
-  const filtro = (log)=>{
-    const fil = log.rank
-    if(fil === "user") {
-      setIsUser(true)
-      //console.log("Es usuario")
-    }
-    if(fil === "doctor") {
-      setIsDoctor(true)
-      //console.log("Es doctor")
-    }
-    if(fil === "admin") {
-      setIsAdministrador(true)
-      //console.log("Es Administrador")
-    }
-  } 
-
-  //-------------------------------
   return (
     <AuthContext.Provider value={{ 
       token, 
