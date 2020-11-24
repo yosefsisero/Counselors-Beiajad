@@ -11,6 +11,24 @@ module.exports = {
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
+    findAllAdmins:(req, res)=>{
+        User.find({ rank: "admin"})
+
+            .then((resDB) => res.status(200).json(resDB))
+            .catch((Error)=> console.log(Error)) 
+    },
+    findAllDoctors:(req, res)=>{
+        User.find({ rank: "doctor"})
+
+            .then((resDB) => res.status(200).json(resDB))
+            .catch((Error)=> console.log(Error)) 
+    },
+    findAllUsers:(req, res)=>{
+        User.find({ rank: "user"})
+
+            .then((resDB) => res.status(200).json(resDB))
+            .catch((Error)=> console.log(Error)) 
+    },
     findOne: (req, res) => {
       User.findById(req.params.id)
             .then((resDB) => res.status(200).json(resDB))
