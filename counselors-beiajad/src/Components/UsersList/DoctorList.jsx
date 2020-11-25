@@ -6,28 +6,64 @@ import DeleteUser from "../Delete/DeleteUser";
 import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
+import { useHistory } from "react-router-dom";
+
 function DoctorList() {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, isDoctor, user1 } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "password", "updatedAt"];   // excluye datos del arreglo del filtro
+  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
 
-  const URL_GET_USERS = "http://localhost:8000/api/v1/users";
+  const URL_GET_USERS = "http://localhost:8000/api/v1/doctors";
 
-  useEffect(() => {
-    axios
-      .get(URL_GET_USERS, {
-        headers: {
-          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-        },
-      })
-      .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
-      .catch((err) => console.log(err));
-  }, []);
+  let history = useHistory();
 
+      useEffect(() => {
+          axios.get(URL_GET_USERS, {
+              headers: {
+                Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+              },
+            })
+            .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
+            .catch((err) => console.log(err));
+        }, []);
+
+   //---
+   
+      // const despues = () =>{
+    
+        // axios.get(URL_GET_USERS, {
+        //     headers: {
+        //       Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+        //     },
+        //   })
+        //   .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
+        //   .catch((err) => console.log(err));
+      // }
+      
+      useEffect(() => {
+        axios.get(URL_GET_USER, {
+          headers: {
+            Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+          },
+        })
+        .then((data) => (filtro(data.data)))
+        .catch((err) => console.log(err));
+      
   
+       const filtro = (log)=>{
+        const fil = log.rank
+        if(fil != "admin") {
+          return history.push("/")
+          
+        }
+        }
+      }, [users]);
   
+  //---
+
   // ESTE CODIGO BUSCA EN EL ARREGLO UN SOLO DATO EN ESTE CASO EL APELLIDO.
   // useEffect(() => {
   //   setFilteredUsers(
@@ -42,9 +78,7 @@ function DoctorList() {
     setSearchText(value);
     filterData(value);
   };
-
- 
-
+  
   // filter records by search text
   const filterData = (value) => {
     const lowercasedValue = value.toLowerCase().trim();
@@ -87,9 +121,9 @@ function DoctorList() {
         </tr>
       </thead>
       <tbody>
-      {data.map((user, i) => {
+      {data.map((user, i) => (
 
-        return user.rank === "doctor" ? 
+     
              
         <tr key={i}>         
         <td >{user.first_name}</td>
@@ -100,9 +134,8 @@ function DoctorList() {
         <td >{user.tel}</td>
         <td><DeleteUser id={user._id}/></td>
         </tr>
-              
-        : undefined;
-      })}
+     
+      ))}
       </tbody>
     </Table>      
         

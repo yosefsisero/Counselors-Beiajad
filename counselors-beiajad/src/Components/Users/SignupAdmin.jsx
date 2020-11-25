@@ -51,7 +51,7 @@ const SignupAdmin = () => {
       setTel('')
       Swal.fire({
         icon: 'success',
-        title: 'Usuario creado con exito',
+        title: 'Administrador creado con exito',
         text: 'Inicia sesión',
         timer: 3000,
         timerProgressBar: true,

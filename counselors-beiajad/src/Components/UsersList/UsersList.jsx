@@ -107,7 +107,7 @@ function UsersList() {
    
   return (
     <>
-    {isAdmin ? (
+    {isAuth ? (
       <>
         
       <div>

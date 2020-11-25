@@ -11,9 +11,9 @@ export const AuthContext = createContext();
   const [isAuth, setIsAuth] = useState(false);
   const [user1, setUser1] = useState({})
   const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
-  const [isUser, setIsUser] = useState(false);
-  const [isDoctor, setIsDoctor] = useState(false);
-  const [isAdmin, setIsAdministrador] = useState(false);
+  // const [isUser, setIsUser] = useState(false);
+  // const [isDoctor, setIsDoctor] = useState(false);
+  // const [isAdmin, setIsAdministrador] = useState(false);
 
   const loginUser = (token) => {
     localStorage.setItem('app_token', token)
@@ -58,37 +58,37 @@ export const AuthContext = createContext();
     }
   }, []);  
 
-  useEffect(() => {
-    axios
-      .get(URL_GET_USER, {
-        headers: {
-          Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-        },
-      })
-      .then((data) => (filtro(data.data)))
-      .catch((err) => console.log(err));
-  }, [user1]);
+  // useEffect(() => {
+  //   axios
+  //     .get(URL_GET_USER, {
+  //       headers: {
+  //         Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
+  //       },
+  //     })
+  //     .then((data) => (filtro(data.data)))
+  //     .catch((err) => console.log(err));
+  // }, [user1]);
 
-   const filtro = (log)=>{
-    const fil = log.rank
-    if(fil === "user") {
-      setIsUser(true)
-    }
-    if(fil === "doctor") {
-      setIsDoctor(true)
-    }
-    if(fil === "admin") {
-      setIsAdministrador(true)
-    }
-  } 
+  //  const filtro = (log)=>{
+  //   const fil = log.rank
+  //   if(fil === "user") {
+  //     setIsUser(true) 
+  //   }
+  //   if(fil === "doctor") {
+  //     setIsDoctor(true)
+  //   }
+  //   if(fil === "admin") {
+  //     setIsAdministrador(true)
+  //   }
+  // } 
 
   return (
     <AuthContext.Provider value={{ 
       token, 
       isAuth,
-      isUser,
-      isDoctor,
-      isAdmin,
+      // isUser,
+      // isDoctor,
+      // isAdmin,
       user1, 
       loginUser, 
       logoutUser
