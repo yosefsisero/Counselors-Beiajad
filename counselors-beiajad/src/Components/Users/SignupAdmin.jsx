@@ -25,7 +25,7 @@ const SignupAdmin = () => {
   event.preventDefault();
 
   const jsonSend = {
-    rank: "admin",
+    role: "admin",
     first_name: firstName,
     last_name: lastName,
     email,

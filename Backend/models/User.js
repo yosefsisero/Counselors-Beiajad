@@ -10,7 +10,7 @@ const userSchema = new Schema({
         type: Boolean,
         default: true
     },
-    rank:{
+    role:{
         type: String,
         required: true
     },

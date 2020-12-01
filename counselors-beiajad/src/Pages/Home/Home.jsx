@@ -22,7 +22,7 @@ function Home(props) {
         <>       
         <div id="start">
         <Container className="themed-container" fluid={true}>
-        <h1 className="bienvenido">Hola, {user1.first_name}</h1>
+        <h1 className="bienvenido">Hola, {user1.first_name }{user1.last_name }</h1>
 
         <Apointment />
 

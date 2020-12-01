@@ -23,7 +23,7 @@ const SignupDoctor = () => {
   event.preventDefault();
 
   const jsonSend = {
-    rank: "doctor",
+    role: "doctor",
     first_name: firstName,
     last_name: lastName,
     email,

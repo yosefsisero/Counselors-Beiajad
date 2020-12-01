@@ -24,7 +24,7 @@ const Register = () => {
   event.preventDefault();
 
   const jsonSend = {
-    rank: "user",
+    role: "user",
     first_name: firstName,
     last_name: lastName,
     email,

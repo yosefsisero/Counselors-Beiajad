@@ -8,9 +8,9 @@ module.exports = {
     createToken: (user)=>{
         const payload = {
             id: user._id,
-            email: user.email,
             first_name: user.first_name,
             last_name: user.last_name,
+            role: user.role,
             exp: Math.floor(Date.now() / 1000) + (60 * 60) //Estamos dandole un tiempo de expiracion al token
         };
         try{

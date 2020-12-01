@@ -6,19 +6,14 @@ import DeleteUser from "../Delete/DeleteUser";
 import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
-import { useHistory } from "react-router-dom";
-
 function DoctorList() {
-  const { isAuth, isDoctor, user1 } = useContext(AuthContext);
+  const { isAuth, user1 } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "password", "updatedAt"];   // excluye datos del arreglo del filtro
-  const URL_GET_USER = `http://localhost:8000/api/v1/users/${user1.id}`;
-
   const URL_GET_USERS = "http://localhost:8000/api/v1/doctors";
 
-  let history = useHistory();
 
       useEffect(() => {
           axios.get(URL_GET_USERS, {
@@ -30,39 +25,6 @@ function DoctorList() {
             .catch((err) => console.log(err));
         }, []);
 
-   //---
-   
-      // const despues = () =>{
-    
-        // axios.get(URL_GET_USERS, {
-        //     headers: {
-        //       Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-        //     },
-        //   })
-        //   .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
-        //   .catch((err) => console.log(err));
-      // }
-      
-      useEffect(() => {
-        axios.get(URL_GET_USER, {
-          headers: {
-            Authorization: `Bearer: ${localStorage.getItem("app_token")}`,
-          },
-        })
-        .then((data) => (filtro(data.data)))
-        .catch((err) => console.log(err));
-      
-  
-       const filtro = (log)=>{
-        const fil = log.rank
-        if(fil != "admin") {
-          return history.push("/")
-          
-        }
-        }
-      }, [users]);
-  
-  //---
 
   // ESTE CODIGO BUSCA EN EL ARREGLO UN SOLO DATO EN ESTE CASO EL APELLIDO.
   // useEffect(() => {

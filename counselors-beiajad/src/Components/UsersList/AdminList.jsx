@@ -7,7 +7,7 @@ import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function AdminList() {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, user1 } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
@@ -59,7 +59,7 @@ function AdminList() {
    
   return (
     <>
-    {isAuth ? (
+    {isAuth && user1.role === "admin"? (
       <>
         
       <div>
@@ -89,7 +89,7 @@ function AdminList() {
       </thead>
       <tbody>
       {data.map((user, i) => {
-       return user.rank === "admin" ? 
+       return user.role === "admin" ? 
        <tr key={i}>         
         <td >{user.first_name}</td>
         <td >{user.last_name}</td>
@@ -123,7 +123,7 @@ function AdminList() {
       </thead>
       <tbody>
       {data.map((user, i) => {
-       return user.rank === "user" ? 
+       return user.role === "user" ? 
        <tr key={i}>         
         <td >{user.first_name}</td>
         <td >{user.last_name}</td>
@@ -156,7 +156,7 @@ function AdminList() {
       <tbody>
       {data.map((user, i) => {
 
-        return user.rank === "doctor" ? 
+        return user.role === "doctor" ? 
              
         <tr key={i}>         
         <td >{user.first_name}</td>
