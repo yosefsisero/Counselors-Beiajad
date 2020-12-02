@@ -1,15 +1,23 @@
 const { User } = require('../models');
 const { UserService } = require('../services');
 const { comparePasswords, createToken } = require('../utils')
-
+const { roles } = require('../server/roles')
 
 
 module.exports = {
     findAll:(req, res)=>{
-        User.find()
-
+        //const { role } = req.params.role;
+        //console.log(req.params)
+        const permission = roles.can("admin").readAny('profile');
+        if (permission.granted) {
+            User.find()
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
+        } else {
+            // resource is forbidden for this user/role
+            res.status(403).end();
+        }
+        
     },
     findAllAdmins:(req, res)=>{
         User.find({ rank: "admin"})
@@ -49,7 +57,7 @@ module.exports = {
         }
     },
     login: async (req, res)=>{
-        const { email, password} = req.body;
+        const { email, password } = req.body;
         try{
             const user = await UserService.findOneByEmail(email);
             if (!user) res.status(400).json({message: 'Email not valid'})
