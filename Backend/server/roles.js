@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// server/roles.js
+>>>>>>> a44516aec9bb86dd6bfdf38df00fa78d71ce096e
 const AccessControl = require("accesscontrol");
 const ac = new AccessControl();
 
