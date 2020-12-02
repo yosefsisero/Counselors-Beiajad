@@ -3,8 +3,13 @@ const { UserService } = require('../services');
 const { comparePasswords, createToken } = require('../utils')
 
 
+const { roles } = require('../server/roles')
+
 
 module.exports = {
+
+
+
     findAll:(req, res)=>{
         User.find()
 
@@ -73,4 +78,35 @@ module.exports = {
            .then((resDB)=> res.status(204).json(resDB))
            .catch((err)=> res.status(400).json(err))
     },
+grantAccess : function(action, resource) {
+    return async (req, res, next) => {
+     try {
+      const permission = roles.can(req.params.role)[action](resource);
+      if (!permission.granted) {
+       return res.status(401).json({
+        error: "You don't have enough permission to perform this action"
+       });
+      }
+      next()
+     } catch (error) {
+      next(error)
+     }
+    }
+   },
+   
+   allowIfLoggedin : async (req, res, next) => {
+    try {
+     const user = res.locals.loggedInUser;
+     if (!user)
+      return res.status(401).json({
+       error: "You need to be logged in to access this route"
+      });
+      req.user = user;
+      next();
+     } catch (error) {
+      next(error);
+     }
+   }
+
 }
+
