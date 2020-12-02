@@ -7,7 +7,7 @@ import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function UsersList() {
-  const { isAuth, user1, isDoctor, isAdmin, isUser } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
@@ -134,8 +134,7 @@ function UsersList() {
         </tr>
       </thead>
       <tbody>
-      {data.map((user, i) => {
-       return user.rank === "user" ? 
+      {data.map((user, i) => (
        <tr key={i}>         
         <td >{user.first_name}</td>
         <td >{user.last_name}</td>
@@ -146,8 +145,7 @@ function UsersList() {
         <td >{user.tel}</td>
         <td><DeleteUser id={user._id}/></td>
        </tr>
-      : undefined;
-      })}
+      ))}
       
       </tbody>
     </Table>      

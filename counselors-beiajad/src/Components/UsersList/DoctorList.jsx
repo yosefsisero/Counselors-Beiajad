@@ -7,7 +7,7 @@ import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function DoctorList() {
-  const { isAuth, user1 } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
