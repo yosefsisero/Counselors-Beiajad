@@ -7,7 +7,7 @@ import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function AdminList() {
-  const { isAuth, user1 } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
@@ -59,7 +59,7 @@ function AdminList() {
    
   return (
     <>
-    {isAuth && user1.role === "admin"? (
+    {isAuth ? (
       <>
         
       <div>
@@ -88,8 +88,8 @@ function AdminList() {
         </tr>
       </thead>
       <tbody>
-      {data.map((user, i) => {
-       return user.role === "admin" ? 
+      {data.map((user, i) => (
+        
        <tr key={i}>         
         <td >{user.first_name}</td>
         <td >{user.last_name}</td>
@@ -101,8 +101,7 @@ function AdminList() {
         <td >{user.tel}</td>
         <td><DeleteUser id={user._id}/></td>
        </tr>
-      : undefined;
-      })}
+      ))}
       
       </tbody>
     </Table> 
@@ -122,8 +121,7 @@ function AdminList() {
         </tr>
       </thead>
       <tbody>
-      {data.map((user, i) => {
-       return user.role === "user" ? 
+      {data.map((user, i) => (
        <tr key={i}>         
         <td >{user.first_name}</td>
         <td >{user.last_name}</td>
@@ -134,8 +132,7 @@ function AdminList() {
         <td >{user.tel}</td>
         <td><DeleteUser id={user._id}/></td>
        </tr>
-      : undefined;
-      })}
+      ))}
       
       </tbody>
     </Table>
@@ -154,9 +151,8 @@ function AdminList() {
         </tr>
       </thead>
       <tbody>
-      {data.map((user, i) => {
+      {data.map((user, i) => (
 
-        return user.role === "doctor" ? 
              
         <tr key={i}>         
         <td >{user.first_name}</td>
@@ -167,9 +163,7 @@ function AdminList() {
         <td >{user.tel}</td>
         <td><DeleteUser id={user._id}/></td>
         </tr>
-              
-        : undefined;
-      })}
+      ))}
       </tbody>
     </Table>     
         
