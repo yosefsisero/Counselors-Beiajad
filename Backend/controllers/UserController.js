@@ -1,43 +1,40 @@
 const { User } = require('../models');
 const { UserService } = require('../services');
 const { comparePasswords, createToken } = require('../utils')
-const { roles } = require('../server/roles')
-
-const { roles } = require('../server/roles')
 
 
 module.exports = {
 
-
-
     findAll:(req, res)=>{
-        //const { role } = req.params.role;
-        //console.log(req.params)
-        const permission = roles.can("admin").readAny('profile');
-        if (permission.granted) {
-            User.find()
+      User.find()
             .then((resDB) => res.status(200).json(resDB))
-            .catch((Error)=> console.log(Error)) 
-        } else {
-            // resource is forbidden for this user/role
-            res.status(403).end();
-        }
-        
+            .catch((Error)=> console.log(Error))
+    },
+    findRole: (req, res) => {
+        User.findById(req.params.id)
+        .then((resDB) => {
+            let role = resDB.role;
+            if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+            else {User.find()
+                .then((resDB) => res.status(200).json(resDB))
+                .catch((Error)=> console.log(Error))} 
+      })
+           
     },
     findAllAdmins:(req, res)=>{
-        User.find({ rank: "admin"})
+        User.find({ role: "admin"})
 
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
     findAllDoctors:(req, res)=>{
-        User.find({ rank: "doctor"})
+        User.find({ role: "doctor"})
 
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
     },
     findAllUsers:(req, res)=>{
-        User.find({ rank: "user"})
+        User.find({ role: "user"})
 
             .then((resDB) => res.status(200).json(resDB))
             .catch((Error)=> console.log(Error)) 
@@ -85,36 +82,6 @@ module.exports = {
         User.findByIdAndDelete(req.params.id)
            .then((resDB)=> res.status(204).json(resDB))
            .catch((err)=> res.status(400).json(err))
-    },
-grantAccess : function(action, resource) {
-    return async (req, res, next) => {
-     try {
-      const permission = roles.can(req.params.role)[action](resource);
-      if (!permission.granted) {
-       return res.status(401).json({
-        error: "You don't have enough permission to perform this action"
-       });
-      }
-      next()
-     } catch (error) {
-      next(error)
-     }
-    }
-   },
-   
-   allowIfLoggedin : async (req, res, next) => {
-    try {
-     const user = res.locals.loggedInUser;
-     if (!user)
-      return res.status(401).json({
-       error: "You need to be logged in to access this route"
-      });
-      req.user = user;
-      next();
-     } catch (error) {
-      next(error);
-     }
-   }
-
+    },  
 }
 

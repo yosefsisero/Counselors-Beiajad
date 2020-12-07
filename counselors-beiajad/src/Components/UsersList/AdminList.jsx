@@ -7,13 +7,13 @@ import Home from '../../Pages/Home/Home'
 import './UsersList.css'
 
 function AdminList() {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, user1 } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "password", "updatedAt"];   // excluye datos del arreglo del filtro
 
-  const URL_GET_USERS = "http://localhost:8000/api/v1/users";
+  const URL_GET_USERS = `http://localhost:8000/api/v1/role/${user1.id}`;
 
   useEffect(() => {
     axios
@@ -24,7 +24,7 @@ function AdminList() {
       })
       .then((data) => (setUsers(data.data), setData(data.data), setSearchText("")))
       .catch((err) => console.log(err));
-  }, []);
+  }, [isAuth]);
   
   // ESTE CODIGO BUSCA EN EL ARREGLO UN SOLO DATO EN ESTE CASO EL APELLIDO.
   // useEffect(() => {
