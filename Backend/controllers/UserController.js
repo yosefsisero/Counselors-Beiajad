@@ -6,32 +6,34 @@ const { comparePasswords, createToken } = require('../utils')
 module.exports = {
 
     findAll:(req, res)=>{
-      User.find()
-            .then((resDB) => res.status(200).json(resDB))
-            .catch((Error)=> console.log(Error))
-    },
-    findRole: (req, res) => {
-        User.findById(req.params.id)
-        .then((resDB) => {
-            let role = resDB.role;
-            if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+    User.findById(req.params.id)
+      .then((info) => {
+            let role = info.role;
+            if (role !== "admin" && role !== "doctor") res.status(400).json({message: 'No tienes acceso'})
             else {User.find()
-                .then((resDB) => res.status(200).json(resDB))
-                .catch((Error)=> console.log(Error))} 
-      })
-           
-    },
-    findAllAdmins:(req, res)=>{
-        User.find({ role: "admin"})
-
             .then((resDB) => res.status(200).json(resDB))
-            .catch((Error)=> console.log(Error)) 
+            .catch((Error)=> console.log(Error))}
+     }) 
+    }, 
+    findAllAdmins:(req, res)=>{
+     User.findById(req.params.id)
+      .then((info) => {
+            let role = info.role;
+            if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+            else {User.find({ role: "admin"})
+            .then((resDB) => res.status(200).json(resDB))
+            .catch((Error)=> console.log(Error))}
+      }) 
     },
     findAllDoctors:(req, res)=>{
-        User.find({ role: "doctor"})
-
+     User.findById(req.params.id)
+      .then((info) => {
+            let role = info.role;
+            if (role !== "admin" && role !== "doctor") res.status(400).json({message: 'No tienes acceso'})
+            else {User.find({ role: "doctor"})
             .then((resDB) => res.status(200).json(resDB))
-            .catch((Error)=> console.log(Error)) 
+            .catch((Error)=> console.log(Error))}
+      }) 
     },
     findAllUsers:(req, res)=>{
         User.find({ role: "user"})
@@ -40,9 +42,11 @@ module.exports = {
             .catch((Error)=> console.log(Error)) 
     },
     findOne: (req, res) => {
-      User.findById(req.params.id)
-            .then((resDB) => res.status(200).json(resDB))
-            .catch((Error)=> console.log(Error)) 
+      let role = req.params.id 
+      if(role !== "admin" && role !== "doctor" && role !== "user") res.status(400).json({message: 'No tienes acceso'})
+      else {User.findById(req.params.id)
+        .then((resDB) => res.status(200).json(resDB))
+        .catch((Error)=> console.log(Error))}   
     },
     signup: async (req, res)=>{
         const { body } = req;
@@ -72,16 +76,84 @@ module.exports = {
             res.status(400).json(error)
        }
     },
-    change:(req, res)=>{
+    changeUsers:(req, res)=>{
+     User.findById(req.params.id)
+      .then((info) => {
+        let role = info.role;
+        if (role !== "admin" && role !== "user") res.status(400).json({message: 'No tienes acceso'})
+        else {
         const { body } = req
         User.findByIdAndUpdate(req.params.id, body, {new: true})
            .then((resDB)=> res.status(200).json(resDB))
-           .catch((err)=> res.status(400).json(err))
+           .catch((err)=> res.status(400).json(err))}
+    })
     },
-    delete:(req, res)=>{
+    changeDoctors:(req, res)=>{
+        User.findById(req.params.id)
+         .then((info) => {
+           let role = info.role;
+           if (role !== "admin" && role !== "doctor") res.status(400).json({message: 'No tienes acceso'})
+           else {
+           const { body } = req
+           User.findByIdAndUpdate(req.params.id, body, {new: true})
+              .then((resDB)=> res.status(200).json(resDB))
+              .catch((err)=> res.status(400).json(err))}
+       })
+    },
+    changeAdmins:(req, res)=>{
+        User.findById(req.params.id)
+         .then((info) => {
+           let role = info.role;
+           if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+           else {
+           const { body } = req
+           User.findByIdAndUpdate(req.params.id, body, {new: true})
+              .then((resDB)=> res.status(200).json(resDB))
+              .catch((err)=> res.status(400).json(err))}
+       })
+    },
+    deleteUsers:(req, res)=>{
+    User.findById(req.params.id)
+      .then((info) => {
+        let role = info.role;
+        if (role !== "admin" && role !== "user") res.status(400).json({message: 'No tienes acceso'})
+        else {
         User.findByIdAndDelete(req.params.id)
            .then((resDB)=> res.status(204).json(resDB))
-           .catch((err)=> res.status(400).json(err))
-    },  
+           .catch((err)=> res.status(400).json(err))}
+     })
+    },
+    deleteDoctors:(req, res)=>{
+        User.findById(req.params.id)
+          .then((info) => {
+            let role = info.role;
+            if (role !== "admin" && role !== "doctor") res.status(400).json({message: 'No tienes acceso'})
+            else {
+            User.findByIdAndDelete(req.params.id)
+               .then((resDB)=> res.status(204).json(resDB))
+               .catch((err)=> res.status(400).json(err))}
+     })
+    },
+    deleteAdmins:(req, res)=>{
+        User.findById(req.params.id)
+          .then((info) => {
+            let role = info.role;
+            if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+            else {
+            User.findByIdAndDelete(req.params.id)
+               .then((resDB)=> res.status(204).json(resDB))
+               .catch((err)=> res.status(400).json(err))}
+     })
+    },
+    /*findRole: (req, res) => {
+        User.findById(req.params.id)
+        .then((info) => {
+            let role = info.role;
+            if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+            else {User.find()
+                .then((resDB) => res.status(200).json(resDB))
+                .catch((Error)=> console.log(Error))} 
+      })       
+    },*/  
 }
 

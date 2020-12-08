@@ -13,7 +13,7 @@ function AdminList() {
   const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "password", "updatedAt"];   // excluye datos del arreglo del filtro
 
-  const URL_GET_USERS = `http://localhost:8000/api/v1/role/${user1.id}`;
+  const URL_GET_USERS = `http://localhost:8000/api/v1/users/${user1.id}`;
 
   useEffect(() => {
     axios
