@@ -15,29 +15,7 @@ module.exports = {
             password: Joi.string().required(),
         }),
     }),
-    changeUsers: celebrate({
-        [Segments.BODY]:Joi.object().keys({
-            role: Joi.string(),
-            tel: Joi.number(),
-            country: Joi.string(),
-            email: Joi.string(),
-            age: Joi.string(),
-            specialty: Joi.string(),
-            comunity: Joi.string(),
-        }),
-    }),
-    changeDoctors: celebrate({
-        [Segments.BODY]:Joi.object().keys({
-            role: Joi.string(),
-            tel: Joi.number(),
-            country: Joi.string(),
-            email: Joi.string(),
-            age: Joi.string(),
-            specialty: Joi.string(),
-            comunity: Joi.string(),
-        }),
-    }),
-    changeAdmins: celebrate({
+    change: celebrate({
         [Segments.BODY]:Joi.object().keys({
             role: Joi.string(),
             tel: Joi.number(),

@@ -48,7 +48,7 @@ module.exports = {
         .then((resDB) => res.status(200).json(resDB))
         .catch((Error)=> console.log(Error))}   
     },
-    signup: async (req, res)=>{
+    signupUser: async (req, res)=>{
         const { body } = req;
         try {
             const emailExist = await UserService.findOneByEmail(body.email)
@@ -56,12 +56,49 @@ module.exports = {
             else {const newUser = new User(body);
             const user = await newUser.save();
             user.password = undefined
-            res.status(201).json(user);}
-                 
+            res.status(201).json(user);}       
         } catch (error) {
             res.status(400).json(error)
         }
     },
+    signupDoctor:(req, res)=>{
+      User.findById(req.params.id)
+      .then(async (info) => {
+        let role = info.role;
+        if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+       else {
+      const { body } = req;
+      try {
+          const emailExist = await UserService.findOneByEmail(body.email)
+          if (emailExist) res.status(400).json({message: 'Email taken'})
+          else {const newUser = new User(body);
+          const user = await newUser.save();
+          user.password = undefined
+          res.status(201).json(user);}          
+      } catch (error) {
+          res.status(400).json(error)
+      }}
+    }) 
+  },
+  signupAdmin: (req, res)=>{
+    User.findById(req.params.id)
+    .then(async (info) => {
+      let role = info.role;
+      if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
+     else {
+    const { body } = req;
+    try {
+        const emailExist = await UserService.findOneByEmail(body.email)
+        if (emailExist) res.status(400).json({message: 'Email taken'})
+        else {const newUser = new User(body);
+        const user = await newUser.save();
+        user.password = undefined
+        res.status(201).json(user);}
+    } catch (error) {
+        res.status(400).json(error)
+    }}
+  }) 
+},
     login: async (req, res)=>{
         const { email, password } = req.body;
         try{
@@ -83,7 +120,7 @@ module.exports = {
         if (role !== "admin" && role !== "user") res.status(400).json({message: 'No tienes acceso'})
         else {
         const { body } = req
-        User.findByIdAndUpdate(req.params.id, body, {new: true})
+        User.findByIdAndUpdate(req.params.id2, body, {new: true})
            .then((resDB)=> res.status(200).json(resDB))
            .catch((err)=> res.status(400).json(err))}
     })
@@ -95,7 +132,7 @@ module.exports = {
            if (role !== "admin" && role !== "doctor") res.status(400).json({message: 'No tienes acceso'})
            else {
            const { body } = req
-           User.findByIdAndUpdate(req.params.id, body, {new: true})
+           User.findByIdAndUpdate(req.params.id2, body, {new: true})
               .then((resDB)=> res.status(200).json(resDB))
               .catch((err)=> res.status(400).json(err))}
        })
@@ -107,7 +144,7 @@ module.exports = {
            if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
            else {
            const { body } = req
-           User.findByIdAndUpdate(req.params.id, body, {new: true})
+           User.findByIdAndUpdate(req.params.id2, body, {new: true})
               .then((resDB)=> res.status(200).json(resDB))
               .catch((err)=> res.status(400).json(err))}
        })
@@ -118,8 +155,8 @@ module.exports = {
         let role = info.role;
         if (role !== "admin" && role !== "user") res.status(400).json({message: 'No tienes acceso'})
         else {
-        User.findByIdAndDelete(req.params.id)
-           .then((resDB)=> res.status(204).json(resDB))
+        User.findByIdAndDelete(req.params.id2)
+           .then(res.status(200).json({message: 'Usuario borrado'}))
            .catch((err)=> res.status(400).json(err))}
      })
     },
@@ -129,8 +166,8 @@ module.exports = {
             let role = info.role;
             if (role !== "admin" && role !== "doctor") res.status(400).json({message: 'No tienes acceso'})
             else {
-            User.findByIdAndDelete(req.params.id)
-               .then((resDB)=> res.status(204).json(resDB))
+            User.findByIdAndDelete(req.params.id2)
+               .then(res.status(200).json({message: 'Doctor borrado'}))
                .catch((err)=> res.status(400).json(err))}
      })
     },
@@ -140,8 +177,8 @@ module.exports = {
             let role = info.role;
             if (role !== "admin") res.status(400).json({message: 'No tienes acceso'})
             else {
-            User.findByIdAndDelete(req.params.id)
-               .then((resDB)=> res.status(204).json(resDB))
+            User.findByIdAndDelete(req.params.id2)
+               .then(res.status(200).json({message: 'Administrador borrado'}))
                .catch((err)=> res.status(400).json(err))}
      })
     },
