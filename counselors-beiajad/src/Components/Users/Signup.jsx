@@ -35,7 +35,7 @@ const Register = () => {
     tel
   };
 
-  const SIGNUP_URL = `http://localhost:8000/api/v1/signup/`
+  const SIGNUP_URL = `http://localhost:8000/api/v1/signupuser/`
     try {
       await axios.post(SIGNUP_URL, jsonSend)
       setFirstName('')
