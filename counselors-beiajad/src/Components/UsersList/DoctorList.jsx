@@ -12,6 +12,7 @@ function DoctorList() {
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
   const excludeColumns = ["_id", "is_active", "createdAt", "password", "updatedAt"];   // excluye datos del arreglo del filtro
+  
   const URL_GET_USERS = "http://localhost:8000/api/v1/doctors";
 
 

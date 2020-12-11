@@ -5,7 +5,7 @@ const { ScheduleController } = require('../controllers');
 const { ScheduleValidator } = require('../validators')
 const { verifyToken } = require('../middlewares')
 
-router.get('/schedule', verifyToken, ScheduleController.findAll)
+router.get('/schedules/:id', verifyToken, ScheduleController.findAll)
 router.get('/schedule/:id', verifyToken, ScheduleController.findOne)
 router.post('/schedule', verifyToken, ScheduleValidator.create, ScheduleController.create)
 router.patch('/schedule/:id', verifyToken, ScheduleValidator.change, ScheduleController.change)

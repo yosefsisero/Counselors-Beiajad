@@ -6,7 +6,7 @@ const { UserValidator } = require('../validators')
 const { verifyToken } = require('../middlewares')
 
 router.get('/users/:id', verifyToken,  UserController.findAll)
-router.get('/user/:id/:id2', verifyToken, UserController.findOne)
+router.get('/user/:id', verifyToken, UserController.findOne)
 router.get('/admins/:id', verifyToken,  UserController.findAllAdmins)
 router.get('/doctors/:id', verifyToken, UserController.findAllDoctors)
 router.get('/usuarios/:id', verifyToken, UserController.findAllUsers)
