@@ -47,15 +47,9 @@ module.exports = {
       })
     },
     findOne: (req, res) => {
-      User.findById(req.params.id)
-      .then((info) => {
-      let role = info.role
-      if(role !== "admin" && role !== "doctor" && role !== "user") res.status(400).json({message: 'No tienes acceso'})
-      else {
-        User.findById(req.params.id2)
-        .then((resDB) => res.status(200).json(resDB))
-        .catch((Error)=> console.log(Error))}   
-      })
+       User.findById(req.params.id2)
+      .then((resDB) => res.status(200).json(resDB))
+      .catch((Error)=> console.log(Error))
     },
     signupUser: async (req, res)=>{
         const { body } = req;
