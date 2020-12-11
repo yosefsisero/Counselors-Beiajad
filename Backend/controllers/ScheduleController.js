@@ -1,4 +1,4 @@
-const { Schedule } = require('../models');
+const { Schedule, User } = require('../models');
 
 
 module.exports = {
